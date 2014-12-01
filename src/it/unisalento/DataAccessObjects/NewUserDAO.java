@@ -4,12 +4,13 @@ import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Utente;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 
-public final class NewUserDAO {
+public final class NewUserDAO extends metodiComuni {
 	
 	private SimpleDateFormat sdf;
 	private String data;
@@ -23,11 +24,23 @@ public final class NewUserDAO {
 			   instance = new NewUserDAO();
 		   return instance;	
 	}
-	
-	public int getUsernameId(Utente u){
-		String getIdQuery="select ID from librarium.utente where username='"+u.getUsername()+"'";
-		return Integer.parseInt(DbConnection.getInstance().eseguiQuery(getIdQuery).get(0)[0]); //cast da stringa ad intero e restituisce
+ 
+	public boolean isNewUsername(String username){
+		if(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from utente where username='"+username+"'").get(0)[0])==0)
+			return true;
+		return false;
 	}
+	
+	public boolean isNewEmail(String email){
+		if(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where email='"+email+"'").get(0)[0])==0)
+			return true;
+		return false;
+	}
+	
+	public int porcdio(String email){
+		return Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where email='"+email+"'").get(0)[0]);
+	}
+	
 	
 	public boolean registraCliente(Cliente c){
 		boolean flag=true;

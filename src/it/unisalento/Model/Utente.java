@@ -1,11 +1,20 @@
 package it.unisalento.Model;
 
 public class Utente {
-	private String nome;
-	private String cognome;
+	protected String nome;
+	protected String cognome;
 	private String username;
 	private String password;
+	protected String data_ultimo_accesso;
 	
+	public String getData_ultimo_accesso() {
+		return data_ultimo_accesso;
+	}
+
+	public void setData_ultimo_accesso(String data_ultimo_accesso) {
+		this.data_ultimo_accesso = data_ultimo_accesso;
+	}
+
 	public Utente(String username, String password){
 		this.username=username;
 		this.password=password;

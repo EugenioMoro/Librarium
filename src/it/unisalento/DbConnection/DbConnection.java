@@ -88,6 +88,26 @@ public class DbConnection {
          connesso = false;
       } catch (Exception e) { e.printStackTrace(); }
    }
+   
+   
+   //questo metodo è utile per capire se esiste già un username o email uguale in database
+   public boolean hasResults(String query){
+	   
+	   int count=0;
+	   
+	   try {
+		   
+		   Statement stmt = db.createStatement();
+	       ResultSet rs = stmt.executeQuery(query);
+	       rs.last();
+	       count=rs.getRow();
+	       rs.beforeFirst();
+	   }catch (Exception e) { e.printStackTrace(); }
+	  
+	   if(count==0) return false;  
+	   
+	   return true;
+   }
 
    public boolean isConnesso() { return connesso; }   // Ritorna TRUE se la connessione con il Database  attiva
 }

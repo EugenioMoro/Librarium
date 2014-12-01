@@ -1,27 +1,25 @@
-package it.unisalento.junit_test;
+package it.unisalento.jUnit_test;
 
 import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
+import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.DataAccessObjects.NewUserDAO;
 import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Utente;
 
-public class NewUserDAO_test {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
+public class LogInDAO_test {
+	
 	Cliente MarioU=new Cliente();
 	Utente MarcoU=new Utente();
 	Utente StefanoU=new Utente();
+	Utente dumb=new Utente("dumb", "dumb");
 
-	
 	@Before
 	public void setUp() throws Exception {
-		
-		
 		MarioU.setNome("Mario");
 		MarioU.setCognome("Rossi");
 		MarioU.setUsername("mRossi");
@@ -38,11 +36,9 @@ public class NewUserDAO_test {
 		MarcoU.setPassword("passw");
 		
 		
-		StefanoU.setNome("Stefano");
-		StefanoU.setCognome("Palma");
-		StefanoU.setUsername("sPalma");
-		StefanoU.setPassword("word");
-		
+		NewUserDAO.getInstance().registraCliente(MarioU);
+		NewUserDAO.getInstance().registraAddVendite(MarcoU);
+		NewUserDAO.getInstance().registraAddScaffali(StefanoU);
 		
 		
 	}
@@ -50,17 +46,31 @@ public class NewUserDAO_test {
 	@After
 	public void tearDown() throws Exception {
 		
+
 		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`cliente` WHERE `utente_ID`='"+NewUserDAO.getInstance().getUsernameId(MarioU)+"'");
 		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`addetto_vendite` WHERE `utente_ID`='"+NewUserDAO.getInstance().getUsernameId(MarcoU)+"'");
 		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`addetto_scaffali` WHERE `utente_ID`='"+NewUserDAO.getInstance().getUsernameId(StefanoU)+"'");	
-
+		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`utente` WHERE `username`='"+MarioU.getUsername()+"'");
+		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`utente` WHERE `username`='"+MarcoU.getUsername()+"'");
+		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`utente` WHERE `username`='"+StefanoU.getUsername()+"'");
+	
+		
 	}
 
 	@Test
-	public void testCliente() {
-		assertEquals(true, NewUserDAO.getInstance().registraCliente(MarioU));
-		assertEquals(true, NewUserDAO.getInstance().registraAddVendite(MarcoU));
-		assertEquals(true, NewUserDAO.getInstance().registraAddScaffali(StefanoU));
+	public void test() {
+		
+		assertEquals(true,LogInDAO.getInstance().checkCredenziali(MarcoU));
+		assertEquals(false,LogInDAO.getInstance().checkCredenziali(dumb));
+		
+		assertEquals("Cliente", LogInDAO.getInstance().checkTipo(MarioU));
+		assertEquals("Vendite", LogInDAO.getInstance().checkTipo(MarcoU));
+		assertEquals("Scaffali", LogInDAO.getInstance().checkTipo(StefanoU));
+		
+		assertEquals(MarcoU.getUsername(), LogInDAO.getInstance().caricaUtente(MarcoU).getUsername());
+		//Come si fa a comparare 2 oggetti?
+		
+		
 	}
 
 }
