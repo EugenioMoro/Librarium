@@ -1,6 +1,9 @@
 package it.unisalento.jUnit_test;
 
 import static org.junit.Assert.*;
+
+import java.lang.reflect.Field;
+
 import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.DataAccessObjects.NewUserDAO;
 import it.unisalento.DbConnection.DbConnection;
@@ -68,7 +71,8 @@ public class LogInDAO_test {
 		assertEquals("Scaffali", LogInDAO.getInstance().checkTipo(StefanoU));
 		
 		assertEquals(MarcoU.getUsername(), LogInDAO.getInstance().caricaUtente(MarcoU).getUsername());
-		//Come si fa a comparare 2 oggetti?
+		//assertEquals(MarcoU, LogInDAO.getInstance().caricaUtente(MarcoU));
+		
 		
 		
 	}

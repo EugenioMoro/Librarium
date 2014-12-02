@@ -93,5 +93,6 @@ public final class NewUserDAO extends metodiComuni {
 		return flag;
 	}
 
+	
 }
 

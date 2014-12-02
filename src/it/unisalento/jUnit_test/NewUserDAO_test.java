@@ -35,13 +35,13 @@ public class NewUserDAO_test {
 		MarcoU.setNome("Marco");
 		MarcoU.setCognome("Cervellera");
 		MarcoU.setUsername("mCerv");
-		MarcoU.setPassword("passw");
+		MarcoU.setPassword("barba");
 		
 		
 		StefanoU.setNome("Stefano");
 		StefanoU.setCognome("Palma");
 		StefanoU.setUsername("sPalma");
-		StefanoU.setPassword("word");
+		StefanoU.setPassword("alto");
 		
 		
 		
