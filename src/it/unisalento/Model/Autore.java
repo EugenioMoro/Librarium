@@ -2,8 +2,8 @@ package it.unisalento.Model;
 
 public class Autore {
 
-	public String  nome;
-	public String  cognome;
+	private String  nome;
+	private String  cognome;
 	
 	
 	public void setNomeAutore(String nome) {

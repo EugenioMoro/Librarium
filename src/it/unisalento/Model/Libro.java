@@ -3,13 +3,20 @@ package it.unisalento.Model;
 
 public class Libro {
 	
-	public boolean flag_ordine;
-	public String titolo;
-	public float costo;
-	public String isbn;
-	public int numPagine;
-	public boolean flag_disponibilita;
+	private int id;
+	private boolean flag_ordine;
+	private String titolo;
+	private float costo;
+	private String isbn;
+	private int numPagine;
+	private boolean flag_disponibilita;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getTitolo() {
 		return titolo;
 	}

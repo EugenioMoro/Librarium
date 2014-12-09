@@ -21,6 +21,18 @@ public class Richiesta {
 	public String getDataArrivo() {
 		return data_arrivo;
 	}
+	public int getID_richiesta() {
+		return ID_richiesta;
+	}
+	public void setID_richiesta(int iD_richiesta) {
+		ID_richiesta = iD_richiesta;
+	}
+	public int getID_utente() {
+		return ID_utente;
+	}
+	public void setID_utente(int iD_utente) {
+		ID_utente = iD_utente;
+	}
 	public void setDataArrivo(String data_arrivo) {
 		this.data_arrivo = data_arrivo;
 	}
