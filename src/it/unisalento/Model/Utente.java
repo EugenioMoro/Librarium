@@ -1,12 +1,21 @@
 package it.unisalento.Model;
 
 public class Utente {
+	protected int id;
 	protected String nome;
 	protected String cognome;
 	private String username;
 	private String password;
 	protected String data_ultimo_accesso;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getData_ultimo_accesso() {
 		return data_ultimo_accesso;
 	}

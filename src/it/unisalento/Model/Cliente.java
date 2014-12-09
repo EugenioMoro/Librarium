@@ -11,11 +11,12 @@ public class Cliente extends Utente {
 	
 	
 	
-	public Cliente(String username, String password, String nome, String cognome,  String data_ultimo_accesso){
+	public Cliente(int id, String username, String password, String nome, String cognome,  String data_ultimo_accesso){
 		super(username, password);
 		this.nome=nome;
 		this.cognome=cognome;
 		this.data_ultimo_accesso=data_ultimo_accesso;
+		this.id=id;
 		}
 
 	public Cliente(){
