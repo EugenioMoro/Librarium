@@ -40,12 +40,12 @@ public class LogInDAO extends metodiComuni{
 			return newU;
 		}
 			
-		public Cliente caricaCliente(Utente u){
+		public Cliente caricaCliente(Utente u){  //1)carica utente generico 2) costruisce cliente e carica dati rimanenti 
 			Utente newU=caricaUtente(u);
 			boolean sesso=true;
 			
 			
-			Cliente newC=new Cliente(newU.getUsername(), newU.getPassword(), newU.getNome(), newU.getCognome(), newU.getData_ultimo_accesso() );
+			Cliente newC=new Cliente(newU.getId(), newU.getUsername(), newU.getPassword(), newU.getNome(), newU.getCognome(), newU.getData_ultimo_accesso() );
 			
 			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select sesso, data_nascita, email, numero_telefonico from cliente where utente_ID='"+getUsernameId(newU)+"'");
 			if(Integer.parseInt(results.get(0)[0])==0) sesso=false;

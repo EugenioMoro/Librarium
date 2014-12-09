@@ -37,15 +37,12 @@ public final class NewUserDAO extends metodiComuni {
 		return false;
 	}
 	
-	public int porcdio(String email){
-		return Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where email='"+email+"'").get(0)[0]);
-	}
 	
 	
 	public boolean registraCliente(Cliente c){
 		boolean flag=true;
 		
-		//Registrazione livello utente
+		//Registrazione livello utente TODO da sostituire con metodo registra utente
 		String query="INSERT INTO `librarium`.`utente` (`nome`, `cognome`, `username`, `password`, `data_registrazione`, `data_ultimo_accesso`) VALUES ('"+c.getNome()+"', '"+c.getCognome()+"', '"+c.getUsername()+"', '"+c.getPassword()+"',NOW() , NOW())";
 		if(!DbConnection.getInstance().eseguiAggiornamento(query)) flag=false;
 		
@@ -62,6 +59,7 @@ public final class NewUserDAO extends metodiComuni {
 		
 	private boolean registraUtente(Utente u){
 			boolean flag=true;
+			
 			
 			String query="INSERT INTO `librarium`.`utente` (`nome`, `cognome`, `username`, `password`, `data_registrazione`, `data_ultimo_accesso`) VALUES ('"+u.getNome()+"', '"+u.getCognome()+"', '"+u.getUsername()+"', '"+u.getPassword()+"',NOW() , NOW())";
 			if(!DbConnection.getInstance().eseguiAggiornamento(query)) flag=false;
