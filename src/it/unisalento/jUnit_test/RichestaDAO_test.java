@@ -11,9 +11,9 @@ import org.junit.Test;
 public class RichestaDAO_test {
 		
 	Cliente MarioU=new Cliente();
-	Libro l1=new Libro();
-	Libro l2=new Libro();
-	Libro l3=new Libro();
+//	Libro l1=new Libro();
+//	Libro l2=new Libro();
+//	Libro l3=new Libro();
 	
 	@Before
 	public void setUp() throws Exception {

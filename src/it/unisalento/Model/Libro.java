@@ -1,16 +1,26 @@
 package it.unisalento.Model;
 
+import java.util.Vector;
+
+
+
 
 public class Libro {
 	
 	private int id;
-	private boolean flag_ordine;
+	private boolean richiesto;
 	private String titolo;
 	private float costo;
 	private String isbn;
-	private int numPagine;
-	private boolean flag_disponibilita;
+	private int Pagine;
+	private int disp;
 	
+	
+	private Genere genere;
+	private Vector<Autore> autori;
+	private CasaEd casaEd;
+	
+
 	public int getId() {
 		return id;
 	}
@@ -37,26 +47,80 @@ public class Libro {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+
+	public Vector<Autore> getAutori() {
+		return autori;
+	}
+	public void setAutori(Vector<Autore> autori) {
+		this.autori = autori;
+	}
+	public CasaEd getCasaEd() {
+		return casaEd;
+	}
+	public void setCasaEd(CasaEd casaEd) {
+		this.casaEd = casaEd;
+	}
+	public Genere getGenere() {
+		return genere;
+	}
+	public void setGenere(Genere genere) {
+		this.genere = genere;
+	}
+	public int getPagine() {
+		return Pagine;
+	}
+	public void setPagine(int Pagine) {
+		this.Pagine = Pagine;
+	}
+	public int getDisp() {
+		return disp;
+	}
+	public void setDisp(int disp) {
+		this.disp = disp;
+	}
 	
-	public int getNumpagine() {
-		return numPagine;
+	
+	
+	public boolean isRichiesto() {
+		return richiesto;
 	}
-	public void setNumpagine(int numPagine) {
-		this.numPagine = numPagine;
+	public void setRichiesto(boolean richiesto) {
+		this.richiesto = richiesto;
 	}
 	
-	public boolean getFlagdisp() {
-		return flag_disponibilita;
-	}
-	public void setFlagdisp(boolean flag_disponibilita) {
-		this.flag_disponibilita = flag_disponibilita;
+	//costruttore con id da usare per caricare da database
+	public Libro(int id, boolean richiesto, String titolo, float costo,
+			String isbn, int Pagine, int disp, Genere genere,
+			Vector<Autore> autori, CasaEd casaEd) {
+		super();
+		this.id = id;
+		this.richiesto = richiesto;
+		this.titolo = titolo;
+		this.costo = costo;
+		this.isbn = isbn;
+		this.Pagine = Pagine;
+		this.disp = disp;
+		this.genere = genere;
+		this.autori = autori;
+		this.casaEd = casaEd;
 	}
 	
-	public boolean getFlag_ordine() {
-		return flag_ordine;
-	}
-	public void setFlag_ordine(boolean flag_ordine) {
-		this.flag_ordine = flag_ordine;
+	
+	//costruttore senza id da usare da interfaccia
+	public Libro(boolean richiesto, String titolo, float costo,
+			String isbn, int Pagine, int disp, Genere genere,
+			Vector<Autore> autori, CasaEd casaEd) {
+		
+		
+		this.richiesto = richiesto;
+		this.titolo = titolo;
+		this.costo = costo;
+		this.isbn = isbn;
+		this.Pagine = Pagine;
+		this.disp = disp;
+		this.genere = genere;
+		this.autori = autori;
+		this.casaEd = casaEd;
 	}
 
 }
