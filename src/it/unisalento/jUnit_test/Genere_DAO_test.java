@@ -27,6 +27,7 @@ public class Genere_DAO_test {
 	@Test
 	public void test() {
 		assertEquals(true, Genere_DAO.getInstance().inserisciGenere(g));
+		assertEquals(g.getNome(), Genere_DAO.getInstance().caricaGeneri().get(0).getNome());
 	}
 
 }

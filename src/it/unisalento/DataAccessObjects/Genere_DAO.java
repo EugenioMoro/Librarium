@@ -1,5 +1,7 @@
 package it.unisalento.DataAccessObjects;
 
+import java.util.Vector;
+
 import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Genere;
 
@@ -19,5 +21,16 @@ public class Genere_DAO {
 	
 	public boolean elimina(Genere g){
 		return 	DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`genere` WHERE `ID_genere`='"+g.getId()+"'");
+	}
+	
+	public Vector<Genere> caricaGeneri(){
+		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select * from genere");
+		Vector<Genere> generi=new Vector<Genere>();
+		generi.setSize(res.size());
+		
+		for(int i=0; i<res.size(); i++)
+			generi.add(i, new Genere(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
+		
+		return generi;
 	}
 }

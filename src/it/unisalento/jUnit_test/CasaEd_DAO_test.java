@@ -29,6 +29,7 @@ public class CasaEd_DAO_test {
 	@Test
 	public void test() {
 		assertEquals(true, CasaEd_DAO.getInstance().inserisciCasa(c));
+		assertEquals(c.getNome(), CasaEd_DAO.getInstance().caricaCase().get(0).getNome());
 	}
 
 }
