@@ -58,4 +58,6 @@ public class LibroDAO extends metodiComuni{
 		
 	}
 	
+	//TODO metodo per caricare libri
+	
 }
