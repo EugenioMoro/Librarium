@@ -1,26 +1,17 @@
 package it.unisalento.Model;
 
+import java.util.Date;
+
 public class Richiesta {
+	
 	
 	private int ID_richiesta;
 	private int ID_utente;
-	private String data_richiesta;
-	private String data_arrivo;
+	private int ID_libro;
+	private Date data_richiesta;
+	private Date data_arrivo;
 	private boolean flag_inoltro;
 	private boolean flag_arrivo;
-
-	
-
-
-	public String getDataRichiesta() {
-		return data_richiesta;
-	}
-	public void setDataRichiesta(String data_richiesta) {
-		this.data_richiesta = data_richiesta;
-	}
-	public String getDataArrivo() {
-		return data_arrivo;
-	}
 	public int getID_richiesta() {
 		return ID_richiesta;
 	}
@@ -33,20 +24,54 @@ public class Richiesta {
 	public void setID_utente(int iD_utente) {
 		ID_utente = iD_utente;
 	}
-	public void setDataArrivo(String data_arrivo) {
+	public int getID_libro() {
+		return ID_libro;
+	}
+	public void setID_libro(int iD_libro) {
+		ID_libro = iD_libro;
+	}
+	public Date getData_richiesta() {
+		return data_richiesta;
+	}
+	public void setData_richiesta(Date data_richiesta) {
+		this.data_richiesta = data_richiesta;
+	}
+	public Date getData_arrivo() {
+		return data_arrivo;
+	}
+	public void setData_arrivo(Date data_arrivo) {
 		this.data_arrivo = data_arrivo;
 	}
-	public boolean getFlagArrivo() {
-		return flag_arrivo;
-	}
-	public void setFlagArrivo(boolean flag_arrivo) {
-		this.flag_arrivo = flag_arrivo;
-	}
-	public boolean getFlagInoltro() {
+	public boolean isFlag_inoltro() {
 		return flag_inoltro;
 	}
-	public void setFlagInoltro(boolean flag_inoltro) {
+	public void setFlag_inoltro(boolean flag_inoltro) {
 		this.flag_inoltro = flag_inoltro;
 	}
+	public boolean isFlag_arrivo() {
+		return flag_arrivo;
+	}
+	public void setFlag_arrivo(boolean flag_arrivo) {
+		this.flag_arrivo = flag_arrivo;
+	}
+	
+	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
+			Date data_richiesta, Date data_arrivo, boolean flag_inoltro,
+			boolean flag_arrivo) {
+		super();
+		ID_richiesta = iD_richiesta;
+		ID_utente = iD_utente;
+		ID_libro = iD_libro;
+		this.data_richiesta = data_richiesta;
+		this.data_arrivo = data_arrivo;
+		this.flag_inoltro = flag_inoltro;
+		this.flag_arrivo = flag_arrivo;
+	}
+
+	
+
+
+	
+	
 }
 	

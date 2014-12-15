@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Autore;
+import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
 
 public class LibroDAO extends metodiComuni{
@@ -55,6 +56,30 @@ public class LibroDAO extends metodiComuni{
 		
 		
 		return flag;
+		
+	}
+	
+	public Vector<Libro> CaricaPerGenere(Genere g) {
+		Vector<Libro> libri = new Vector<Libro>();
+		
+		Vector<String[]> res = DbConnection.getInstance().eseguiQuery("SELECT * FROM libro WHERE genere_ID_genere = '"+g.getId()+"'");
+		Vector<String[]> resL;
+		
+		libri.setSize(res.size());
+		
+		for(int i=0; i<res.size(); i++)
+		{
+			resL = DbConnection.getInstance().eseguiQuery("SELECT autore_ID_autore FROM libro_has_autore WHERE libro_ID_libro = '"+Integer.parseInt(res.get(i)[0])+"'");
+			
+			Vector<Autore> autori = new Vector<Autore>();
+			autori.setSize(resL.size());
+			DbConnection.getInstance().eseguiQuery("SELECT ")
+			for (int j=0; j<resL.size(); j++)
+			{
+				autori.add(new Autore(Integer.parseInt(DbConnection.getInstance().eDseguiQuery("SELECT ")), nome, cognome));
+			}
+		}
+		
 		
 	}
 	

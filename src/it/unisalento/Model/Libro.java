@@ -14,13 +14,30 @@ public class Libro {
 	private String isbn;
 	private int Pagine;
 	private int disp;
-	
-	
+	private boolean flag_inoltro;
+	private boolean flag_arrivo;
+
+
+
 	private Genere genere;
 	private Vector<Autore> autori;
 	private CasaEd casaEd;
 	
-
+	
+	public boolean isFlag_arrivo() {
+		return flag_arrivo;
+	}
+	public void setFlag_arrivo(boolean flag_arrivo) {
+		this.flag_arrivo = flag_arrivo;
+	}
+	
+	public boolean isFlag_inoltro() {
+		return flag_inoltro;
+	}
+	public void setFlag_inoltro(boolean flag_inoltro) {
+		this.flag_inoltro = flag_inoltro;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -54,24 +71,28 @@ public class Libro {
 	public void setAutori(Vector<Autore> autori) {
 		this.autori = autori;
 	}
+	
 	public CasaEd getCasaEd() {
 		return casaEd;
 	}
 	public void setCasaEd(CasaEd casaEd) {
 		this.casaEd = casaEd;
 	}
+	
 	public Genere getGenere() {
 		return genere;
 	}
 	public void setGenere(Genere genere) {
 		this.genere = genere;
 	}
+	
 	public int getPagine() {
 		return Pagine;
 	}
 	public void setPagine(int Pagine) {
 		this.Pagine = Pagine;
 	}
+	
 	public int getDisp() {
 		return disp;
 	}
@@ -79,14 +100,14 @@ public class Libro {
 		this.disp = disp;
 	}
 	
-	
-	
 	public boolean isRichiesto() {
 		return richiesto;
 	}
 	public void setRichiesto(boolean richiesto) {
 		this.richiesto = richiesto;
 	}
+	
+	
 	
 	//costruttore con id da usare per caricare da database
 	public Libro(int id, boolean richiesto, String titolo, float costo,

@@ -7,10 +7,10 @@ import it.unisalento.Model.Richiesta;
 import it.unisalento.Model.Utente;
 import it.unisalento.Model.Autore;
 
-import java.util.Scanner;
+import java.util.Date;
 import java.util.Vector;
 
-public class RichiestaDAO {
+public class RichiestaDAO extends metodiComuni {
 
 	
 	
@@ -52,8 +52,23 @@ private static RichiestaDAO instance;
 		return DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta, data_arrivo FROM richiesta WHERE flag_arrivo=1");
 	}
 	//tutte le richieste
-	public Vector<String[]> RichiesteStorico() {
-		return DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta, data_arrivo FROM richiesta");
+	public Vector<Richiesta> RichiesteStorico() {
+		
+		Vector<Richiesta> richieste=new Vector<Richiesta>();
+		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta, data_arrivo, flag_inoltro, flag_arrivo FROM richiesta");
+		Date d = null;
+		
+		richieste.setSize(res.size());
+		
+		for(int i=0; i<res.size(); i++){
+			if (intToBoolean(Integer.parseInt(res.get(i)[6]))) {
+			richieste.add(new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), stringToDate(res.get(i)[4]), intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
+			}
+			else 
+				richieste.add(new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), d, intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
+		}
+		return richieste;
+	
 	}
 	
 	//set flag inoltro
