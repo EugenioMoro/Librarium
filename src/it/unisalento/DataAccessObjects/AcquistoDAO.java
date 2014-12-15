@@ -32,7 +32,7 @@ public class AcquistoDAO {
 	}
 	
 	
-	public Vector<Acquisto> caricaById(int cliente_id){
+	/*public Vector<Acquisto> caricaById(int cliente_id){
 		
 		Vector<Acquisto> acquisti=new Vector<Acquisto>();
 		Vector<String[]> resA=DbConnection.getInstance().eseguiQuery("select * from acquisto where cliente_utente_ID='"+cliente_id+"'");
@@ -43,13 +43,13 @@ public class AcquistoDAO {
 		for(int i=0; i<resA.size(); i++){
 			
 			Vector<String[]> resL=DbConnection.getInstance().eseguiQuery("select libro_ID_libro from acquisto_has_libro where acquisto_ID_acquisto='"+resA.get(i)[0]+"' ");
-			acquisti.get(i)=new Acquisto(Integer.parseInt(resA.get(i)[0]),)
+			
 			
 		}
 		
 		//Vector<String[]> resL=DbConnection.getInstance().eseguiQuery("select libro_ID_libro from acquisto_has_libro where acquisto_ID_acquisto='' ");
 		
-	}
+	}*/
 	
 	
 }

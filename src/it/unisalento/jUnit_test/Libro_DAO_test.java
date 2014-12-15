@@ -26,6 +26,8 @@ public class Libro_DAO_test {
 	Autore a2;
 	CasaEd c;
 	Vector<Autore> autori=new Vector<Autore>();
+	Vector<Libro> genere;
+	Vector<Libro> tutti=new Vector<Libro>();
 	
 	
 	
@@ -50,7 +52,8 @@ public class Libro_DAO_test {
 		a1.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore where nome='"+a1.getNome()+"'").get(0)[0]));
 		a2.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore where nome='"+a2.getNome()+"'").get(0)[0]));
 		c.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_casa_editrice from casa_editrice where nome_casa_editrice='"+c.getNome()+"'").get(0)[0]));
-		
+		genere=LibroDAO.getInstance().caricaPerGenere(g);
+		tutti=LibroDAO.getInstance().caricaTutti();
 	}
 
 	@After
@@ -66,6 +69,10 @@ public class Libro_DAO_test {
 	@Test
 	public void test() {
 		assertEquals(true, LibroDAO.getInstance().inserisciLibro(l));
+		assertEquals(l.getTitolo(), LibroDAO.getInstance().caricaTutti().get(0).getTitolo());
+		assertEquals(l.getTitolo(), LibroDAO.getInstance().caricaPerGenere(g).get(0).getTitolo());
+		assertEquals(1,LibroDAO.getInstance().caricaTutti().size());
+		
 	}
 
 }
