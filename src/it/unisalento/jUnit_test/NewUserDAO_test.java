@@ -68,6 +68,8 @@ public class NewUserDAO_test {
 		assertEquals(false, NewUserDAO.getInstance().isNewEmail(MarioU.getEmail()));
 		assertEquals(false, NewUserDAO.getInstance().isNewUsername(MarioU.getUsername()));
 		assertEquals(true, NewUserDAO.getInstance().isNewEmail("dumb"));
+		
+		assertEquals(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID from utente where username='"+MarioU.getUsername()+"'").get(0)[0]), MarioU.getId());
 	}
 
 }

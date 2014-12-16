@@ -5,8 +5,10 @@ import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Utente;
 
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Vector;
 
 
 
@@ -54,6 +56,10 @@ public final class NewUserDAO extends metodiComuni {
 		query="INSERT INTO `librarium`.`cliente` (`utente_ID`, `sesso`, `data_nascita`, `email`, `numero_telefonico`) VALUES ('"+getUsernameId(c)+"', '"+sesso+"','"+data+"' , '"+c.getEmail()+"','"+c.getTelefono()+"')";
 		if(!DbConnection.getInstance().eseguiAggiornamento(query)) flag=false;
 		
+		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select ID from utente where username='"+c.getUsername()+"'");
+		
+		c.setId(Integer.parseInt(res.get(0)[0]));
+		
 		return flag;
 	}
 		
@@ -64,6 +70,10 @@ public final class NewUserDAO extends metodiComuni {
 			String query="INSERT INTO `librarium`.`utente` (`nome`, `cognome`, `username`, `password`, `data_registrazione`, `data_ultimo_accesso`) VALUES ('"+u.getNome()+"', '"+u.getCognome()+"', '"+u.getUsername()+"', '"+u.getPassword()+"',NOW() , NOW())";
 			if(!DbConnection.getInstance().eseguiAggiornamento(query)) flag=false;
 			
+			
+			Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select ID from utente where username='"+u.getUsername()+"'");
+			
+			u.setId(Integer.parseInt(res.get(0)[0]));
 			
 			return flag;
 			}

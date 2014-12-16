@@ -61,7 +61,9 @@ public class Acquisto {
 	}
 	
 
-	
+	public Acquisto(){
+		this.libri=new Vector<Libro>();
+	}
 	
 	
 
