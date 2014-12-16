@@ -55,6 +55,7 @@ public class Richiesta {
 		this.flag_arrivo = flag_arrivo;
 	}
 	
+//	Constructor for all requests
 	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
 			Date data_richiesta, Date data_arrivo, boolean flag_inoltro,
 			boolean flag_arrivo) {
@@ -67,11 +68,24 @@ public class Richiesta {
 		this.flag_inoltro = flag_inoltro;
 		this.flag_arrivo = flag_arrivo;
 	}
-
+// 	Constructor for non allowed requests
+	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
+			Date data_richiesta) {
+		ID_richiesta = iD_richiesta;
+		ID_utente = iD_utente;
+		ID_libro = iD_libro;
+		this.data_richiesta = data_richiesta;
+	}
+//	Constructor for allowed but not arrived requests
+	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
+			Date data_richiesta, Date data_arrivo) {
+		ID_richiesta = iD_richiesta;
+		ID_utente = iD_utente;
+		ID_libro = iD_libro;
+		this.data_richiesta = data_richiesta;
+		this.data_arrivo = data_arrivo;
+	}
 	
 
-
-	
-	
 }
 	

@@ -71,6 +71,7 @@ public class Libro_DAO_test {
 		assertEquals(true, LibroDAO.getInstance().inserisciLibro(l));
 		assertEquals(l.getTitolo(), LibroDAO.getInstance().caricaTutti().get(0).getTitolo());
 		assertEquals(l.getTitolo(), LibroDAO.getInstance().caricaPerGenere(g).get(0).getTitolo());
+		
 		assertEquals(1,LibroDAO.getInstance().caricaTutti().size());
 		
 	}
