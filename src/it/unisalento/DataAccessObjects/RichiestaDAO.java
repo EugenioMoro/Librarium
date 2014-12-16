@@ -41,7 +41,19 @@ private static RichiestaDAO instance;
 //Storici richieste
 	//richiesta effettuata ma non inoltrata
 	public Vector<String[]> RichiesteEffettuate() {
-		return DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta FROM richiesta WHERE flag_inoltro=0");
+		Vector<Richiesta> richieste=new Vector<Richiesta>();
+		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta FROM richiesta WHERE flag_inoltro=0");
+		
+		richieste.setSize(res.size());
+		
+		for(int i=0; i<res.size(); i++){
+			if (intToBoolean(Integer.parseInt(res.get(i)[6]))) {
+			richieste.set(i, new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3])));
+			}
+			else 
+				richieste.set(i, new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), d, intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
+		}
+		return richieste;
 	}
 	//richiesta inoltrata ma no arrivata
 	public Vector<String[]> RichiesteInoltrate() {
@@ -62,10 +74,10 @@ private static RichiestaDAO instance;
 		
 		for(int i=0; i<res.size(); i++){
 			if (intToBoolean(Integer.parseInt(res.get(i)[6]))) {
-			richieste.add(new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), stringToDate(res.get(i)[4]), intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
+			richieste.set(i, new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), stringToDate(res.get(i)[4]), intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
 			}
 			else 
-				richieste.add(new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), d, intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
+				richieste.set(i, new Richiesta(Integer.parseInt(res.get(i)[0]), Integer.parseInt(res.get(i)[1]),Integer.parseInt(res.get(i)[2]) , stringToDate(res.get(i)[3]), d, intToBoolean(Integer.parseInt(res.get(i)[5])), intToBoolean(Integer.parseInt(res.get(i)[6]))));
 		}
 		return richieste;
 	
