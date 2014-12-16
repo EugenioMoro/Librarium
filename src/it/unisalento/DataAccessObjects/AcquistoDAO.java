@@ -1,14 +1,15 @@
 package it.unisalento.DataAccessObjects;
 
-import java.util.Iterator;
+
 import java.util.Vector;
 
 import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Acquisto;
 import it.unisalento.Model.Cliente;
-import it.unisalento.Model.Libro;
 
-public class AcquistoDAO {
+
+
+public class AcquistoDAO extends metodiComuni{
 
 	private static AcquistoDAO instance;
 	
@@ -51,12 +52,45 @@ public class AcquistoDAO {
 				ids.set(j, Integer.parseInt(resL.get(j)[0]));
 			}
 			
-			
+			acquisti.set(i, new Acquisto());
+			acquisti.get(i).setId(Integer.parseInt(resA.get(i)[0]));
+			acquisti.get(i).setData(stringToDate(resA.get(i)[1]));
+			acquisti.get(i).setIncasso(Float.parseFloat(resA.get(0)[2]));
+			acquisti.get(i).setCliente_id(c.getId());
+			acquisti.get(i).setLibri(LibroDAO.getInstance().caricaPerId(ids));
 			
 		}
 		
-		//Vector<String[]> resL=DbConnection.getInstance().eseguiQuery("select libro_ID_libro from acquisto_has_libro where acquisto_ID_acquisto='' ");
+		return acquisti;
+	}
+	
+	public Vector<Acquisto> caricaStorico(){
+		Vector<Acquisto> acquisti=new Vector<Acquisto>();
+		Vector<String[]> resA=DbConnection.getInstance().eseguiQuery("select * from acquisto");
+		acquisti.setSize(resA.size());
+		Vector<Integer> ids=new Vector<Integer>();
 		
+		
+		
+		for(int i=0; i<resA.size(); i++){
+			
+			Vector<String[]> resL=DbConnection.getInstance().eseguiQuery("select libro_ID_libro from acquisto_has_libro where acquisto_ID_acquisto='"+resA.get(i)[0]+"' ");
+			ids.setSize(resL.size());
+			
+			for (int j=0; j<resL.size(); j++){ //costruisce array di id da passare a libro dao
+				ids.set(j, Integer.parseInt(resL.get(j)[0]));
+			}
+			
+			acquisti.set(i, new Acquisto());
+			acquisti.get(i).setId(Integer.parseInt(resA.get(i)[0]));
+			acquisti.get(i).setData(stringToDate(resA.get(i)[1]));
+			acquisti.get(i).setIncasso(Float.parseFloat(resA.get(i)[2]));
+			acquisti.get(i).setCliente_id(Integer.parseInt(resA.get(i)[3]));
+			acquisti.get(i).setLibri(LibroDAO.getInstance().caricaPerId(ids));
+			
+		}
+		
+		return acquisti;
 	}
 	
 	

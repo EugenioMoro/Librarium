@@ -16,7 +16,14 @@ public class Genere_DAO {
 	}
 	
 	public boolean inserisciGenere(Genere g){
-		return DbConnection.getInstance().eseguiAggiornamento("insert into genere (nome_genere) values ('"+g.getNome()+"')");
+		boolean flag=true;
+		
+		if(!DbConnection.getInstance().eseguiAggiornamento("insert into genere (nome_genere) values ('"+g.getNome()+"')")) flag=false;
+		
+		//recupera id
+		g.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_genere from genere").lastElement()[0]));
+		
+		return flag;
 	}
 	
 	public boolean elimina(Genere g){

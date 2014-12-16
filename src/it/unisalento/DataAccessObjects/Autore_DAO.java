@@ -16,8 +16,16 @@ public class Autore_DAO {
 	}
 	
 	public boolean inserisciAutore(Autore a){
-		return DbConnection.getInstance().eseguiAggiornamento("insert into autore (nome, cognome) values ('"+a.getNome()+"', '"+a.getCognome()+"')");
-		}
+		boolean flag=true;
+		
+		//inserisce dati
+		if(!DbConnection.getInstance().eseguiAggiornamento("insert into autore (nome, cognome) values ('"+a.getNome()+"', '"+a.getCognome()+"')")) flag=false;
+		
+		//recupera id e completa a
+		a.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").lastElement()[0]));
+		
+		return flag;
+	}
 	
 	public boolean elemina(Autore a){
 		return 	DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`autore` WHERE `ID_autore`='"+a.getId()+"'");

@@ -30,6 +30,7 @@ public class Autore_DAO_test {
 	@After
 	public void tearDown() throws Exception {
 		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`autore` WHERE `nome`='test'");
+		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM `librarium`.`autore` WHERE `nome`='test1'");
 
 	}
 
@@ -37,11 +38,14 @@ public class Autore_DAO_test {
 	public void test() {
 		assertEquals(true, Autore_DAO.getInstance().inserisciAutore(a));
 		assertEquals(true, Autore_DAO.getInstance().inserisciAutore(b));
+		assertEquals(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").get(0)[0]), a.getId());
+		assertEquals(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").get(1)[0]), b.getId());
+		
 		assertEquals(autori.get(0).getNome(), Autore_DAO.getInstance().caricaAutori().get(0).getNome());
 		assertEquals(autori.get(1).getNome(), Autore_DAO.getInstance().caricaAutori().get(1).getNome());
 		assertEquals(autori.get(0).getCognome(), Autore_DAO.getInstance().caricaAutori().get(0).getCognome());
 		assertEquals(autori.get(1).getCognome(), Autore_DAO.getInstance().caricaAutori().get(1).getCognome());
-	
+			
 	}
 
 }
