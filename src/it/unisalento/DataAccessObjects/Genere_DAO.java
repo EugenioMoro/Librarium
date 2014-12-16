@@ -29,7 +29,7 @@ public class Genere_DAO {
 		generi.setSize(res.size());
 		
 		for(int i=0; i<res.size(); i++)
-			generi.add(i, new Genere(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
+			generi.set(i, new Genere(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
 		
 		return generi;
 	}

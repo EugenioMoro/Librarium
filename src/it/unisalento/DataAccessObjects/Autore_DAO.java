@@ -31,7 +31,7 @@ public class Autore_DAO {
 		autori.setSize(res.size());
 		
 		for (int i=0; i<res.size(); i++)
-			autori.add(i, new Autore(Integer.parseInt(res.get(i)[0]), res.get(i)[1], res.get(i)[2]));
+			autori.set(i, new Autore(Integer.parseInt(res.get(i)[0]), res.get(i)[1], res.get(i)[2]));
 			
 		return autori;
 		

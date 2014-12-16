@@ -30,7 +30,7 @@ public class CasaEd_DAO {
 		caseEd.setSize(res.size());
 		
 		for(int i=0; i<res.size(); i++)
-			caseEd.add(i, new CasaEd(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
+			caseEd.set(i, new CasaEd(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
 		
 		return caseEd;
 		
