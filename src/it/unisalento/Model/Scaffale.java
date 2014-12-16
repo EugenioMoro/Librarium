@@ -1,27 +1,24 @@
 package it.unisalento.Model;
 
-
-import java.util.ArrayList;
 import java.util.Vector;
 
-import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
 
 
 public class Scaffale {
 	
 
-	private ArrayList<Libro> libri;
+	private Vector<Libro> libri;
 
-	public ArrayList<Libro> getScaffale() {
+	public Vector<Libro> getScaffale() {
 		return libri;
 	}
 
-	public void setScaffale(ArrayList<Libro> libri) {
+	public void setScaffale(Vector<Libro> libri) {
 		this.libri = libri;
 	}
 
-	public Scaffale (ArrayList<Libro> libri) {
+	public Scaffale (Vector<Libro> libri) {
 		this.libri = libri;
 	}
 	
