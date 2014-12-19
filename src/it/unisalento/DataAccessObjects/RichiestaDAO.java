@@ -64,6 +64,8 @@ private static RichiestaDAO instance;
 			}
 		return richieste;
 	}
+	
+	
 	//richiesta arrivata
 	public Vector<Richiesta> RichiesteArrivate() {
 		Vector<Richiesta> richieste=new Vector<Richiesta>();
@@ -76,6 +78,8 @@ private static RichiestaDAO instance;
 			}
 		return richieste;
 	}
+	
+	
 	//tutte le richieste
 	public Vector<Richiesta> RichiesteStorico() {
 		
@@ -104,7 +108,7 @@ private static RichiestaDAO instance;
 		}
 	//set flag arrivo
 	public boolean SetArrivo(Richiesta r) {
-		if (!DbConnection.getInstance().eseguiAggiornamento("UPDATE richiesta SET flag_arrivo=1 WHERE ID_richiesta='"+r.getID_richiesta()+"'")) 
+		if (!DbConnection.getInstance().eseguiAggiornamento("UPDATE richiesta SET flag_arrivo=1, data_arrivo=NOW() WHERE ID_richiesta='"+r.getID_richiesta()+"'")) 
 			flag=false;
 		return flag;
 		}

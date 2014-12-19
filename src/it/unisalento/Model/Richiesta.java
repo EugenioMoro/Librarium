@@ -86,6 +86,10 @@ public class Richiesta {
 		this.data_arrivo = data_arrivo;
 	}
 	
+	public Richiesta() {
+		
+	}
+	
 
 }
 	
