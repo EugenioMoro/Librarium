@@ -30,6 +30,7 @@ public class WelcomeView extends JFrame {
 	private JTextField txtUsername;
 	private JPasswordField pwdPassword;
 	public WelcomeView() {
+		setTitle("Librarium");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setForeground(new Color(0, 206, 209));
 		getContentPane().setForeground(Color.LIGHT_GRAY);

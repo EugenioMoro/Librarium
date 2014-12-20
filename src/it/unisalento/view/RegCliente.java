@@ -1,36 +1,39 @@
 package it.unisalento.view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import net.miginfocom.swing.MigLayout;
-import java.awt.GridLayout;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
-import java.awt.Choice;
-import javax.swing.JButton;
+import java.util.Calendar;
+import java.util.Date;
 
-public class RegistraView extends JFrame {
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JToggleButton;
+import javax.swing.JRadioButton;
+import javax.swing.JList;
+import javax.swing.JSpinner;
+import javax.swing.JComboBox;
+
+public class RegCliente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNome;
 	private JTextField txtCognome;
 	private JTextField txtUsername;
-	private JTextField txtPassword;
-
+	private ButtonGroup bg=new ButtonGroup();
+	
+	
+	
+			
 	/**
 	 * Launch the application.
 	 */
@@ -38,7 +41,7 @@ public class RegistraView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistraView frame = new RegistraView();
+					RegCliente frame = new RegCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +53,7 @@ public class RegistraView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistraView() {
+	public RegCliente() {
 		setTitle("Registrazione");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -66,7 +69,7 @@ public class RegistraView extends JFrame {
 		contentPane.add(northPanel);
 		northPanel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblInserisciITuoi = new JLabel("Inserisci i tuoi dati:");
+		JLabel lblInserisciITuoi = new JLabel("Ci siamo quasi:");
 		lblInserisciITuoi.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblInserisciITuoi.setHorizontalAlignment(SwingConstants.CENTER);
 		northPanel.add(lblInserisciITuoi, BorderLayout.CENTER);
@@ -77,14 +80,9 @@ public class RegistraView extends JFrame {
 		contentPane.add(centrePanel);
 		centrePanel.setLayout(null);
 		
-		txtNome = new JTextField();
-		txtNome.setText("Nome");
-		txtNome.setBounds(10, 11, 86, 20);
-		centrePanel.add(txtNome);
-		txtNome.setColumns(10);
 		
 		txtCognome = new JTextField();
-		txtCognome.setText("Cognome");
+		txtCognome.setText("Email");
 		txtCognome.setBounds(10, 42, 86, 20);
 		centrePanel.add(txtCognome);
 		txtCognome.setColumns(10);
@@ -95,27 +93,40 @@ public class RegistraView extends JFrame {
 		centrePanel.add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		txtPassword = new JTextField();
-		txtPassword.setText("Password");
-		txtPassword.setBounds(10, 104, 86, 20);
-		centrePanel.add(txtPassword);
-		txtPassword.setColumns(10);
-		
-		JLabel lblObbligatorio = new JLabel("Obbligatorio");
-		lblObbligatorio.setBounds(126, 14, 86, 14);
+		JLabel lblObbligatorio = new JLabel("Data di nascita, obbligatoria\r\n");
+		lblObbligatorio.setBounds(126, 14, 134, 14);
 		centrePanel.add(lblObbligatorio);
 		
-		JLabel lblObbligatorio_1 = new JLabel("Obbligatorio");
-		lblObbligatorio_1.setBounds(126, 45, 70, 14);
+		JLabel lblObbligatorio_1 = new JLabel("Obbligatorio, verr\u00E0 usato per recuperare la password");
+		lblObbligatorio_1.setBounds(126, 45, 262, 14);
 		centrePanel.add(lblObbligatorio_1);
 		
-		JLabel lblCaratteriSolo = new JLabel("5-16 Caratteri, solo lettere e numeri");
-		lblCaratteriSolo.setBounds(126, 76, 204, 14);
+		JLabel lblCaratteriSolo = new JLabel("obbligatorio");
+		lblCaratteriSolo.setBounds(126, 76, 262, 14);
 		centrePanel.add(lblCaratteriSolo);
 		
-		JLabel lblCaratteriSolo_1 = new JLabel("8-16 Caratteri, solo lettere e numeri");
+		JLabel lblCaratteriSolo_1 = new JLabel("Sesso");
 		lblCaratteriSolo_1.setBounds(126, 107, 173, 14);
 		centrePanel.add(lblCaratteriSolo_1);
+		
+		JRadioButton rdbtnM = new JRadioButton("M");
+		rdbtnM.setBounds(10, 103, 33, 23);
+		centrePanel.add(rdbtnM);
+		
+		JRadioButton rdbtnF = new JRadioButton("F");
+		rdbtnF.setBounds(63, 103, 33, 23);
+		centrePanel.add(rdbtnF);
+		
+		//button group
+		bg.add(rdbtnM);
+		bg.add(rdbtnF);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 11, 86, 20);
+		comboBox.add(new JSpinner(daySpinnerModel()));
+		centrePanel.add(comboBox);
+		
+		
 		
 		JPanel southPanel = new JPanel();
 		southPanel.setBackground(Color.GRAY);
@@ -135,7 +146,38 @@ public class RegistraView extends JFrame {
 		
 		JButton btnAddettoScaffali = new JButton("Addetto Scaffali");
 		southPanel.add(btnAddettoScaffali);
-		
-		
 	}
-}
+	private SpinnerDateModel yearSpinnerModel(){
+		SpinnerDateModel model;
+		Calendar calInstance=Calendar.getInstance();
+		
+		Date now=calInstance.getTime();
+		
+		calInstance.add(Calendar.YEAR, -100);
+		Date startDate=calInstance.getTime();
+		
+		calInstance.add(Calendar.YEAR, 200);
+		Date endDate=calInstance.getTime();
+		
+		model=new SpinnerDateModel(now, startDate, endDate, Calendar.YEAR);
+		
+		return model;
+	}
+	
+	
+	private SpinnerDateModel monthSpinnerModel(){
+		SpinnerDateModel model;
+		
+		model=new SpinnerDateModel(Calendar.getInstance().getTime(), null, null, Calendar.MONTH);
+		
+		return model;
+	}
+	
+	private SpinnerDateModel daySpinnerModel(){
+		SpinnerDateModel model;
+		
+		model=new SpinnerDateModel(Calendar.getInstance().getTime(), null, null, Calendar.DAY_OF_MONTH);
+		
+		return model;
+	}
+	}
