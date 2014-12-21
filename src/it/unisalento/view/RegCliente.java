@@ -24,6 +24,16 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 
+
+
+
+
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import sun.util.calendar.CalendarDate;
+
 public class RegCliente extends JFrame {
 
 	private JPanel contentPane;
@@ -94,7 +104,7 @@ public class RegCliente extends JFrame {
 		txtUsername.setColumns(10);
 		
 		JLabel lblObbligatorio = new JLabel("Data di nascita, obbligatoria\r\n");
-		lblObbligatorio.setBounds(126, 14, 134, 14);
+		lblObbligatorio.setBounds(148, 17, 134, 14);
 		centrePanel.add(lblObbligatorio);
 		
 		JLabel lblObbligatorio_1 = new JLabel("Obbligatorio, verr\u00E0 usato per recuperare la password");
@@ -121,10 +131,17 @@ public class RegCliente extends JFrame {
 		bg.add(rdbtnM);
 		bg.add(rdbtnF);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(10, 11, 86, 20);
-		comboBox.add(new JSpinner(daySpinnerModel()));
-		centrePanel.add(comboBox);
+		
+		//JDatePicker codice
+		UtilDateModel model=new UtilDateModel();
+		JDatePanelImpl panel=new JDatePanelImpl(model);
+		JDatePickerImpl picker=new JDatePickerImpl(panel);
+		picker.setBounds(10, 11, 114, 20);
+		centrePanel.add(picker);
+				
+//		JComboBox comboBox = new JComboBox();
+//		comboBox.setBounds(10, 11, 86, 20);
+//		centrePanel.add(comboBox);
 		
 		
 		
@@ -134,18 +151,8 @@ public class RegCliente extends JFrame {
 		contentPane.add(southPanel);
 		southPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblSonoUn = new JLabel("Sono un:");
-		lblSonoUn.setHorizontalAlignment(SwingConstants.LEFT);
-		southPanel.add(lblSonoUn);
-		
-		JButton btnCliente = new JButton("Cliente");
-		southPanel.add(btnCliente);
-		
-		JButton btnAddettoVendite = new JButton("Addetto Vendite");
-		southPanel.add(btnAddettoVendite);
-		
-		JButton btnAddettoScaffali = new JButton("Addetto Scaffali");
-		southPanel.add(btnAddettoScaffali);
+		JButton btnRegistrami = new JButton("Registrami");
+		southPanel.add(btnRegistrami);
 	}
 	private SpinnerDateModel yearSpinnerModel(){
 		SpinnerDateModel model;
