@@ -10,7 +10,7 @@ import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
 import it.unisalento.Model.Utente;
-import it.unisalento.view.MessageBoxes;
+import it.unisalento.view.Dialogs.MessageBoxes;
 
 import java.util.Vector;
 
@@ -26,7 +26,9 @@ public class Session {
 	private static Vector <Autore> autori;
 	private static Vector <CasaEd> caseEd=CasaEd_DAO.getInstance().caricaCase();
 	private static Vector <Genere> generi=Genere_DAO.getInstance().caricaGeneri();
-	private static Vector <Libro>  libri=LibroDAO.getInstance().caricaTutti();
+	private static Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
+	private static Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
+	
 	
 	public static Session currentSession(){
 		if (currentSession==null){
@@ -35,7 +37,8 @@ public class Session {
 			autori=Autore_DAO.getInstance().caricaAutori();
 			caseEd=CasaEd_DAO.getInstance().caricaCase();
 			generi=Genere_DAO.getInstance().caricaGeneri();
-			libri=LibroDAO.getInstance().caricaTutti();
+			tuttiLibri=LibroDAO.getInstance().caricaTutti();
+			searchResults=tuttiLibri;
 			} catch(Exception e) {
 				e.printStackTrace();
 				MessageBoxes.errore("Errore", "Impossibile caricare dati da Database");
@@ -96,12 +99,24 @@ public class Session {
 		Session.generi = generi;
 	}
 
-	public Vector<Libro> getLibri() {
-		return libri;
+	public Vector<Libro> getTuttiLibri() {
+		return tuttiLibri;
 	}
 
-	public void setLibri(Vector<Libro> libri) {
-		Session.libri = libri;
+	public void setTuttiLibri(Vector<Libro> libri) {
+		Session.tuttiLibri = libri;
+	}
+
+	public Vector <Libro> getSearchResults() {
+		return searchResults;
+	}
+
+	public void setSearchResults(Vector <Libro> searchResults) {
+		Session.searchResults = searchResults;
+	}
+	
+	public void SetSearchDefault(){
+		Session.searchResults=Session.tuttiLibri;
 	}
 	
 }

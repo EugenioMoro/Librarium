@@ -1,4 +1,4 @@
-package it.unisalento.view;
+package it.unisalento.view.Dialogs;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

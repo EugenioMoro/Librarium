@@ -93,6 +93,17 @@ public class Libro {
 		this.richiesto = richiesto;
 	}
 	
+	public String autoriToString(){
+		if(autori.size()==1) return autori.get(0).getCognome()+", "+autori.get(0).getNome().substring(0, 1)+".";
+		
+		String ret;
+		ret=autori.get(0).getCognome()+", "+autori.get(0).getNome().substring(0, 1);
+		for (int i=1; i<autori.size(); i++)
+			ret=ret+". - "+autori.get(i).getCognome()+", "+autori.get(i).getNome().substring(0, 1)+".";
+		
+		return ret;
+			
+	}
 	
 	
 	//costruttore con id da usare per caricare da database

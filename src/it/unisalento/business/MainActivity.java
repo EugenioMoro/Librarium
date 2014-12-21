@@ -1,9 +1,9 @@
 package it.unisalento.business;
 
-import it.unisalento.view.RegistraView;
 
 
-import it.unisalento.view.WelcomeView;
+import it.unisalento.view.Frames.RegistraView;
+import it.unisalento.view.Frames.WelcomeView;
 
 import javax.swing.JFrame;
 

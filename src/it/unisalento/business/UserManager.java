@@ -2,7 +2,7 @@ package it.unisalento.business;
 
 import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.Model.Utente;
-import it.unisalento.view.MessageBoxes;
+import it.unisalento.view.Dialogs.MessageBoxes;
 
 public class UserManager {
 

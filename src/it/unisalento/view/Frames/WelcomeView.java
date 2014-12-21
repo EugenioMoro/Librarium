@@ -1,4 +1,4 @@
-package it.unisalento.view;
+package it.unisalento.view.Frames;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

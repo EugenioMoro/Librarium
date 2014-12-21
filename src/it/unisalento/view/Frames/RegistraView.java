@@ -1,4 +1,4 @@
-package it.unisalento.view;
+package it.unisalento.view.Frames;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

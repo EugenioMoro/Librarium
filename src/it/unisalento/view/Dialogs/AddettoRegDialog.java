@@ -1,4 +1,4 @@
-package it.unisalento.view;
+package it.unisalento.view.Dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
