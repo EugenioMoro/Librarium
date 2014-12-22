@@ -1,35 +1,54 @@
 package it.unisalento.view.Frames;
 
+import it.unisalento.business.Session;
+import it.unisalento.listeners.RegistraListener;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.FlowLayout;
+
 import net.miginfocom.swing.MigLayout;
+
 import java.awt.GridLayout;
 import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
+import com.sun.glass.events.WindowEvent;
+
 import javax.swing.JToggleButton;
 import javax.swing.JCheckBox;
-import java.awt.Choice;
-import javax.swing.JButton;
 
-public class RegistraView extends JFrame {
+import java.awt.Choice;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowListener;
+
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+
+public class RegistraView extends JFrame implements WindowListener {
 
 	private JPanel contentPane;
-	private JTextField txtNome;
-	private JTextField txtCognome;
-	private JTextField txtUsername;
-	private JTextField txtPassword;
+	private static JTextField txtNome;
+	private static JTextField txtCognome;
+	private static JTextField txtUsername;
+	private static JPasswordField txtPassword;
+	private ActionListener listener=new RegistraListener(this);
+	
 
 	/**
 	 * Launch the application.
@@ -52,13 +71,13 @@ public class RegistraView extends JFrame {
 	 */
 	public RegistraView() {
 		setTitle("Registrazione");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		addWindowListener(this);
 		
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(Color.GRAY);
@@ -95,7 +114,7 @@ public class RegistraView extends JFrame {
 		centrePanel.add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setText("Password");
 		txtPassword.setBounds(10, 104, 86, 20);
 		centrePanel.add(txtPassword);
@@ -129,13 +148,79 @@ public class RegistraView extends JFrame {
 		
 		JButton btnCliente = new JButton("Cliente");
 		southPanel.add(btnCliente);
+		btnCliente.addActionListener(listener);
+		btnCliente.setActionCommand(RegistraListener.CLIENTEOPT);
+		
 		
 		JButton btnAddettoVendite = new JButton("Addetto Vendite");
 		southPanel.add(btnAddettoVendite);
+		btnAddettoVendite.addActionListener(listener);
+		btnAddettoVendite.setActionCommand(RegistraListener.VENDITEOPT);
 		
 		JButton btnAddettoScaffali = new JButton("Addetto Scaffali");
 		southPanel.add(btnAddettoScaffali);
+		btnAddettoScaffali.addActionListener(listener);
+		btnAddettoScaffali.setActionCommand(RegistraListener.SCAFFALIOPT);
 		
+		
+	}
+
+	public static JTextField getTxtNome() {
+		return txtNome;
+	}
+
+	public static JTextField getTxtCognome() {
+		return txtCognome;
+	}
+
+	public static JTextField getTxtUsername() {
+		return txtUsername;
+	}
+
+	public static JPasswordField getTxtPassword() {
+		return txtPassword;
+	}
+	
+	private void onCloseOperations(){
+		Session.currentSession().DestroyC();
+		Session.currentSession().DestroyU();
+	}
+
+	@Override
+	public void windowActivated(java.awt.event.WindowEvent e) {
+
+		
+	}
+
+	@Override
+	public void windowClosed(java.awt.event.WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowClosing(java.awt.event.WindowEvent e) {
+		onCloseOperations();
+		}
+
+	@Override
+	public void windowDeactivated(java.awt.event.WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowDeiconified(java.awt.event.WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowIconified(java.awt.event.WindowEvent e) {
+
+		
+	}
+
+	@Override
+	public void windowOpened(java.awt.event.WindowEvent e) {
+
 		
 	}
 }

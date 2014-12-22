@@ -1,10 +1,13 @@
 package it.unisalento.view.Frames;
 
+import it.unisalento.listeners.RegistraListener;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,17 +32,23 @@ import javax.swing.JComboBox;
 
 
 
+
+
+
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.SqlDateModel;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import sun.util.calendar.CalendarDate;
 
 public class RegCliente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtCognome;
-	private JTextField txtUsername;
-	private ButtonGroup bg=new ButtonGroup();
+	private static JTextField txtEmail;
+	private static JTextField txtTelefono;
+	private static ButtonGroup bg=new ButtonGroup();
+	private static JDatePickerImpl picker;
+	private ActionListener listener= new RegistraListener();
 	
 	
 	
@@ -65,7 +74,7 @@ public class RegCliente extends JFrame {
 	 */
 	public RegCliente() {
 		setTitle("Registrazione");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
@@ -91,17 +100,17 @@ public class RegCliente extends JFrame {
 		centrePanel.setLayout(null);
 		
 		
-		txtCognome = new JTextField();
-		txtCognome.setText("Email");
-		txtCognome.setBounds(10, 42, 86, 20);
-		centrePanel.add(txtCognome);
-		txtCognome.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setText("Email");
+		txtEmail.setBounds(10, 42, 86, 20);
+		centrePanel.add(txtEmail);
+		txtEmail.setColumns(10);
 		
-		txtUsername = new JTextField();
-		txtUsername.setText("Username");
-		txtUsername.setBounds(10, 73, 86, 20);
-		centrePanel.add(txtUsername);
-		txtUsername.setColumns(10);
+		txtTelefono = new JTextField();
+		txtTelefono.setText("Telefono");
+		txtTelefono.setBounds(10, 73, 86, 20);
+		centrePanel.add(txtTelefono);
+		txtTelefono.setColumns(10);
 		
 		JLabel lblObbligatorio = new JLabel("Data di nascita, obbligatoria\r\n");
 		lblObbligatorio.setBounds(148, 17, 134, 14);
@@ -111,7 +120,7 @@ public class RegCliente extends JFrame {
 		lblObbligatorio_1.setBounds(126, 45, 262, 14);
 		centrePanel.add(lblObbligatorio_1);
 		
-		JLabel lblCaratteriSolo = new JLabel("obbligatorio");
+		JLabel lblCaratteriSolo = new JLabel("Obbligatorio");
 		lblCaratteriSolo.setBounds(126, 76, 262, 14);
 		centrePanel.add(lblCaratteriSolo);
 		
@@ -122,10 +131,14 @@ public class RegCliente extends JFrame {
 		JRadioButton rdbtnM = new JRadioButton("M");
 		rdbtnM.setBounds(10, 103, 33, 23);
 		centrePanel.add(rdbtnM);
+		rdbtnM.addActionListener(listener);
+		rdbtnM.setActionCommand(RegistraListener.SESSOMOPT);
 		
 		JRadioButton rdbtnF = new JRadioButton("F");
 		rdbtnF.setBounds(63, 103, 33, 23);
 		centrePanel.add(rdbtnF);
+		rdbtnF.addActionListener(listener);
+		rdbtnF.setActionCommand(RegistraListener.SESSOFOPT);
 		
 		//button group
 		bg.add(rdbtnM);
@@ -133,17 +146,14 @@ public class RegCliente extends JFrame {
 		
 		
 		//JDatePicker codice
-		UtilDateModel model=new UtilDateModel();
+		SqlDateModel model=new SqlDateModel();
 		JDatePanelImpl panel=new JDatePanelImpl(model);
-		JDatePickerImpl picker=new JDatePickerImpl(panel);
+		picker=new JDatePickerImpl(panel);
 		picker.setBounds(10, 11, 114, 20);
 		centrePanel.add(picker);
-				
-//		JComboBox comboBox = new JComboBox();
-//		comboBox.setBounds(10, 11, 86, 20);
-//		centrePanel.add(comboBox);
 		
-		
+			
+			
 		
 		JPanel southPanel = new JPanel();
 		southPanel.setBackground(Color.GRAY);
@@ -153,38 +163,24 @@ public class RegCliente extends JFrame {
 		
 		JButton btnRegistrami = new JButton("Registrami");
 		southPanel.add(btnRegistrami);
+		btnRegistrami.addActionListener(listener);
+		btnRegistrami.setActionCommand(RegistraListener.REGCLIENTEOPT);
 	}
-	private SpinnerDateModel yearSpinnerModel(){
-		SpinnerDateModel model;
-		Calendar calInstance=Calendar.getInstance();
-		
-		Date now=calInstance.getTime();
-		
-		calInstance.add(Calendar.YEAR, -100);
-		Date startDate=calInstance.getTime();
-		
-		calInstance.add(Calendar.YEAR, 200);
-		Date endDate=calInstance.getTime();
-		
-		model=new SpinnerDateModel(now, startDate, endDate, Calendar.YEAR);
-		
-		return model;
+
+	public static JTextField getTxtEmail() {
+		return txtEmail;
 	}
-	
-	
-	private SpinnerDateModel monthSpinnerModel(){
-		SpinnerDateModel model;
-		
-		model=new SpinnerDateModel(Calendar.getInstance().getTime(), null, null, Calendar.MONTH);
-		
-		return model;
+
+	public static JTextField getTxtTelefono() {
+		return txtTelefono;
+	}
+
+	public static JDatePickerImpl getPicker() {
+		return picker;
+	}
+
+	public static ButtonGroup getBg() {
+		return bg;
 	}
 	
-	private SpinnerDateModel daySpinnerModel(){
-		SpinnerDateModel model;
-		
-		model=new SpinnerDateModel(Calendar.getInstance().getTime(), null, null, Calendar.DAY_OF_MONTH);
-		
-		return model;
-	}
-	}
+}

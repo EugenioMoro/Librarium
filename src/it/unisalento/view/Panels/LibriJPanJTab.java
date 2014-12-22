@@ -12,6 +12,7 @@ public class LibriJPanJTab {
 
 	
 	public static JScrollPane getPane(){
+		LibriJPanJTab.getTable().setAutoCreateRowSorter(true);
 		return scrollpane;
 		
 	}

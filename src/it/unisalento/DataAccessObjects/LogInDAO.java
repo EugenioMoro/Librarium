@@ -17,8 +17,9 @@ public class LogInDAO extends metodiComuni{
 		}
 	
 		public boolean checkCredenziali(Utente u){
-			return DbConnection.getInstance().hasResults("select ID from utente where (username='"+u.getUsername()+"' and password='"+u.getPassword()+"')");
-		
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from utente where username='"+u.getUsername()+"' and password='"+u.getPassword()+"'").get(0)[0])!=0)
+				return true;
+			return false;
 		}
 		
 		public String checkTipo(Utente u){ //scelgo di ritornare una stringa in modo di rendere il codice di livello superiore più leggibile
@@ -50,7 +51,7 @@ public class LogInDAO extends metodiComuni{
 			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select sesso, data_nascita, email, numero_telefonico from cliente where utente_ID='"+getUsernameId(newU)+"'");
 			if(Integer.parseInt(results.get(0)[0])==0) sesso=false;
 			newC.setSesso(sesso);
-			newC.setData_nascita(results.get(0)[1]);
+			newC.setData_nascita(stringToDate(results.get(0)[1]));
 			newC.setEmail(results.get(0)[2]);
 			newC.setTelefono(results.get(0)[3]);
 			

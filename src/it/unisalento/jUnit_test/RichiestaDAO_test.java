@@ -1,9 +1,6 @@
 package it.unisalento.jUnit_test;
 
-import static org.junit.Assert.*;
-
-import java.util.Vector;
-
+import static org.junit.Assert.assertEquals;
 import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.CasaEd_DAO;
 import it.unisalento.DataAccessObjects.Genere_DAO;
@@ -17,6 +14,9 @@ import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
 import it.unisalento.Model.Richiesta;
+
+import java.util.Calendar;
+import java.util.Vector;
 
 import org.junit.After;
 import org.junit.Before;
@@ -48,7 +48,7 @@ public class RichiestaDAO_test {
 	MarioU.setUsername("mRossi");
 	MarioU.setPassword("asd123");
 	MarioU.setEmail("mariorossi@yahoo.it");
-	MarioU.setData_nascita("1984-10-12");
+	MarioU.setData_nascita(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 	MarioU.setSesso(true);
 	MarioU.setTelefono("0832454876");
 	

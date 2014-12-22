@@ -1,36 +1,73 @@
 package it.unisalento.view.Frames;
 
+import it.unisalento.listeners.WelcomeListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import java.awt.Color;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
+
 import javax.swing.BoxLayout;
+
 import net.miginfocom.swing.MigLayout;
+
 import java.awt.FlowLayout;
+
 import javax.swing.JPanel;
+
+import java.awt.EventQueue;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JTextPane;
+
 import java.awt.GridLayout;
 
 public class WelcomeView extends JFrame {
-	private JTextField txtUsername;
-	private JPasswordField pwdPassword;
+	private static JTextField txtUsername;
+	private static JPasswordField pwdPassword;
+	private ActionListener listener=new WelcomeListener();
+	
+	
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					WelcomeView frame = new WelcomeView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	public WelcomeView() {
 		setTitle("Librarium");
+		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setForeground(new Color(0, 206, 209));
 		getContentPane().setForeground(Color.LIGHT_GRAY);
@@ -70,13 +107,13 @@ public class WelcomeView extends JFrame {
 		
 		JButton btnLogIn = new JButton("Log In");
 		leftPanel.add(btnLogIn, "cell 0 3");
+		btnLogIn.addActionListener(listener);
+		btnLogIn.setActionCommand(WelcomeListener.LOGINOPT);
 		
 		JButton btnPasswordDimenticata = new JButton("Password Dimenticata");
 		leftPanel.add(btnPasswordDimenticata, "cell 0 4");
-		btnPasswordDimenticata.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnPasswordDimenticata.addActionListener(listener);
+		btnPasswordDimenticata.setActionCommand(WelcomeListener.PASSOPT);
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setBackground(Color.GRAY);
@@ -87,14 +124,14 @@ public class WelcomeView extends JFrame {
 		rightPanel.add(lblNuovoUtente, "cell 0 0 1 2");
 		
 		JButton btnRegistrati = new JButton("Registrati");
-		btnRegistrati.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		JButton btnSfogliaCatalogo = new JButton("Sfoglia Catalogo");
+		
 		rightPanel.add(btnSfogliaCatalogo, "cell 0 3 4 1,grow");
 		rightPanel.add(btnRegistrati, "cell 0 5 4 1,grow");
+		btnRegistrati.addActionListener(listener);
+		btnRegistrati.setActionCommand(WelcomeListener.REGISTRAOPT);
+		btnSfogliaCatalogo.addActionListener(listener);
+		btnSfogliaCatalogo.setActionCommand(WelcomeListener.CATALOGOOPT);
 		
 		JPanel lowPanel = new JPanel();
 		lowPanel.setBackground(Color.GRAY);
@@ -114,4 +151,15 @@ public class WelcomeView extends JFrame {
 		lblUnisalento.setBounds(215, 0, 191, 25);
 		lowPanel.add(lblUnisalento);
 	}
+	
+	public static JTextField getTxtUsername() {
+		return txtUsername;
+	}
+	public static JPasswordField getPwdPassword() {
+		return pwdPassword;
+	}
+	
+	
+	
+	
 }

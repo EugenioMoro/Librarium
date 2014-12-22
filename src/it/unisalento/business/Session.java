@@ -28,10 +28,14 @@ public class Session {
 	private static Vector <Genere> generi=Genere_DAO.getInstance().caricaGeneri();
 	private static Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
 	private static Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
+	public final static String AMMINISTRATIVECODE="0000";
 	
 	
 	public static Session currentSession(){
 		if (currentSession==null){
+			u=new Utente();
+			c=new Cliente();
+			
 			try{
 			currentSession=new Session();
 			autori=Autore_DAO.getInstance().caricaAutori();
@@ -117,6 +121,15 @@ public class Session {
 	
 	public void SetSearchDefault(){
 		Session.searchResults=Session.tuttiLibri;
+	}
+	
+	public void DestroyU()
+	{
+		this.u=new Utente();
+	}
+	
+	public void DestroyC(){
+		c=new Cliente();
 	}
 	
 }

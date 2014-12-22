@@ -2,10 +2,12 @@ package it.unisalento.Model;
 
 
 
+
+
 public class Cliente extends Utente {
 	
 	private boolean sesso;
-	private String data_nascita;
+	private java.util.Date data_nascita;
 	private String email;
 	private String telefono;
 	
@@ -35,14 +37,14 @@ public class Cliente extends Utente {
 
 
 
-	public String getData_nascita() {
+	public java.util.Date getData_nascita() {
 		return data_nascita;
 	}
 
 
 
-	public void setData_nascita(String data_nascita) {
-		this.data_nascita = data_nascita;
+	public void setData_nascita(java.util.Date date) {
+		this.data_nascita = date;
 	}
 
 

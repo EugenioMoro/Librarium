@@ -1,5 +1,7 @@
 package it.unisalento.view.Dialogs;
 
+import it.unisalento.listeners.RegistraListener;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -9,13 +11,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddettoRegDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-
+	private static JTextField textField;
+	private ActionListener listener=new RegistraListener();
 	/**
 	 * Launch the application.
 	 */
@@ -58,16 +63,23 @@ public class AddettoRegDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				okButton.setActionCommand(RegistraListener.OKDIALOG);
+				okButton.addActionListener(listener);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
+				cancelButton.setActionCommand(RegistraListener.CANCELDIALOG);
+				cancelButton.addActionListener(listener);
 				buttonPane.add(cancelButton);
+				
 			}
 		}
 	}
+	public static JTextField getTextField() {
+		return textField;
+	}
 
+	
 }

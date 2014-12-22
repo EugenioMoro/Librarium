@@ -2,6 +2,8 @@ package it.unisalento.jUnit_test;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 import it.unisalento.DataAccessObjects.AcquistoDAO;
@@ -31,7 +33,7 @@ public class AcquistoDAO_test  extends Libro_DAO_test {
 		MarioU.setUsername("mRossi");
 		MarioU.setPassword("asd123");
 		MarioU.setEmail("mariorossi@yahoo.it");
-		MarioU.setData_nascita("1984-10-12");
+		MarioU.setData_nascita(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		MarioU.setSesso(true);
 		MarioU.setTelefono("0832454876");
 		

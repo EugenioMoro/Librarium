@@ -1,11 +1,13 @@
 package it.unisalento.jUnit_test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import it.unisalento.DataAccessObjects.NewUserDAO;
 import it.unisalento.DataAccessObjects.TesseraDAO;
 import it.unisalento.DbConnection.DbConnection;
 import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Tessera;
+
+import java.util.Calendar;
 
 import org.junit.After;
 import org.junit.Before;
@@ -24,7 +26,7 @@ public class TesseraDAO_test {
 		MarioU.setUsername("mRossi");
 		MarioU.setPassword("asd123");
 		MarioU.setEmail("mariorossi@yahoo.it");
-		MarioU.setData_nascita("1984-10-12");
+		MarioU.setData_nascita(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		MarioU.setSesso(true);
 		MarioU.setTelefono("0832454876");
 		

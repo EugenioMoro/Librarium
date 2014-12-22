@@ -6,17 +6,16 @@ import it.unisalento.Model.Utente;
 
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.Vector;
 
 
 
 public final class NewUserDAO extends metodiComuni {
 	
-	private SimpleDateFormat sdf;
+	/*private SimpleDateFormat sdf;
 	private String data;
-	private Date dt=new Date();
+	private Date dt=new Date();*/
 	private int sesso;
 
 	private static NewUserDAO instance;
@@ -51,9 +50,9 @@ public final class NewUserDAO extends metodiComuni {
 		//Registrazione livello cliente
 		sesso=0;
 		if (c.isSesso()) sesso=1; 
-		sdf=new SimpleDateFormat(c.getData_nascita());
-		data=sdf.format(dt);//Data contiene una stringa con la data formattata per mysql
-		query="INSERT INTO `librarium`.`cliente` (`utente_ID`, `sesso`, `data_nascita`, `email`, `numero_telefonico`) VALUES ('"+getUsernameId(c)+"', '"+sesso+"','"+data+"' , '"+c.getEmail()+"','"+c.getTelefono()+"')";
+		//sdf=new SimpleDateFormat(c.getData_nascita());
+		//data=sdf.format(dt);//Data contiene una stringa con la data formattata per mysql
+		query="INSERT INTO `librarium`.`cliente` (`utente_ID`, `sesso`, `data_nascita`, `email`, `numero_telefonico`) VALUES ('"+getUsernameId(c)+"', '"+sesso+"','"+c.getData_nascita()+"' , '"+c.getEmail()+"','"+c.getTelefono()+"')";
 		if(!DbConnection.getInstance().eseguiAggiornamento(query)) flag=false;
 		
 		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select ID from utente where username='"+c.getUsername()+"'");
