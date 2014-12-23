@@ -81,35 +81,37 @@ public class UserManager {
 	
 	public static boolean checkCoerenzaCliente(String email, String tel){
 		String ErrorMessage="";
-		
+
 		int dotCount=0;
 		int atCount=0;
-		
+
 		//if (!checkOnString(nome)) ErrorMessage="Nome: caratteri non validi ";
 		if (email.isEmpty()) ErrorMessage="Email Obbligatoria";
 		else {
 			for (int i=0; i<email.length(); i++){
 				if (!Character.isLetter(email.charAt(i))){
-					if (email.charAt(i)=='.')
-					{
-						dotCount++;
-						continue;
-					}
-					if (email.charAt(i)=='@'){
-						atCount++;
-						continue;
-					} else {
-						ErrorMessage="Email non valida";
-						break;
+					if (!Character.isDigit(email.charAt(i))){
+						if (email.charAt(i)=='.')
+						{
+							dotCount++;
+							continue;
+						}
+						if (email.charAt(i)=='@'){
+							atCount++;
+							continue;
+						} else {
+							ErrorMessage="Email non valida";
+							break;
+						}
 					}
 				}
-				
+
 			}
 			if (ErrorMessage.equals("")){
 				if (atCount!=1 || dotCount==0) ErrorMessage="Email non valida";
 			}
 		}
-		
+
 		
 		
 		if (tel.isEmpty()) ErrorMessage=ErrorMessage+'\n'+"Numero di telefono obbligatorio";
@@ -183,4 +185,8 @@ public class UserManager {
 		
 		return true;
 	}
+	
+	
+	
+	
 }

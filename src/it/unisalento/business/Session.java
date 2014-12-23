@@ -125,11 +125,11 @@ public class Session {
 	
 	public void DestroyU()
 	{
-		this.u=new Utente();
+		Session.u=new Utente();
 	}
 	
 	public void DestroyC(){
-		c=new Cliente();
+		Session.c=new Cliente();
 	}
 	
 }

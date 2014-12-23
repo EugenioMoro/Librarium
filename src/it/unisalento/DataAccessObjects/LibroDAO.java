@@ -9,6 +9,7 @@ import it.unisalento.Model.CasaEd;
 import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
 
+
 public class LibroDAO extends metodiComuni{
 
 	private static LibroDAO instance;
@@ -131,10 +132,7 @@ public class LibroDAO extends metodiComuni{
 		}
 		return libri;
 		}
-		
-		
-	
-	
+			
 	public Vector<Libro> caricaPerId(Vector<Integer> ids){
 		Vector<Libro> libri=new Vector<Libro>();
 		Vector<String[]> resL;
@@ -173,6 +171,45 @@ public class LibroDAO extends metodiComuni{
 		return libri;
 	}
 
+	public Vector<Libro> ricerca(String titolo){
+		Vector<Libro> libri=new Vector<Libro>();
+		Vector<String[]> resL = DbConnection.getInstance().eseguiQuery("SELECT * FROM libro where titolo like '%"+titolo+"%'");
+		Vector<String[]> resA;
+		libri.setSize(resL.size());
 
+		if (!resL.isEmpty()){
+
+			for(int i=0; i<resL.size(); i++)
+			{
+				//livello singolo libro
+
+				resA = DbConnection.getInstance().eseguiQuery("SELECT autore_ID_autore FROM libro_has_autore WHERE libro_ID_libro = '"+Integer.parseInt(resL.get(i)[0])+"'");
+				Vector<Autore> autori = new Vector<Autore>();
+				autori.setSize(resA.size());
+				for (int j=0; j<resA.size(); j++){
+
+					//livello singolo autore
+
+					Vector<String[]> temp=DbConnection.getInstance().eseguiQuery("select * from autore where ID_autore='"+Integer.parseInt(resA.get(j)[0])+"' ");
+					autori.set(j, new Autore(Integer.parseInt(temp.get(0)[0]), temp.get(0)[1], temp.get(0)[2]));
+
+				}
+				Libro l=new Libro();
+				l.setId(Integer.parseInt(resL.get(i)[0]));
+				l.setTitolo(resL.get(i)[1]);
+				l.setGenere(new Genere(Integer.parseInt(resL.get(i)[2]), DbConnection.getInstance().eseguiQuery("select nome_genere from genere where ID_genere='"+resL.get(i)[2]+"'").get(0)[0]));
+				l.setCasaEd(new CasaEd(Integer.parseInt(resL.get(i)[3]), DbConnection.getInstance().eseguiQuery("select nome_casa_editrice from casa_editrice where ID_casa_editrice='"+resL.get(i)[3]+"'").get(0)[0]));
+				l.setCosto(Float.parseFloat(resL.get(i)[4]));
+				l.setDisp(Integer.parseInt(resL.get(i)[5]));
+				l.setIsbn(resL.get(i)[7]);
+				l.setPagine(Integer.parseInt(resL.get(i)[8]));
+				l.setAutori(autori);
+				libri.set(i, l);
+			}
+		}
+		return libri;
+	}
+	
+	
 }
 	
