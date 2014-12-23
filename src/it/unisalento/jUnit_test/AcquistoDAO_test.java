@@ -3,7 +3,6 @@ package it.unisalento.jUnit_test;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Vector;
 
 import it.unisalento.DataAccessObjects.AcquistoDAO;

@@ -10,7 +10,6 @@ import it.unisalento.view.Frames.RegistraView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.ButtonModel;
 import javax.swing.JDialog;
@@ -28,12 +27,9 @@ public class RegistraListener implements ActionListener {
 	public final static String SESSOFOPT="sessof";
 	
 	private static JDialog dialog= new AddettoRegDialog();
-	private JFrame win;
 	private JFrame regCliente;
 	
-	public  RegistraListener(JFrame win) {
-		this.win=win;
-	}
+
 	
 	public RegistraListener() {
 	}
@@ -61,11 +57,11 @@ public class RegistraListener implements ActionListener {
 	private void clienteOption(){ //livello superiore
 		
 		
-		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), RegistraView.getTxtPassword().getText())){
+		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), new String(RegistraView.getTxtPassword().getPassword()))){
 
 			if (NewUserDAO.getInstance().isNewUsername(RegistraView.getTxtUsername().getText())){
 				Session.currentSession().getU().setUsername(RegistraView.getTxtUsername().getText());
-				Session.currentSession().getU().setPassword(RegistraView.getTxtPassword().getText());
+				Session.currentSession().getU().setPassword(new String(RegistraView.getTxtPassword().getPassword()));
 				Session.currentSession().getU().setNome(RegistraView.getTxtNome().getText());
 				Session.currentSession().getU().setCognome(RegistraView.getTxtCognome().getText());
 
@@ -93,11 +89,11 @@ public class RegistraListener implements ActionListener {
 
 	private void scaffaliOption(){
 		
-		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), RegistraView.getTxtPassword().getText())){
+		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), new String(RegistraView.getTxtPassword().getPassword()))){
 			
 		
 		Session.currentSession().getU().setUsername(RegistraView.getTxtUsername().getText());
-		Session.currentSession().getU().setPassword(RegistraView.getTxtPassword().getText());
+		Session.currentSession().getU().setPassword(new String(RegistraView.getTxtPassword().getPassword()));
 		Session.currentSession().getU().setNome(RegistraView.getTxtNome().getText());
 		Session.currentSession().getU().setCognome(RegistraView.getTxtCognome().getText());
 		Session.currentSession().setTipo("Scaffali"); //RICORDA RICORDA RICORDA
@@ -110,7 +106,7 @@ public class RegistraListener implements ActionListener {
 	}
 
 	private void venditeOption(){
-		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), RegistraView.getTxtPassword().getText())){
+		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(),RegistraView.getTxtUsername().getText() , new String(RegistraView.getTxtPassword().getPassword()))){
 			
 			
 			Session.currentSession().getU().setUsername(RegistraView.getTxtUsername().getText());

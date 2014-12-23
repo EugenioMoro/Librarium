@@ -9,7 +9,7 @@ import it.unisalento.view.Frames.WelcomeView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+
 
 public class WelcomeListener implements ActionListener {
 	
@@ -42,7 +42,7 @@ public class WelcomeListener implements ActionListener {
 
 		if(!WelcomeView.getTxtUsername().getText().isEmpty() && !WelcomeView.getPwdPassword().getText().isEmpty()){
 		Session.currentSession().getU().setUsername(WelcomeView.getTxtUsername().getText());
-		Session.currentSession().getU().setPassword(WelcomeView.getPwdPassword().getText());
+		Session.currentSession().getU().setPassword(new String(WelcomeView.getPwdPassword().getPassword()));
 		System.out.println(Session.currentSession().getU().getUsername()+" "+Session.currentSession().getU().getPassword());
 		
 		if(UserManager.logIn()) MessageBoxes.alert("Successo", "Loggato come"+Session.currentSession().getTipo());

@@ -47,7 +47,7 @@ public class RegistraView extends JFrame implements WindowListener {
 	private static JTextField txtCognome;
 	private static JTextField txtUsername;
 	private static JPasswordField txtPassword;
-	private ActionListener listener=new RegistraListener(this);
+	private ActionListener listener=new RegistraListener();
 	
 
 	/**
