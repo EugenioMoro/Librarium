@@ -60,8 +60,10 @@ public class RegistraListener implements ActionListener {
 		if (UserManager.checkCoerenzaUtente(RegistraView.getTxtNome().getText(), RegistraView.getTxtCognome().getText(), RegistraView.getTxtUsername().getText(), new String(RegistraView.getTxtPassword().getPassword()))){
 
 			if (NewUserDAO.getInstance().isNewUsername(RegistraView.getTxtUsername().getText())){
+				
 				Session.currentSession().getU().setUsername(RegistraView.getTxtUsername().getText());
 				Session.currentSession().getU().setPassword(new String(RegistraView.getTxtPassword().getPassword()));
+				
 				Session.currentSession().getU().setNome(RegistraView.getTxtNome().getText());
 				Session.currentSession().getU().setCognome(RegistraView.getTxtCognome().getText());
 
@@ -72,7 +74,6 @@ public class RegistraListener implements ActionListener {
 
 				UserManager.utenteToCliente();
 
-				//MessageBoxes.alert("TODO", "Da implementare");
 			}
 			else MessageBoxes.alert("Attenzione", "Username già esistente");
 		}

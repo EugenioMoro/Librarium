@@ -38,7 +38,7 @@ public class UserManager {
 		Utente u=Session.currentSession().getU();
 		
 		c.setUsername(u.getUsername());
-		c.setPassword(c.getPassword());
+		c.setPassword(u.getPassword());
 		c.setNome(u.getNome());
 		c.setCognome(u.getCognome());
 		
