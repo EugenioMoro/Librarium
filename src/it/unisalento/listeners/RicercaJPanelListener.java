@@ -56,7 +56,7 @@ public class RicercaJPanelListener implements ActionListener {
 					MessageBoxes.alert("Attenzione", "La ricerca non ha prodotto alcun risultato\nProva ad allargare i campi di ricerca");
 				}
 				else{
-					MessageBoxes.alert("Risultati", ""+Session.currentSession().getSearchResults().size());
+					//MessageBoxes.alert("Risultati", ""+Session.currentSession().getSearchResults().size());
 					((AbstractTableModel)tab.getModel()).fireTableDataChanged();
 					ComboboxTest.refreshTable();
 //					JFrame frame=new JFrame();

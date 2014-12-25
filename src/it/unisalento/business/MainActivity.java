@@ -3,9 +3,11 @@ package it.unisalento.business;
 
 
 import it.unisalento.view.Frames.ClienteView;
+import it.unisalento.view.Frames.RegistraView;
 import it.unisalento.view.Frames.WelcomeView;
 
 import javax.swing.JFrame;
+
 
 
 
@@ -35,11 +37,24 @@ public class MainActivity {
 		MainActivity.mainframe.setVisible(true);
 	}
 	
-	public void openVenditeView(){
+	public static void openVenditeView(){
 		//TODO implementare
 	}
 
-	public void openScaffaliView(){
+	public static void openScaffaliView(){
 		//TODO implementare
+	}
+	
+	public static void backToWelcome(){
+		Session.currentSession().destroy();
+		MainActivity.mainframe.dispose();
+		MainActivity.mainframe=new WelcomeView();
+		MainActivity.mainframe.setVisible(true);
+	}
+	
+	public static void openRegistraView(){
+		MainActivity.mainframe.dispose();
+		MainActivity.mainframe=new RegistraView();
+		MainActivity.mainframe.setVisible(true);
 	}
 }

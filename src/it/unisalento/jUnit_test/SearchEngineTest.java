@@ -1,6 +1,6 @@
 package it.unisalento.jUnit_test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.CasaEd_DAO;
 import it.unisalento.DataAccessObjects.Genere_DAO;
@@ -13,7 +13,6 @@ import it.unisalento.Model.Libro;
 import it.unisalento.business.SearchEngine;
 import it.unisalento.business.Session;
 
-import java.awt.SystemColor;
 import java.util.Vector;
 
 import org.junit.After;

@@ -33,9 +33,10 @@ public class LogInDAO extends metodiComuni{
 		public Utente caricaUtente(Utente u){
 			Utente newU=new Utente(u.getUsername(), u.getPassword());
 		
-			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select nome, cognome, data_ultimo_accesso from utente where username='"+u.getUsername()+"'");
+			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select nome, cognome, data_ultimo_accesso, ID from utente where username='"+u.getUsername()+"'");
 			newU.setNome(results.get(0)[0]);
 			newU.setCognome(results.get(0)[1]);
+			newU.setId(Integer.parseInt(results.get(0)[3]));
 			newU.setUsername(u.getUsername());
 
 			return newU;

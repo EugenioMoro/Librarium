@@ -1,6 +1,7 @@
 package it.unisalento.listeners;
 
 import it.unisalento.DataAccessObjects.NewUserDAO;
+import it.unisalento.business.MainActivity;
 import it.unisalento.business.Session;
 import it.unisalento.business.UserManager;
 import it.unisalento.view.Dialogs.AddettoRegDialog;
@@ -129,7 +130,7 @@ public class RegistraListener implements ActionListener {
 		if(Session.AMMINISTRATIVECODE.equals(AddettoRegDialog.getTextField().getText())){
 			if(UserManager.registraUtente()){
 				MessageBoxes.alert("Successo", "Utente registrato come "+Session.currentSession().getTipo()+'\n'+"Effettua il login per accedere al sistema");
-				dialog.setVisible(false);
+				MainActivity.backToWelcome();
 			}
 		
 		}
@@ -148,6 +149,8 @@ public class RegistraListener implements ActionListener {
 		
 		if(UserManager.registraCliente()){
 			MessageBoxes.alert("Successo", "Registrazione cliente avvenuta\nEffettua il login per accedere al sistema");
+			regCliente.dispose();
+			MainActivity.backToWelcome();
 		}
 
 		}

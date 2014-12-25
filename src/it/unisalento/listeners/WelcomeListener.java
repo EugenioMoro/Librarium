@@ -5,7 +5,6 @@ import it.unisalento.business.Session;
 import it.unisalento.business.UserManager;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Frames.OspiteView;
-import it.unisalento.view.Frames.RegistraView;
 import it.unisalento.view.Frames.WelcomeView;
 
 import java.awt.event.ActionEvent;
@@ -67,8 +66,7 @@ public class WelcomeListener implements ActionListener {
 	}
 	
 	private void registraOption(){
-		RegistraView frame = new RegistraView();
-		frame.setVisible(true);
+		MainActivity.openRegistraView();
 	}
 	
 	private void passwordOption(){

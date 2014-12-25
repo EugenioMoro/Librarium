@@ -6,6 +6,10 @@ import javax.swing.JOptionPane;
 public class MessageBoxes extends JOptionPane {  //forse l'estensione è inutile in quanto si fa riferimento a questa classe da main che richiede metodi statici senza costruttore super
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static JFrame frame=new JFrame();
 	
 	public static void errore(String titolo, String messaggio){

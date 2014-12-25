@@ -1,14 +1,12 @@
 package it.unisalento.view.Models;
 
-import java.util.Vector;
-
 import it.unisalento.Model.Autore;
 import it.unisalento.business.Session;
 
+import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-
 import javax.swing.event.ListDataListener;
 
 public class SearchAutoriComboModel extends DefaultComboBoxModel<String> implements ComboBoxModel<String> {

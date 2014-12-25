@@ -12,6 +12,10 @@ import javax.swing.event.ListDataListener;
 public class SearchGenereComboModel extends DefaultComboBoxModel<String>
 		implements ComboBoxModel<String> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Vector<Genere> generi=Session.currentSession().getGeneri();
 
 	@Override

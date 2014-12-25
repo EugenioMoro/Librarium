@@ -1,11 +1,12 @@
 package it.unisalento.view.Models;
 
-import java.awt.event.ActionEvent;
-import java.util.Vector;
+import it.unisalento.DataAccessObjects.RichiestaDAO;
 
-import it.unisalento.Model.Libro;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
+
+import java.awt.event.ActionEvent;
+
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -18,22 +19,25 @@ public class LibriTableModel extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Vector<Libro> libri=Session.currentSession().getSearchResults();
 	private String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
 	
 	public void OrdinaLibro(int row, int col){
 		//TODO completare con metodi e controlli per ordinare un libro, per ora contiene solo un alert di test
-		//Ricorda: sarà qualcosa del tipo RichiestaDAO.ordinaLibro(libri.get(row), Session.currentSession().getCliente())
-		
+		//Ricorda: sarà qualcosa del tipo RichiestaDAO.ordinaLibro(Session.currentSession().getSearchResults().get(row), Session.currentSession().getCliente())
+
 		if(Session.currentSession().getC().getUsername()!=null){
-			//TODO implementare metodi per cliente loggato
+			if (Session.currentSession().getSearchResults().get(row).getDisp()==0){
+				RichiestaDAO.getInstance().ordinaLibro(Session.currentSession().getSearchResults().get(row), Session.currentSession().getC());
+				MessageBoxes.alert("Richiesta d'ordine", "La richiesta per il libro "+Session.currentSession().getSearchResults().get(row).getTitolo()+" è stata inoltrata\nRiceverai una email quando il libro sarà nuovamente disponibile");
+			} else {
+				MessageBoxes.alert("Attenzione", "Il libro è disponibile in libreria");
+			}
 		}
 		else{
 			MessageBoxes.alert("Attenzione", "Devi prima fare il log in");
 		}
-		MessageBoxes.alert("Bona", "Funziona, sei grande");
 	}
-	
+
 	
 	@Override
     public boolean isCellEditable(int row, int col) {
@@ -65,21 +69,21 @@ public class LibriTableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return libri.size();
+		return Session.currentSession().getSearchResults().size();
 	}
 
 	@Override
 	public Object getValueAt(int row, int col) {
 		// TODO Auto-generated method stub
 		switch (col){
-		case 0: return libri.get(row).getTitolo();
-		case 1: return libri.get(row).autoriToString();
-		case 2: return libri.get(row).getCasaEd().getNome();
-		case 3: return libri.get(row).getGenere().getNome();
-		case 4: return libri.get(row).getCosto();
-		case 5: return libri.get(row).getPagine();
-		case 6: return libri.get(row).getIsbn();
-		case 7: return libri.get(row).getDisp();
+		case 0: return Session.currentSession().getSearchResults().get(row).getTitolo();
+		case 1: return Session.currentSession().getSearchResults().get(row).autoriToString();
+		case 2: return Session.currentSession().getSearchResults().get(row).getCasaEd().getNome();
+		case 3: return Session.currentSession().getSearchResults().get(row).getGenere().getNome();
+		case 4: return Session.currentSession().getSearchResults().get(row).getCosto();
+		case 5: return Session.currentSession().getSearchResults().get(row).getPagine();
+		case 6: return Session.currentSession().getSearchResults().get(row).getIsbn();
+		case 7: return Session.currentSession().getSearchResults().get(row).getDisp();
 		case 8: return "Ordina";
 		
 		}
