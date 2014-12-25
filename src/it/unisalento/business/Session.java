@@ -119,8 +119,8 @@ public class Session {
 		Session.searchResults = searchResults;
 	}
 	
-	public void SetSearchDefault(){
-		Session.searchResults=Session.tuttiLibri;
+	public void resetSearchResults(){
+		Session.searchResults=LibroDAO.getInstance().caricaTutti();
 	}
 	
 	public void DestroyU()

@@ -37,7 +37,7 @@ public class SearchEngine {
 		
 		Vector<Libro> results=Session.currentSession().getSearchResults();
 		
-		for(int i=0; i<results.size(); i++){
+		for(int i=results.size()-1; i>=0; i--){
 			Libro l=results.get(i);
 			boolean ok=false;
 			for (int j=0; j<l.getAutori().size(); j++){
@@ -47,7 +47,7 @@ public class SearchEngine {
 				}	
 			}
 			
-			if (!ok) results.remove(i);
+			if (!ok) results.removeElementAt(i);
 		}
 		
 		
@@ -61,9 +61,9 @@ public class SearchEngine {
 		
 		Vector<Libro> results=Session.currentSession().getSearchResults();
 		
-		for (int i=0; i<results.size(); i++)
-			if (results.get(i).getGenere().getId()!=g.getId()) results.remove(i);
-		
+		for (int i=results.size()-1; i>=0; i--){
+			if (results.get(i).getGenere().getId()!=g.getId()) results.removeElementAt(i);
+		}
 		if(results.isEmpty()) return false;
 		
 		Session.currentSession().setSearchResults(results);
@@ -75,8 +75,8 @@ public class SearchEngine {
 	public boolean perCasa(CasaEd e){
 		Vector<Libro> results=Session.currentSession().getSearchResults();
 		
-		for (int i=0; i<results.size(); i++)
-			if (results.get(i).getCasaEd().getId()!=e.getId()) results.remove(i);
+		for (int i=results.size()-1; i>=0; i--)
+			if (results.get(i).getCasaEd().getId()!=e.getId()) results.removeElementAt(i);
 		
 		if (results.isEmpty()) return false;
 		

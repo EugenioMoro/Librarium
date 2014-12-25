@@ -69,9 +69,9 @@ public class TableTest extends JFrame {
 		
 		//aggiungo al frame uno scollPane con la tabella all'interno
 		//this.add(new JScrollPane(tab));
-		this.add(LibriJPanJTab.getPane());
+		this.add(LibriJPanJTab.getInstance().getScrollpane());
 		@SuppressWarnings("unused")
-		ButtonColumn ordinaButton= new ButtonColumn(LibriJPanJTab.getTable(), LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
+		ButtonColumn ordinaButton= new ButtonColumn(LibriJPanJTab.getInstance().getTab(), LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
 		pack();
 		;
 	}

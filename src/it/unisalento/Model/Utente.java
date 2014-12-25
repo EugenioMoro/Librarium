@@ -6,7 +6,7 @@ public class Utente {
 	protected String cognome;
 	private String username;
 	private String password;
-	protected String data_ultimo_accesso;
+	protected java.sql.Date data_ultimo_accesso;
 	
 	public int getId() {
 		return id;
@@ -16,11 +16,11 @@ public class Utente {
 		this.id = id;
 	}
 
-	public String getData_ultimo_accesso() {
+	public java.sql.Date getData_ultimo_accesso() {
 		return data_ultimo_accesso;
 	}
 
-	public void setData_ultimo_accesso(String data_ultimo_accesso) {
+	public void setData_ultimo_accesso(java.sql.Date data_ultimo_accesso) {
 		this.data_ultimo_accesso = data_ultimo_accesso;
 	}
 

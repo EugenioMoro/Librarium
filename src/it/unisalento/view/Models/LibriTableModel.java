@@ -14,12 +14,23 @@ import javax.swing.table.AbstractTableModel;
 
 public class LibriTableModel extends AbstractTableModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vector<Libro> libri=Session.currentSession().getSearchResults();
 	private String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
 	
 	public void OrdinaLibro(int row, int col){
 		//TODO completare con metodi e controlli per ordinare un libro, per ora contiene solo un alert di test
 		//Ricorda: sarà qualcosa del tipo RichiestaDAO.ordinaLibro(libri.get(row), Session.currentSession().getCliente())
+		
+		if(Session.currentSession().getC().getUsername()!=null){
+			//TODO implementare metodi per cliente loggato
+		}
+		else{
+			MessageBoxes.alert("Attenzione", "Devi prima fare il log in");
+		}
 		MessageBoxes.alert("Bona", "Funziona, sei grande");
 	}
 	
@@ -82,6 +93,11 @@ public class LibriTableModel extends AbstractTableModel {
 
 	private static Action ordina = new AbstractAction() { //definisco l'azione da intraprendere al premere del bottone
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			

@@ -1,16 +1,20 @@
 package it.unisalento.view.Panels;
 
+import it.unisalento.listeners.RicercaJPanelListener;
 import it.unisalento.view.Models.SearchAutoriComboModel;
 import it.unisalento.view.Models.SearchCaseComboModel;
 import it.unisalento.view.Models.SearchGenereComboModel;
 
-import javax.swing.JPanel;
+import java.awt.event.ActionListener;
 
-import javax.swing.JComboBox;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
 
 public class RicercaJPanel extends JPanel {
 
@@ -28,10 +32,12 @@ public class RicercaJPanel extends JPanel {
 	private JLabel lblCasaEditrice;
 	private JLabel lblTitolo;
 	private static JTextField textField;
-	/**
-	 * Create the panel.
-	 */
-	public RicercaJPanel() {
+	private ActionListener listener;
+	
+	public RicercaJPanel(JTable tab) {
+		
+		listener=new RicercaJPanelListener(tab);
+		
 		setLayout(new MigLayout("", "[85px][176.00px,grow][110px][][][][67.00]", "[20px][][24.00:18.00]"));
 		
 		lblTitolo = new JLabel("Titolo");
@@ -61,9 +67,11 @@ public class RicercaJPanel extends JPanel {
 		
 		btnRicerca = new JButton("Ricerca");
 		add(btnRicerca, "cell 4 2,alignx left,growy");
+		btnRicerca.addActionListener(listener);
 		
 		btnReset = new JButton("Reset");
 		add(btnReset, "cell 6 2,alignx left,growy");
+		btnReset.addActionListener(listener);
 		
 		
 

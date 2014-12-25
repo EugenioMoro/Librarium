@@ -13,7 +13,7 @@ public class Cliente extends Utente {
 	
 	
 	
-	public Cliente(int id, String username, String password, String nome, String cognome,  String data_ultimo_accesso){
+	public Cliente(int id, String username, String password, String nome, String cognome,  java.sql.Date data_ultimo_accesso){
 		super(username, password);
 		this.nome=nome;
 		this.cognome=cognome;
