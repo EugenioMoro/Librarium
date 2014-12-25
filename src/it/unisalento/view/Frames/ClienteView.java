@@ -1,6 +1,8 @@
 package it.unisalento.view.Frames;
 
 import it.unisalento.business.Session;
+import it.unisalento.listeners.ClienteViewListener;
+import it.unisalento.view.Models.ButtonColumn;
 import it.unisalento.view.Models.LibriTableModel;
 import it.unisalento.view.Models.SearchTableInside;
 import it.unisalento.view.Panels.RicercaJPanel;
@@ -9,6 +11,7 @@ import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +32,7 @@ public class ClienteView extends JFrame implements SearchTableInside {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tab;
+	private ActionListener listener= new ClienteViewListener();
 
 	/**
 	 * Launch the application.
@@ -51,8 +55,8 @@ public class ClienteView extends JFrame implements SearchTableInside {
 	 */
 	public ClienteView() {
 		setTitle("Librarium - "+Session.currentSession().getC().getNome()+" "+Session.currentSession().getC().getCognome()+"");
-		defineColumnButton();
 		tab=new JTable(new LibriTableModel());
+		defineColumnButton();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 638, 660);
@@ -81,18 +85,27 @@ public class ClienteView extends JFrame implements SearchTableInside {
 		
 		JButton btnIMieiAcquisti = new JButton("I miei acquisti");
 		panel.add(btnIMieiAcquisti, "cell 5 1,growx");
+		btnIMieiAcquisti.addActionListener(listener);
+		btnIMieiAcquisti.setActionCommand(ClienteViewListener.ACQUISTIOPT);
+		
 		
 		JButton btnIMieiDati = new JButton("I miei dati");
 		panel.add(btnIMieiDati, "cell 7 1,growx");
+		btnIMieiDati.addActionListener(listener);
+		btnIMieiDati.setActionCommand(ClienteViewListener.DATIOPT);
 		
 		JLabel lblIlTuoUltimo = new JLabel("Il tuo ultimo accesso: "+Session.currentSession().getC().getData_ultimo_accesso()+"");
 		panel.add(lblIlTuoUltimo, "cell 0 2 1 2");
 		
 		JButton btnLeMieRichieste = new JButton("Le mie richieste");
 		panel.add(btnLeMieRichieste, "cell 5 3,growx");
+		btnLeMieRichieste.addActionListener(listener);
+		btnLeMieRichieste.setActionCommand(ClienteViewListener.RICHIESTEOPT);
 		
 		JButton btnLogOut = new JButton("Log Out");
 		panel.add(btnLogOut, "cell 7 3,growx");
+		btnLogOut.addActionListener(listener);
+		btnLogOut.setActionCommand(ClienteViewListener.LOGOUTOPT);
 		
 		JPanel panel_1 = new RicercaJPanel(tab);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -118,7 +131,9 @@ public class ClienteView extends JFrame implements SearchTableInside {
 
 	@Override
 	public void defineColumnButton() {
-		
+		@SuppressWarnings("unused")
+		ButtonColumn ordinaButton= new ButtonColumn(tab, LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
+
 	}
 
 }
