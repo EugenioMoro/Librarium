@@ -17,8 +17,11 @@ public  class metodiComuni { //questa classe che contiene i metodi comuni ed uti
 	}
 	
 
-	public Date stringToDate(String dateInString){
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+	public java.sql.Date stringToDate(String dateInString){
+		SimpleDateFormat formatter;
+		if (dateInString.length()>11)
+			formatter= new SimpleDateFormat("yyyy-MM-dd H:m:s");
+		else formatter= new SimpleDateFormat("yyyy-MM-dd");
 		Date date=new Date();
 		try {
 	 
@@ -28,7 +31,7 @@ public  class metodiComuni { //questa classe che contiene i metodi comuni ed uti
 		catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return date;
+		return new java.sql.Date(date.getTime());
 	}
 	
 	

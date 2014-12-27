@@ -1,15 +1,15 @@
 package it.unisalento.Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Richiesta {
 	
 	
 	private int ID_richiesta;
-	private int ID_utente;
+	private int ID_cliente;
 	private int ID_libro;
-	private Date data_richiesta;
-	private Date data_arrivo;
+	private java.sql.Date data_richiesta;
+	private java.sql.Date data_arrivo;
 	private boolean flag_inoltro;
 	private boolean flag_arrivo;
 	public int getID_richiesta() {
@@ -18,11 +18,11 @@ public class Richiesta {
 	public void setID_richiesta(int iD_richiesta) {
 		ID_richiesta = iD_richiesta;
 	}
-	public int getID_utente() {
-		return ID_utente;
+	public int getID_cliente() {
+		return ID_cliente;
 	}
-	public void setID_utente(int iD_utente) {
-		ID_utente = iD_utente;
+	public void setID_cliente(int iD_utente) {
+		ID_cliente = iD_utente;
 	}
 	public int getID_libro() {
 		return ID_libro;
@@ -61,7 +61,7 @@ public class Richiesta {
 			boolean flag_arrivo) {
 		super();
 		ID_richiesta = iD_richiesta;
-		ID_utente = iD_utente;
+		ID_cliente = iD_utente;
 		ID_libro = iD_libro;
 		this.data_richiesta = data_richiesta;
 		this.data_arrivo = data_arrivo;
@@ -72,7 +72,7 @@ public class Richiesta {
 	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
 			Date data_richiesta) {
 		ID_richiesta = iD_richiesta;
-		ID_utente = iD_utente;
+		ID_cliente = iD_utente;
 		ID_libro = iD_libro;
 		this.data_richiesta = data_richiesta;
 	}
@@ -80,7 +80,7 @@ public class Richiesta {
 	public Richiesta(int iD_richiesta, int iD_utente, int iD_libro,
 			Date data_richiesta, Date data_arrivo) {
 		ID_richiesta = iD_richiesta;
-		ID_utente = iD_utente;
+		ID_cliente = iD_utente;
 		ID_libro = iD_libro;
 		this.data_richiesta = data_richiesta;
 		this.data_arrivo = data_arrivo;

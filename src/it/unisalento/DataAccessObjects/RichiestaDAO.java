@@ -5,7 +5,6 @@ import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Libro;
 import it.unisalento.Model.Richiesta;
 
-import java.util.Date;
 import java.util.Vector;
 
 public class RichiestaDAO extends metodiComuni {
@@ -85,7 +84,7 @@ private static RichiestaDAO instance;
 		
 		Vector<Richiesta> richieste=new Vector<Richiesta>();
 		Vector<String[]> res=DbConnection.getInstance().eseguiQuery("SELECT ID_richiesta, cliente_utente_ID, libro_ID_libro, data_richiesta, data_arrivo, flag_inoltro, flag_arrivo FROM richiesta");
-		Date d = null;
+		java.sql.Date d = null;
 		
 		richieste.setSize(res.size());
 		

@@ -36,6 +36,7 @@ public class LogInDAO extends metodiComuni{
 			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select nome, cognome, data_ultimo_accesso, ID from utente where username='"+u.getUsername()+"'");
 			newU.setNome(results.get(0)[0]);
 			newU.setCognome(results.get(0)[1]);
+			newU.setData_ultimo_accesso(stringToDate(results.get(0)[2]));
 			newU.setId(Integer.parseInt(results.get(0)[3]));
 			newU.setUsername(u.getUsername());
 
@@ -48,7 +49,6 @@ public class LogInDAO extends metodiComuni{
 			
 			
 			Cliente newC=new Cliente(newU.getId(), newU.getUsername(), newU.getPassword(), newU.getNome(), newU.getCognome(), newU.getData_ultimo_accesso() );
-			
 			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select sesso, data_nascita, email, numero_telefonico from cliente where utente_ID='"+getUsernameId(newU)+"'");
 			if(Integer.parseInt(results.get(0)[0])==0) sesso=false;
 			newC.setSesso(sesso);
@@ -57,6 +57,16 @@ public class LogInDAO extends metodiComuni{
 			newC.setTelefono(results.get(0)[3]);
 			
 			return newC;
+		}
+		
+		public Cliente dettagliClientePerID(int id){
+			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("SELECT nome, cognome, email, numero_telefonico FROM utente inner JOIN cliente ON utente.ID="+id+" and cliente.utente_ID="+id+";");
+			Cliente c=new Cliente();
+			c.setNome(results.get(0)[0]);
+			c.setCognome(results.get(0)[1]);
+			c.setEmail(results.get(0)[2]);
+			c.setTelefono(results.get(0)[3]);
+			return c;
 		}
 	
 

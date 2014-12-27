@@ -4,11 +4,13 @@ import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.CasaEd_DAO;
 import it.unisalento.DataAccessObjects.Genere_DAO;
 import it.unisalento.DataAccessObjects.LibroDAO;
+import it.unisalento.DataAccessObjects.RichiestaDAO;
 import it.unisalento.Model.Autore;
 import it.unisalento.Model.CasaEd;
 import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
+import it.unisalento.Model.Richiesta;
 import it.unisalento.Model.Utente;
 import it.unisalento.view.Dialogs.MessageBoxes;
 
@@ -28,6 +30,7 @@ public class Session {
 	private static Vector <Genere> generi=Genere_DAO.getInstance().caricaGeneri();
 	private static Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
 	private static Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
+	private static Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
 	public final static String AMMINISTRATIVECODE="0000";
 	
 	
@@ -130,6 +133,18 @@ public class Session {
 	
 	public void DestroyC(){
 		Session.c=new Cliente();
+	}
+
+	public Vector<Richiesta> getRichieste() {
+		return richieste;
+	}
+
+	public void setRichieste(Vector<Richiesta> richieste) {
+		Session.richieste = richieste;
+	}
+	
+	public void aggiornaRichieste(){
+		Session.richieste=RichiestaDAO.getInstance().RichiesteStorico();
 	}
 	
 }

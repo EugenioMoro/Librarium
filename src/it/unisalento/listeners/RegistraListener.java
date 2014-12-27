@@ -28,7 +28,7 @@ public class RegistraListener implements ActionListener {
 	public final static String SESSOFOPT="sessof";
 	
 	private static JDialog dialog= new AddettoRegDialog();
-	private JFrame regCliente;
+	private static JFrame regCliente;
 	
 
 	
