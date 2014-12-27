@@ -22,8 +22,7 @@ public class LibriTableModel extends AbstractTableModel {
 	private String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
 	
 	public void OrdinaLibro(int row, int col){
-		//TODO completare con metodi e controlli per ordinare un libro, per ora contiene solo un alert di test
-		//Ricorda: sarà qualcosa del tipo RichiestaDAO.ordinaLibro(Session.currentSession().getSearchResults().get(row), Session.currentSession().getCliente())
+		
 
 		if(Session.currentSession().getC().getUsername()!=null){
 			if (Session.currentSession().getSearchResults().get(row).getDisp()==0){

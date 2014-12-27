@@ -1,8 +1,7 @@
 package it.unisalento.view.Frames;
 
-import it.unisalento.view.Models.ButtonColumn;
-import it.unisalento.view.Models.LibriTableModel;
-import it.unisalento.view.Panels.LibriJPanJTab;
+import it.unisalento.view.Models.RichiesteTableModel;
+import it.unisalento.view.Panels.RichiesteScrollPane;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -66,12 +65,11 @@ public class TableTest extends JFrame {
 		//JTable tab=new JTable(new LibriTableModel());
 		
 		//aggiungo al frame uno scollPane con la tabella all'interno
-		//this.add(new JScrollPane(tab));
-		this.add(LibriJPanJTab.getInstance().getScrollpane());
-		@SuppressWarnings("unused")
-		ButtonColumn ordinaButton= new ButtonColumn(LibriJPanJTab.getInstance().getTab(), LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
-		pack();
-		;
+		//this.add(new JScrollPane(tab))
+		RichiesteScrollPane panel= new RichiesteScrollPane(RichiesteTableModel.CLIENTEOPT);
+		getContentPane().add(panel.getScrollPane());
+		
+		
 	}
 
 }
