@@ -100,7 +100,7 @@ public class LogInDAO extends metodiComuni{
 					"\nQuesta eMail e' stata inviata da Librarium per una richiesta di password dimenticata. Se non e' stato Lei a fare tale "
 					+ "richiesta La preghiamo di ignorare questo messaggio.\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
 					+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
-			
+			email.inviaEmail();
 		}
 
 }
