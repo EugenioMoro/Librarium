@@ -68,6 +68,21 @@ public class LogInDAO extends metodiComuni{
 			c.setTelefono(results.get(0)[3]);
 			return c;
 		}
+		
+		public void cambiaPassword(Cliente c, String p){
+			DbConnection.getInstance().eseguiAggiornamento("update utente set password='"+p+"' where ID='"+c.getId()+"'");
+			c.setPassword(p);
+		}
+		
+		public void cambiaEmail(Cliente c, String e){
+			DbConnection.getInstance().eseguiAggiornamento("update cliente set email='"+e+"' where utente_ID='"+c.getId()+"'");
+			c.setEmail(e);
+		}
+		
+		public void cambiaTelefono(Cliente c, String t){
+			DbConnection.getInstance().eseguiAggiornamento("update cliente set numero_telefonico='"+t+"' where utente_ID='"+c.getId()+"'");
+			c.setTelefono(t);
+		}
 	
 
 }

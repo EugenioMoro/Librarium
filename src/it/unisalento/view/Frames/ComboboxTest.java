@@ -1,8 +1,8 @@
 package it.unisalento.view.Frames;
 
-import it.unisalento.view.Models.ButtonColumn;
 import it.unisalento.view.Models.LibriTableModel;
 import it.unisalento.view.Models.SearchTableInside;
+import it.unisalento.view.Panels.LibriJPanJTab;
 import it.unisalento.view.Panels.RicercaJPanel;
 
 import java.awt.EventQueue;
@@ -10,7 +10,6 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class ComboboxTest extends JFrame implements SearchTableInside {
@@ -20,7 +19,7 @@ public class ComboboxTest extends JFrame implements SearchTableInside {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static JTable tab;
-	private JScrollPane sPane;
+
 	
 
 	/**
@@ -49,16 +48,14 @@ public class ComboboxTest extends JFrame implements SearchTableInside {
 		
 		
 		
+		LibriJPanJTab tabPanel=new LibriJPanJTab(LibriTableModel.SCAFFALIOPT);
 		
-		tab=new JTable(new LibriTableModel());
-		sPane=new JScrollPane(tab);
-		JPanel searchPane=new RicercaJPanel(tab);
+		JPanel searchPane=new RicercaJPanel(tabPanel);
 		getContentPane().add(searchPane);
-		getContentPane().add(sPane);
+		getContentPane().add(tabPanel.getPanel());
 		pack();
 		
 		
-		defineColumnButton();
 	}
 
 	@Override
@@ -72,8 +69,6 @@ public class ComboboxTest extends JFrame implements SearchTableInside {
 
 	@Override
 	public void defineColumnButton() {
-		@SuppressWarnings("unused")
-		ButtonColumn ordinaButton= new ButtonColumn(tab, LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
 		
 	}
 

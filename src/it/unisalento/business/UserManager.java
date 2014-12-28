@@ -1,5 +1,6 @@
 package it.unisalento.business;
 
+import it.unisalento.DataAccessObjects.AcquistoDAO;
 import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.DataAccessObjects.NewUserDAO;
 import it.unisalento.Model.Cliente;
@@ -23,8 +24,12 @@ public class UserManager {
 		switch (tipo){
 		case "Cliente":
 			Session.currentSession().setC(LogInDAO.getInstance().caricaCliente(u));
+			Session.currentSession().setAcquisti(AcquistoDAO.getInstance().storicoCliente(Session.currentSession().getC()));
 			break;
-		default: Session.currentSession().setU(LogInDAO.getInstance().caricaUtente(u));
+		default:{
+			Session.currentSession().setU(LogInDAO.getInstance().caricaUtente(u));
+			Session.currentSession().setAcquisti(AcquistoDAO.getInstance().caricaStorico());
+		}
 		}
 		
 		
@@ -46,7 +51,7 @@ public class UserManager {
 	}
 	
 	
-	private static boolean checkOnString(String s){
+	public static boolean checkOnString(String s){
 		for (int i=0; i<s.length(); i++){
 			if (!Character.isLetter(s.charAt(i)) && !Character.isDigit(s.charAt(i))) return false;
 		}

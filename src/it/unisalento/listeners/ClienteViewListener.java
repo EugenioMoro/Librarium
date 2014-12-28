@@ -2,8 +2,12 @@ package it.unisalento.listeners;
 
 import it.unisalento.business.MainActivity;
 import it.unisalento.business.RichiesteManager;
+import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.ConfirmDialog;
 import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Frames.DatiClienteFrame;
+import it.unisalento.view.Models.AcquistiTableModel;
+import it.unisalento.view.Models.ButtonColumn;
 import it.unisalento.view.Models.RichiesteTableModel;
 import it.unisalento.view.Panels.RichiesteScrollPane;
 
@@ -12,6 +16,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class ClienteViewListener implements ActionListener {
 	
@@ -20,6 +26,7 @@ public class ClienteViewListener implements ActionListener {
 	public static final String RICHIESTEOPT="richieste";
 	public static final String LOGOUTOPT="logout";
 	private static JDialog confirmDialog;
+	private static JFrame datiFrame;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -42,28 +49,45 @@ public class ClienteViewListener implements ActionListener {
 	}
 
 	private void acquistiOpt(){
-		MessageBoxes.alert("TODO", "Da implementare");
+		JFrame frame= new JFrame();
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		AcquistiTableModel model= new AcquistiTableModel(AcquistiTableModel.CLIENTEOPT);
+		JTable tab = new JTable(model);
+		JScrollPane panel= new JScrollPane(tab);
+		@SuppressWarnings("unused")
+		ButtonColumn clienteButton= new ButtonColumn(tab, AcquistiTableModel.getElencoAction(), 2); //Definisco il bottone, input: tabella, azione, colonna
+		frame.add(panel);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	private void datiOpt(){
-		MessageBoxes.alert("TODO", "Da implementare");
+		datiFrame= new DatiClienteFrame();
+		datiFrame.setVisible(true);
 	}
 	
 	private void richiesteOpt(){
-		
+
 		RichiesteManager.getInstance().setStoricoCliente();
-		JFrame frame=new JFrame();
-		RichiesteScrollPane panel=new RichiesteScrollPane(RichiesteTableModel.CLIENTEOPT);
-		frame.add(panel.getScrollPane());
-		frame.pack();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+		if (!Session.currentSession().getRichieste().isEmpty()){
+			JFrame frame=new JFrame();
+			RichiesteScrollPane panel=new RichiesteScrollPane(RichiesteTableModel.CLIENTEOPT);
+			frame.add(panel.getScrollPane());
+			frame.pack();
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		} else MessageBoxes.alert("Attenzione", "Nessuna richiesta associata al tuo account");
 	}
-	
+
 	private void logOutOpt(){
 		confirmDialog= new ConfirmDialog();
 		confirmDialog.setVisible(true);
+	}
+	
+	public static void refreshDatiFrame(){
+		datiFrame.dispose();
+		datiFrame=new DatiClienteFrame();
+		datiFrame.setVisible(true);
 	}
 	
 	

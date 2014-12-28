@@ -2,9 +2,8 @@ package it.unisalento.view.Frames;
 
 import it.unisalento.business.Session;
 import it.unisalento.listeners.ClienteViewListener;
-import it.unisalento.view.Models.ButtonColumn;
 import it.unisalento.view.Models.LibriTableModel;
-import it.unisalento.view.Models.SearchTableInside;
+import it.unisalento.view.Panels.LibriJPanJTab;
 import it.unisalento.view.Panels.RicercaJPanel;
 
 import java.awt.EventQueue;
@@ -18,20 +17,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
 
-public class ClienteView extends JFrame implements SearchTableInside {
+public class ClienteView extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable tab;
 	private ActionListener listener= new ClienteViewListener();
 
 	/**
@@ -55,8 +52,7 @@ public class ClienteView extends JFrame implements SearchTableInside {
 	 */
 	public ClienteView() {
 		setTitle("Librarium - "+Session.currentSession().getC().getNome()+" "+Session.currentSession().getC().getCognome()+"");
-		tab=new JTable(new LibriTableModel());
-		defineColumnButton();
+		LibriJPanJTab tabPanel= new LibriJPanJTab(LibriTableModel.CLIENTEOPT);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 638, 660);
@@ -107,7 +103,7 @@ public class ClienteView extends JFrame implements SearchTableInside {
 		btnLogOut.addActionListener(listener);
 		btnLogOut.setActionCommand(ClienteViewListener.LOGOUTOPT);
 		
-		JPanel panel_1 = new RicercaJPanel(tab);
+		JPanel panel_1 = new RicercaJPanel(tabPanel);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
@@ -116,7 +112,7 @@ public class ClienteView extends JFrame implements SearchTableInside {
 		gbc_panel_1.gridy = 1;
 		contentPane.add(panel_1, gbc_panel_1);
 		
-		JScrollPane scrollPane = new JScrollPane(tab);
+		JScrollPane scrollPane = tabPanel.getPanel();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -124,16 +120,8 @@ public class ClienteView extends JFrame implements SearchTableInside {
 		contentPane.add(scrollPane, gbc_scrollPane);
 	}
 
-	@Override
-	public JTable getSearchTable() {
-		return this.tab;
-	}
 
-	@Override
-	public void defineColumnButton() {
-		@SuppressWarnings("unused")
-		ButtonColumn ordinaButton= new ButtonColumn(tab, LibriTableModel.getAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
 
-	}
+
 
 }

@@ -5,6 +5,7 @@ import it.unisalento.DataAccessObjects.CasaEd_DAO;
 import it.unisalento.DataAccessObjects.Genere_DAO;
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
+import it.unisalento.Model.Acquisto;
 import it.unisalento.Model.Autore;
 import it.unisalento.Model.CasaEd;
 import it.unisalento.Model.Cliente;
@@ -31,6 +32,7 @@ public class Session {
 	private static Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
 	private static Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
 	private static Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
+	private static Vector <Acquisto> acquisti;
 	public final static String AMMINISTRATIVECODE="0000";
 	
 	
@@ -145,6 +147,14 @@ public class Session {
 	
 	public void aggiornaRichieste(){
 		Session.richieste=RichiestaDAO.getInstance().RichiesteStorico();
+	}
+
+	public Vector <Acquisto> getAcquisti() {
+		return acquisti;
+	}
+
+	public void setAcquisti(Vector <Acquisto> acquisti) {
+		Session.acquisti = acquisti;
 	}
 	
 }

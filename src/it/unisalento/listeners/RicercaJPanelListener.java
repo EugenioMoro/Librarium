@@ -3,23 +3,22 @@ package it.unisalento.listeners;
 import it.unisalento.business.SearchEngine;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
-import it.unisalento.view.Frames.ComboboxTest;
+import it.unisalento.view.Panels.LibriJPanJTab;
 import it.unisalento.view.Panels.RicercaJPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 
 public class RicercaJPanelListener implements ActionListener {
 	
-	private JTable tab;
+	private LibriJPanJTab tabPanel;
 	
-	public RicercaJPanelListener(JTable tab) {
-		this.tab=tab;
+	public RicercaJPanelListener(LibriJPanJTab tabPanel) {
+		this.tabPanel=tabPanel;
 	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -56,18 +55,13 @@ public class RicercaJPanelListener implements ActionListener {
 					MessageBoxes.alert("Attenzione", "La ricerca non ha prodotto alcun risultato\nProva ad allargare i campi di ricerca");
 				}
 				else{
-					//MessageBoxes.alert("Risultati", ""+Session.currentSession().getSearchResults().size());
-					((AbstractTableModel)tab.getModel()).fireTableDataChanged();
-					ComboboxTest.refreshTable();
-//					JFrame frame=new JFrame();
-//					frame.setVisible(true);
-//					frame.add(new JScrollPane(tab));
+					tabPanel.refresh();
 				}
 			}
 		}
 		else{
 			Session.currentSession().resetSearchResults();
-			((AbstractTableModel)tab.getModel()).fireTableDataChanged();
+			tabPanel.refresh();
 		}
 	
 	}

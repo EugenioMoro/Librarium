@@ -14,12 +14,28 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 public class LibriTableModel extends AbstractTableModel {
+	
+	public final static String NEUTRALOPT="neutral";
+	public final static String CLIENTEOPT="cliente";
+	public final static String VENDITEOPT="vendite";
+	public final static String SCAFFALIOPT="scaffali";
+	private String option;
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
+	private String[] columnNamesCLIENTE={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
+	private String[] columnNamesNEUTRAL={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità"};
+	private String[] columnNamesVENDITE={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Carrello"};
+	private String[] columnNamesSCAFFALI={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Modifica"};
+
+
+
+	
+	public LibriTableModel(String option){
+		this.option=option;
+	}
 	
 	public void OrdinaLibro(int row, int col){
 		
@@ -62,7 +78,8 @@ public class LibriTableModel extends AbstractTableModel {
 	public int getColumnCount() {
 		
 		/*
-		 * Colonne in ordine: [0]Titolo-[1]Autori-[2]Casa Editrice-[3]Genere-[4]Costo-[5]Pagine-[6]ISBN-[7]Disponibilità-[8]OrdinaButton*/
+		 * Colonne in ordine: [0]Titolo-[1]Autori-[2]Casa Editrice-[3]Genere-[4]Costo-[5]Pagine-[6]ISBN-[7]Disponibilità-[8]SpecificButton*/
+		if (option.equals(NEUTRALOPT)) return 8;
 		return 9;
 	}
 
@@ -83,7 +100,13 @@ public class LibriTableModel extends AbstractTableModel {
 		case 5: return Session.currentSession().getSearchResults().get(row).getPagine();
 		case 6: return Session.currentSession().getSearchResults().get(row).getIsbn();
 		case 7: return Session.currentSession().getSearchResults().get(row).getDisp();
-		case 8: return "Ordina";
+		case 8: {
+			switch (option){
+			case LibriTableModel.CLIENTEOPT: return "Ordina";
+		    case LibriTableModel.SCAFFALIOPT: return "Modifica";
+		    case LibriTableModel.VENDITEOPT: return "Carrello";
+			}
+		}
 		
 		}
 		return null;
@@ -91,7 +114,13 @@ public class LibriTableModel extends AbstractTableModel {
 	
 	@Override
 	public String getColumnName(int col) {
-	    return columnNames[col];
+	    switch (option){
+	    case LibriTableModel.CLIENTEOPT: return columnNamesCLIENTE[col];
+	    case LibriTableModel.NEUTRALOPT: return columnNamesNEUTRAL[col];
+	    case LibriTableModel.SCAFFALIOPT: return columnNamesSCAFFALI[col];
+	    case LibriTableModel.VENDITEOPT: return columnNamesVENDITE[col];
+	    default: return null;
+	    }
 	}
 
 	private static Action ordina = new AbstractAction() { //definisco l'azione da intraprendere al premere del bottone
@@ -112,9 +141,61 @@ public class LibriTableModel extends AbstractTableModel {
 		}
 	};
 	
-	public static Action getAction(){
+private static Action modificaLibro = new AbstractAction() { //definisco l'azione da intraprendere al premere del bottone
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			//i commenti da ora in poi sono interpretazioni mie
+			JTable table = (JTable) e.getSource(); //collega la tabella che ha generato l'evento in modo da poterci lavorare in questo metodo
+			int row = Integer.valueOf(e.getActionCommand()); //getActionCommand dipende dal component della view generante, suppongo che con una jTable restituisca in string la row dove è stato generato l'evento
+			LibriTableModel model = (LibriTableModel) table.getModel(); //Ok, questo è meno chiaro di tutti, non capisco perchè non usare il costruttore del model anzichè fare il cast dal getModel della tabella, per poter riutilizzare il codice?
+			model.modificaLibro(row); //Qui è chiaro, invoca il metodo definito nella model
+		}
+	};
+	
+private static Action carrello = new AbstractAction() { //definisco l'azione da intraprendere al premere del bottone
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			//i commenti da ora in poi sono interpretazioni mie
+			JTable table = (JTable) e.getSource(); //collega la tabella che ha generato l'evento in modo da poterci lavorare in questo metodo
+			int row = Integer.valueOf(e.getActionCommand()); //getActionCommand dipende dal component della view generante, suppongo che con una jTable restituisca in string la row dove è stato generato l'evento
+			LibriTableModel model = (LibriTableModel) table.getModel(); //Ok, questo è meno chiaro di tutti, non capisco perchè non usare il costruttore del model anzichè fare il cast dal getModel della tabella, per poter riutilizzare il codice?
+			model.aggiungiCarrello(row); //Qui è chiaro, invoca il metodo definito nella model
+		}
+	};
+	
+	
+	public void modificaLibro(int row){
+		MessageBoxes.alert("TODO", "Da implementare");
+	}
+
+	public void aggiungiCarrello(int row){
+		MessageBoxes.alert("TODO", "Da implementare");
+	}
+	
+	public static Action getOrdinaAction(){
 		return ordina;
 	}
 	
+	public static Action getModificaAction(){
+		return modificaLibro;
+	}
+	
+	public static Action getCarrelloAction(){
+		return carrello;
+	}
 	
 }

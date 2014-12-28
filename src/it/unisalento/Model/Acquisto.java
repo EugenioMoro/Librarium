@@ -7,7 +7,7 @@ public class Acquisto {
 	
 	private int id;
 	private int cliente_id;
-	private Date data;
+	private java.sql.Date data;
 	private float incasso;
 	private Vector<Libro> libri;
 	
@@ -22,7 +22,7 @@ public class Acquisto {
 	public Date getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(java.sql.Date data) {
 		this.data = data;
 	}
 	public float getIncasso() {
@@ -45,7 +45,7 @@ public class Acquisto {
 		this.cliente_id = cliente_id;
 	}
 	//costruttore per caricare da db
-	public Acquisto(int id, Date data, float incasso, Vector<Libro> libri, int cliente_id) {
+	public Acquisto(int id, java.sql.Date data, float incasso, Vector<Libro> libri, int cliente_id) {
 		this.id = id;
 		this.data = data;
 		this.incasso = incasso;

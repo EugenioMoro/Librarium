@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
@@ -34,9 +33,9 @@ public class RicercaJPanel extends JPanel {
 	private static JTextField textField;
 	private ActionListener listener;
 	
-	public RicercaJPanel(JTable tab) {
+	public RicercaJPanel(LibriJPanJTab tabPanel) {
 		
-		listener=new RicercaJPanelListener(tab);
+		listener=new RicercaJPanelListener(tabPanel);
 		
 		setLayout(new MigLayout("", "[85px][176.00px,grow][110px][][][][67.00]", "[20px][][24.00:18.00]"));
 		
