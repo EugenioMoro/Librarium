@@ -86,21 +86,20 @@ public class LogInDAO extends metodiComuni{
 			c.setTelefono(t);
 		}
 	
-		public void passDimenticata() {
+		public void passDimenticata(String email) {
 			
-			Cliente newC = new Cliente();
-			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+newC.getEmail()+"'");
-			EmailSender email = new EmailSender( 
+			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
+			EmailSender newEmail = new EmailSender( 
 					"giulia_ma_94@hotmail.it", 
-					"andrea",
+					"qwerty",
 					"stmp.hotmail.it",
 					"giulia_ma_94@hotmail.it",
-					newC.getEmail(),
+					email,
 					"OGGETTO: Password Dimenticata",
 					"\nQuesta eMail e' stata inviata da Librarium per una richiesta di password dimenticata. Se non e' stato Lei a fare tale "
 					+ "richiesta La preghiamo di ignorare questo messaggio.\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
 					+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
-			email.inviaEmail();
+			newEmail.inviaEmail();
 		}
 
 }
