@@ -187,6 +187,7 @@ public class UserManager {
 		}
 		
 		NewUserDAO.getInstance().registraCliente(c);
+		//email
 		
 		return true;
 	}

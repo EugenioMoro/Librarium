@@ -91,10 +91,10 @@ public class LogInDAO extends metodiComuni{
 			{
 			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
 			EmailSender newEmail = new EmailSender( 
-					"giulia_ma_94@hotmail.it", 
-					"qwerty",
+					"giulia.marra@studenti.unisalento.it", 
+					"siskamia",
 					"stmp.hotmail.it",
-					"giulia_ma_94@hotmail.it",
+					"giulia.marra@studenti.unisalento.it",
 					email,
 					"OGGETTO: Password Dimenticata",
 					"\nQuesta eMail e' stata inviata da Librarium per una richiesta di password dimenticata. Se non e' stato Lei a fare tale "

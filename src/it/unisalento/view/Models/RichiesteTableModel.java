@@ -219,6 +219,8 @@ public class RichiesteTableModel extends AbstractTableModel {
 			if (r.isFlag_inoltro()){
 				RichiestaDAO.getInstance().SetArrivo(r);
 				MessageBoxes.alert("Arrivo", "Richiesta modificata");
+				
+				//email
 			} else{
 				RichiestaDAO.getInstance().SetInoltro(r);
 				MessageBoxes.alert("Inoltro", "Richiesta modificata");

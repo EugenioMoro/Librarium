@@ -66,7 +66,7 @@ public class TableTest extends JFrame {
 		
 		//aggiungo al frame uno scollPane con la tabella all'interno
 		//this.add(new JScrollPane(tab))
-		RichiesteScrollPane panel= new RichiesteScrollPane(RichiesteTableModel.CLIENTEOPT);
+		RichiesteScrollPane panel= new RichiesteScrollPane(RichiesteTableModel.ADDETTOOPT);
 		getContentPane().add(panel.getScrollPane());
 		
 		
