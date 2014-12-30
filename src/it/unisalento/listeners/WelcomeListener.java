@@ -73,6 +73,7 @@ public class WelcomeListener implements ActionListener {
 	
 	private void passwordOption(){
 		MessageBoxes.alert("TODO", "Metodo da implementare");
+		//jdialog con usrname
 	}
 	
 	private void catalogoOption(){

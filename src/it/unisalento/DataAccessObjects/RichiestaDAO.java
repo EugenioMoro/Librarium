@@ -113,5 +113,9 @@ private static RichiestaDAO instance;
 		}
 	
 	
+	public void mailAvvisoArrivo(Richiesta r) {
+		
+	}
+	
 	}
 
