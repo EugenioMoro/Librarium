@@ -53,6 +53,8 @@ public class WelcomeListener implements ActionListener {
 			switch (Session.currentSession().getTipo()){
 			case "Cliente":MainActivity.openClienteView();
 			break;
+			case "Vendite": MainActivity.openVenditeView();
+			break;
 			default: MessageBoxes.alert("TODO", "Implementare");
 			}
 			

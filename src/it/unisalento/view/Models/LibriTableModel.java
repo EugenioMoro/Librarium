@@ -1,11 +1,16 @@
 package it.unisalento.view.Models;
 
 import it.unisalento.DataAccessObjects.RichiestaDAO;
-
+import it.unisalento.business.CarrelloManager;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Frames.VenditeView;
+import it.unisalento.view.Panels.CarrelloJPanJTab;
 
 import java.awt.event.ActionEvent;
+
+
+
 
 
 import javax.swing.AbstractAction;
@@ -174,6 +179,7 @@ private static Action carrello = new AbstractAction() { //definisco l'azione da 
 			int row = Integer.valueOf(e.getActionCommand()); //getActionCommand dipende dal component della view generante, suppongo che con una jTable restituisca in string la row dove è stato generato l'evento
 			LibriTableModel model = (LibriTableModel) table.getModel(); //Ok, questo è meno chiaro di tutti, non capisco perchè non usare il costruttore del model anzichè fare il cast dal getModel della tabella, per poter riutilizzare il codice?
 			model.aggiungiCarrello(row); //Qui è chiaro, invoca il metodo definito nella model
+			VenditeView.aggiornaLabels();
 		}
 	};
 	
@@ -183,7 +189,10 @@ private static Action carrello = new AbstractAction() { //definisco l'azione da 
 	}
 
 	public void aggiungiCarrello(int row){
-		MessageBoxes.alert("TODO", "Da implementare");
+		if (Session.currentSession().getSearchResults().get(row).getDisp()>0){
+			CarrelloManager.getInstance().aggiungi(Session.currentSession().getSearchResults().get(row));
+			CarrelloJPanJTab.refresh();
+		} else MessageBoxes.alert("Attenzione", "Libro non disponibile");
 	}
 	
 	public static Action getOrdinaAction(){

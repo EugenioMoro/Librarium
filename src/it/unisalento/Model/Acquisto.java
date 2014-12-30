@@ -12,7 +12,6 @@ public class Acquisto {
 	private Vector<Libro> libri;
 	
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -63,6 +62,7 @@ public class Acquisto {
 
 	public Acquisto(){
 		this.libri=new Vector<Libro>();
+		this.incasso=0;
 	}
 	
 	
