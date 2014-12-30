@@ -86,7 +86,7 @@ public class LogInDAO extends metodiComuni{
 			c.setTelefono(t);
 		}
 	
-		public void passDimenticata(String email) {
+		public boolean passDimenticata(String email) {
 			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("SELECT count(*) FROM cliente WHERE email='"+email+"' ").get(0)[0])==1)
 			{
 			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
@@ -101,8 +101,10 @@ public class LogInDAO extends metodiComuni{
 					+ "richiesta La preghiamo di ignorare questo messaggio.\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
 					+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
 			newEmail.inviaEmail();
+			
+			return true;
 			}
-			else System.out.println("Email non valida.");
+			else return false;
 		}
 
 }

@@ -4,12 +4,14 @@ import it.unisalento.business.MainActivity;
 import it.unisalento.business.Session;
 import it.unisalento.business.UserManager;
 import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Dialogs.PasswordDimenticataDialog;
 import it.unisalento.view.Frames.OspiteView;
 import it.unisalento.view.Frames.WelcomeView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 
@@ -72,7 +74,9 @@ public class WelcomeListener implements ActionListener {
 	}
 	
 	private void passwordOption(){
-		MessageBoxes.alert("TODO", "Metodo da implementare");
+		JDialog passDimenticata = new PasswordDimenticataDialog();
+		passDimenticata.setVisible(true);
+		
 		//jdialog con usrname
 	}
 	
