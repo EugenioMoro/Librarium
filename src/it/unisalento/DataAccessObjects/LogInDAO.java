@@ -86,15 +86,14 @@ public class LogInDAO extends metodiComuni{
 			c.setTelefono(t);
 		}
 	
-		public boolean passDimenticata(String email) {
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("SELECT count(*) FROM cliente WHERE email='"+email+"' ").get(0)[0])==1)
-			{
+		public void passDimenticata(String email) {
+		
 			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
 			EmailSender newEmail = new EmailSender( 
-					"giulia.marra@studenti.unisalento.it", 
-					"siskamia",
-					"stmp.hotmail.it",
-					"giulia.marra@studenti.unisalento.it",
+					"marra.giulia.1994@gmail.com", 
+					"siskamia94",
+					"stmp.gmail.it",
+					"marra.giulia.1994@gmail.com",
 					email,
 					"OGGETTO: Password Dimenticata",
 					"\nQuesta eMail e' stata inviata da Librarium per una richiesta di password dimenticata. Se non e' stato Lei a fare tale "
@@ -102,9 +101,6 @@ public class LogInDAO extends metodiComuni{
 					+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
 			newEmail.inviaEmail();
 			
-			return true;
-			}
-			else return false;
 		}
 
 }

@@ -210,6 +210,10 @@ public class LibroDAO extends metodiComuni{
 		return libri;
 	}
 	
+	public void modificaTitolo(int id, String titolo) {
+		DbConnection.getInstance().eseguiQuery("UPDATE libro SET titolo = '"+titolo+"' WHERE ID_libro = '"+id+"'");
+	}
+	
 	
 }
 	
