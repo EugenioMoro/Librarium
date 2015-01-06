@@ -105,10 +105,10 @@ public final class NewUserDAO extends metodiComuni {
 		
 		Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+c.getEmail()+"'");
 		EmailSender newEmail = new EmailSender( 
-				"giulia.marra@studenti.unisalento.it", 
-				"siskamia",
-				"stmp.hotmail.it",
-				"giulia.marra@studenti.unisalento.it",
+				"marra.giulia.1994@gmail.com", 
+				"siskamia94",
+				"stmp.gmail.it",
+				"marra.giulia.1994@gmail.com",
 				c.getEmail(),
 				"OGGETTO: Benvenuto",
 				"\nBenvenuto in Librarium "+c.getNome()+" "+c.getCognome()+"!\n\nGrazie per aver scelto la nostra libreria!"

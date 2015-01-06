@@ -15,6 +15,7 @@ public class LibriJPanJTab {
 	public LibriJPanJTab(String option){
 		model=new LibriTableModel(option);
 		tab=new JTable(model);
+		tab.setAutoCreateRowSorter(true);
 		panel= new JScrollPane(tab);
 		
 		switch (option){ //definisco i bottoni
@@ -23,11 +24,11 @@ public class LibriJPanJTab {
 			ButtonColumn clienteButton= new ButtonColumn(tab, LibriTableModel.getOrdinaAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
 		}
 		break;
-		case LibriTableModel.SCAFFALIOPT:{
+	/*	case LibriTableModel.SCAFFALIOPT:{
 			@SuppressWarnings("unused")
 			ButtonColumn scaffaliButton= new ButtonColumn(tab, LibriTableModel.getModificaAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
-		}
-		break;
+		} 
+		break; */
 		case LibriTableModel.VENDITEOPT:{
 			@SuppressWarnings("unused")
 			ButtonColumn venditeButton= new ButtonColumn(tab, LibriTableModel.getCarrelloAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
