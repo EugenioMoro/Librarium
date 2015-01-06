@@ -13,11 +13,8 @@ import javax.swing.JButton;
 
 public class RicercaJPanelListener implements ActionListener {
 	
-	private LibriJPanJTab tabPanel;
 	
-	public RicercaJPanelListener(LibriJPanJTab tabPanel) {
-		this.tabPanel=tabPanel;
-	}
+	
 	
 	
 	@Override
@@ -32,19 +29,19 @@ public class RicercaJPanelListener implements ActionListener {
 			boolean effettuata=false;
 
 			if (!RicercaJPanel.getTextField().getText().isEmpty()){
-				continua=SearchEngine.getInstance().perTitolo(RicercaJPanel.getTextField().getText()); System.out.println("libro");
+				continua=SearchEngine.getInstance().perTitolo(RicercaJPanel.getTextField().getText());
 				effettuata=true;
 			}
 			if(RicercaJPanel.getGeneriCombo().getSelectedIndex()!=-1 && continua){
-				continua=SearchEngine.getInstance().perGenere(Session.currentSession().getGeneri().get(RicercaJPanel.getGeneriCombo().getSelectedIndex())); System.out.println("genere");
+				continua=SearchEngine.getInstance().perGenere(Session.currentSession().getGeneri().get(RicercaJPanel.getGeneriCombo().getSelectedIndex())); 
 				effettuata=true;
 			}
 			if(RicercaJPanel.getAutoriCombo().getSelectedIndex()!=-1 && continua){
-				continua=SearchEngine.getInstance().perAutore(Session.currentSession().getAutori().get(RicercaJPanel.getAutoriCombo().getSelectedIndex())); System.out.println("autore"+Session.currentSession().getAutori().get(RicercaJPanel.getAutoriCombo().getSelectedIndex()).getCognome());
+				continua=SearchEngine.getInstance().perAutore(Session.currentSession().getAutori().get(RicercaJPanel.getAutoriCombo().getSelectedIndex())); 
 				effettuata=true;
 			}
 			if(RicercaJPanel.getCaseCombo().getSelectedIndex()!=-1 && continua){
-				continua=SearchEngine.getInstance().perCasa(Session.currentSession().getCaseEd().get(RicercaJPanel.getCaseCombo().getSelectedIndex())); System.out.println("casa");
+				continua=SearchEngine.getInstance().perCasa(Session.currentSession().getCaseEd().get(RicercaJPanel.getCaseCombo().getSelectedIndex()));
 				effettuata=true;
 			}
 			
@@ -55,13 +52,14 @@ public class RicercaJPanelListener implements ActionListener {
 					MessageBoxes.alert("Attenzione", "La ricerca non ha prodotto alcun risultato\nProva ad allargare i campi di ricerca");
 				}
 				else{
-					tabPanel.refresh();
+					LibriJPanJTab.refresh();
 				}
 			}
 		}
 		else{
 			Session.currentSession().resetSearchResults();
-			tabPanel.refresh();
+			RicercaJPanel.resetFields();
+			LibriJPanJTab.refresh();
 		}
 	
 	}

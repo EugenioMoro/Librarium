@@ -41,4 +41,12 @@ public class TesseraDAO {
 		return DbConnection.getInstance().eseguiAggiornamento(query);
 	}
 	
+	public int idClienteTessera(String codice){
+		Vector<String[]> res = DbConnection.getInstance().eseguiQuery("select cliente_utente_ID from tessera where codice_tessera='"+codice+"'");
+		if (!res.isEmpty()){
+			return Integer.parseInt(res.get(0)[0]);
+		}
+		return -1;
+	}
+	
 }

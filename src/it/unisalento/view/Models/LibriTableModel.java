@@ -6,8 +6,10 @@ import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Frames.VenditeView;
 import it.unisalento.view.Panels.CarrelloJPanJTab;
+import it.unisalento.view.Panels.LibriJPanJTab;
 
 import java.awt.event.ActionEvent;
+
 
 
 
@@ -191,6 +193,7 @@ private static Action carrello = new AbstractAction() { //definisco l'azione da 
 	public void aggiungiCarrello(int row){
 		if (Session.currentSession().getSearchResults().get(row).getDisp()>0){
 			CarrelloManager.getInstance().aggiungi(Session.currentSession().getSearchResults().get(row));
+			LibriJPanJTab.refresh();
 			CarrelloJPanJTab.refresh();
 		} else MessageBoxes.alert("Attenzione", "Libro non disponibile");
 	}

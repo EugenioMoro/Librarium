@@ -41,6 +41,7 @@ public class LogInDAO extends metodiComuni{
 			newU.setData_ultimo_accesso(stringToDate(results.get(0)[2]));
 			newU.setId(Integer.parseInt(results.get(0)[3]));
 			newU.setUsername(u.getUsername());
+			DbConnection.getInstance().eseguiAggiornamento("update utente set data_ultimo_accesso=NOW() where ID='"+newU.getId()+"'");
 
 			return newU;
 		}

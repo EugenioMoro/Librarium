@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import it.unisalento.business.CarrelloManager;
 import it.unisalento.view.Frames.VenditeView;
+import it.unisalento.view.Panels.LibriJPanJTab;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -37,7 +38,7 @@ public class CarrelloTableModel extends AbstractTableModel {
 		case 4: return CarrelloManager.getInstance().getAcquisto().getLibri().get(row).getCosto();
 		case 5: return CarrelloManager.getInstance().getAcquisto().getLibri().get(row).getPagine();
 		case 6: return CarrelloManager.getInstance().getAcquisto().getLibri().get(row).getIsbn();
-		case 7: return CarrelloManager.getInstance().getAcquisto().getLibri().get(row).getDisp();
+		case 7: return CarrelloManager.getInstance().getAcquisto().getLibri().get(row).getQuantità();
 		case 8: return "Rimuovi";
 		}
 		return null;
@@ -45,7 +46,7 @@ public class CarrelloTableModel extends AbstractTableModel {
 	
 	@Override
 	public String getColumnName(int col) {
-		String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Rimuovi"};
+		String[] columnNames={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Quantità", "Rimuovi"};
 		return columnNames[col];
 	}
 	
@@ -75,6 +76,7 @@ public class CarrelloTableModel extends AbstractTableModel {
 			CarrelloTableModel model = (CarrelloTableModel) table.getModel();
 			rimuovi(row);
 			model.fireTableDataChanged();
+			LibriJPanJTab.refresh();
 			VenditeView.aggiornaLabels();
 		}
 	};

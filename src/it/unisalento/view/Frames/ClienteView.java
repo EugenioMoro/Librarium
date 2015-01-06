@@ -103,7 +103,7 @@ public class ClienteView extends JFrame {
 		btnLogOut.addActionListener(listener);
 		btnLogOut.setActionCommand(ClienteViewListener.LOGOUTOPT);
 		
-		JPanel panel_1 = new RicercaJPanel(tabPanel);
+		JPanel panel_1 = new RicercaJPanel();
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);

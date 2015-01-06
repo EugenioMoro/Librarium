@@ -1,5 +1,6 @@
 package it.unisalento.business;
 
+import it.unisalento.DataAccessObjects.AcquistoDAO;
 import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.CasaEd_DAO;
 import it.unisalento.DataAccessObjects.Genere_DAO;
@@ -23,37 +24,40 @@ public class Session {
 	
 	//variabili di sessione
 	private static Session currentSession;
-	private static Utente u;
-	private static Cliente c;
-	private static String tipo;
-	private static Vector <Autore> autori;
-	private static Vector <CasaEd> caseEd=CasaEd_DAO.getInstance().caricaCase();
-	private static Vector <Genere> generi=Genere_DAO.getInstance().caricaGeneri();
-	private static Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
-	private static Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
-	private static Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
-	private static Vector <Acquisto> acquisti;
+	private Utente u;
+	private Cliente c;
+	private String tipo;
+	private Vector <Autore> autori;
+	private Vector <CasaEd> caseEd=CasaEd_DAO.getInstance().caricaCase();
+	private Vector <Genere> generi=Genere_DAO.getInstance().caricaGeneri();
+	private Vector <Libro> tuttiLibri=LibroDAO.getInstance().caricaTutti();
+	private Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
+	private Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
+	private Vector <Acquisto> acquisti;
 	public final static String AMMINISTRATIVECODE="0000";
 	
 	
 	public static Session currentSession(){
 		if (currentSession==null){
-			u=new Utente();
-			c=new Cliente();
-			
-			try{
 			currentSession=new Session();
-			autori=Autore_DAO.getInstance().caricaAutori();
-			caseEd=CasaEd_DAO.getInstance().caricaCase();
-			generi=Genere_DAO.getInstance().caricaGeneri();
-			tuttiLibri=LibroDAO.getInstance().caricaTutti();
-			searchResults=tuttiLibri;
-			} catch(Exception e) {
-				e.printStackTrace();
-				MessageBoxes.errore("Errore", "Impossibile caricare dati da Database");
 			}
-		}
 		return currentSession;
+	}
+	
+	public Session(){
+		u=new Utente();
+		c=new Cliente();
+		
+		try{
+		autori=Autore_DAO.getInstance().caricaAutori();
+		caseEd=CasaEd_DAO.getInstance().caricaCase();
+		generi=Genere_DAO.getInstance().caricaGeneri();
+		tuttiLibri=LibroDAO.getInstance().caricaTutti();
+		searchResults=tuttiLibri;
+		} catch(Exception e) {
+			e.printStackTrace();
+			MessageBoxes.errore("Errore", "Impossibile caricare dati da Database");
+		}
 	}
 	
 	public void destroy(){
@@ -65,7 +69,7 @@ public class Session {
 	}
 
 	public void setU(Utente u) {
-		Session.u = u;
+		this.u = u;
 	}
 
 	public Cliente getC() {
@@ -77,11 +81,11 @@ public class Session {
 	}
 
 	public void setTipo(String tipo) {
-		Session.tipo = tipo;
+		this.tipo = tipo;
 	}
 
 	public void setC(Cliente c) {
-		Session.c = c;
+		this.c = c;
 	}
 
 	public Vector<Autore> getAutori() {
@@ -89,7 +93,7 @@ public class Session {
 	}
 
 	public void setAutori(Vector<Autore> autori) {
-		Session.autori = autori;
+		this.autori = autori;
 	}
 
 	public Vector<CasaEd> getCaseEd() {
@@ -97,7 +101,7 @@ public class Session {
 	}
 
 	public void setCaseEd(Vector<CasaEd> caseEd) {
-		Session.caseEd = caseEd;
+		this.caseEd = caseEd;
 	}
 
 	public Vector<Genere> getGeneri() {
@@ -105,7 +109,7 @@ public class Session {
 	}
 
 	public void setGeneri(Vector<Genere> generi) {
-		Session.generi = generi;
+		this.generi = generi;
 	}
 
 	public Vector<Libro> getTuttiLibri() {
@@ -113,7 +117,7 @@ public class Session {
 	}
 
 	public void setTuttiLibri(Vector<Libro> libri) {
-		Session.tuttiLibri = libri;
+		this.tuttiLibri = libri;
 	}
 
 	public Vector <Libro> getSearchResults() {
@@ -121,20 +125,20 @@ public class Session {
 	}
 
 	public void setSearchResults(Vector <Libro> searchResults) {
-		Session.searchResults = searchResults;
+		this.searchResults = searchResults;
 	}
 	
 	public void resetSearchResults(){
-		Session.searchResults=LibroDAO.getInstance().caricaTutti();
+		this.searchResults=LibroDAO.getInstance().caricaTutti();
 	}
 	
 	public void DestroyU()
 	{
-		Session.u=new Utente();
+		this.u=new Utente();
 	}
 	
 	public void DestroyC(){
-		Session.c=new Cliente();
+		this.c=new Cliente();
 	}
 
 	public Vector<Richiesta> getRichieste() {
@@ -142,19 +146,25 @@ public class Session {
 	}
 
 	public void setRichieste(Vector<Richiesta> richieste) {
-		Session.richieste = richieste;
+		this.richieste = richieste;
 	}
 	
 	public void aggiornaRichieste(){
-		Session.richieste=RichiestaDAO.getInstance().RichiesteStorico();
+		this.richieste=RichiestaDAO.getInstance().RichiesteStorico();
 	}
 
-	public Vector <Acquisto> getAcquisti() {
+	public Vector<Acquisto> getAcquisti() {
 		return acquisti;
 	}
 
-	public void setAcquisti(Vector <Acquisto> acquisti) {
-		Session.acquisti = acquisti;
+	public void setAcquisti(Vector<Acquisto> acquisti) {
+		this.acquisti = acquisti;
 	}
+	
+	public void aggiornaAcquisti(){
+		acquisti=AcquistoDAO.getInstance().caricaStorico();
+	}
+
+
 	
 }

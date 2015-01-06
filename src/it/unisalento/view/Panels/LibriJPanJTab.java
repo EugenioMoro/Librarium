@@ -10,7 +10,7 @@ public class LibriJPanJTab {
 	
 	private JScrollPane panel;
 	private JTable tab;
-	private LibriTableModel model;
+	private static LibriTableModel model;
 	
 	public LibriJPanJTab(String option){
 		model=new LibriTableModel(option);
@@ -35,7 +35,7 @@ public class LibriJPanJTab {
 		}
 	}
 
-	public void refresh(){
+	public static void refresh(){
 		model.fireTableDataChanged();
 	}
 	
@@ -59,8 +59,5 @@ public class LibriJPanJTab {
 		return model;
 	}
 
-	public void setModel(LibriTableModel model) {
-		this.model = model;
-	}
 	
 }

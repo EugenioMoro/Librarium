@@ -27,8 +27,10 @@ public class AcquistoDAO extends metodiComuni{
 		a.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_acquisto from acquisto").lastElement()[0]));
 		
 		for(int i=0; i<a.getLibri().size(); i++){
+			DbConnection.getInstance().eseguiAggiornamento("update libro set disponibilita=disponibilita-"+a.getLibri().get(i).getQuantità()+" where ID_libro='"+a.getLibri().get(i).getId()+"'");
 			if(!DbConnection.getInstance().eseguiAggiornamento("insert into acquisto_has_libro (acquisto_ID_acquisto, libro_ID_libro) values ('"+a.getId()+"', '"+a.getLibri().get(i).getId()+"')")) flag=false;
 		}
+		
 		
 		return flag;
 	}

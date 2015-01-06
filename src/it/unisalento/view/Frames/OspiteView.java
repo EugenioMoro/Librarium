@@ -46,7 +46,7 @@ public class OspiteView extends JFrame {
 		
 		LibriJPanJTab tabPanel=new LibriJPanJTab(LibriTableModel.CLIENTEOPT);
 		
-		JPanel SearchPanel = new RicercaJPanel(tabPanel);
+		JPanel SearchPanel = new RicercaJPanel();
 		getContentPane().add(SearchPanel, "cell 0 0,grow");
 		
 		JScrollPane scrollPane = tabPanel.getPanel();

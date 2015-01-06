@@ -3,7 +3,9 @@ package it.unisalento.business;
 import it.unisalento.DataAccessObjects.AcquistoDAO;
 import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.DataAccessObjects.NewUserDAO;
+import it.unisalento.DataAccessObjects.TesseraDAO;
 import it.unisalento.Model.Cliente;
+import it.unisalento.Model.Tessera;
 import it.unisalento.Model.Utente;
 import it.unisalento.view.Dialogs.MessageBoxes;
 
@@ -187,6 +189,7 @@ public class UserManager {
 		}
 		
 		NewUserDAO.getInstance().registraCliente(c);
+		TesseraDAO.getInstance().nuovaTessera(new Tessera(), c);
 		//email
 		
 		return true;

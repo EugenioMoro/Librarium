@@ -14,6 +14,7 @@ public class Libro {
 	private String isbn;
 	private int Pagine;
 	private int disp;
+	private int quantità=1;
 
 
 
@@ -142,6 +143,12 @@ public class Libro {
 	}
 	public Libro() {
 		
+	}
+	public int getQuantità() {
+		return quantità;
+	}
+	public void setQuantità(int quantità) {
+		this.quantità = quantità;
 	}
 
 }

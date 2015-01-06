@@ -57,7 +57,6 @@ public class VenditeView extends JFrame {
 	 */
 	public VenditeView() {
 		setTitle("Librarium - Vendite");
-		LibriJPanJTab tabPanel= new LibriJPanJTab(LibriTableModel.VENDITEOPT);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 638, 660);
@@ -88,10 +87,12 @@ public class VenditeView extends JFrame {
 		toolPanel.add(btnStorico, "cell 2 1,growx");
 		btnStorico.addActionListener(listener);
 		btnStorico.setActionCommand(VenditeViewListener.STORICOOPT);
-				
-				JButton btnVendiCarrello = new JButton("Vendi Carrello");
-				toolPanel.add(btnVendiCarrello, "cell 4 1,growx");
-		
+
+		JButton btnVendiCarrello = new JButton("Vendi Carrello");
+		toolPanel.add(btnVendiCarrello, "cell 4 1,growx");
+		btnVendiCarrello.setActionCommand(VenditeViewListener.VENDIOPT);
+		btnVendiCarrello.addActionListener(listener);
+
 
 		toolPanel.add(lblLibri, "cell 7 1");
 
@@ -112,7 +113,7 @@ public class VenditeView extends JFrame {
 		btnLogOut.addActionListener(listener);
 
 
-		JPanel ricercaPanel = new RicercaJPanel(tabPanel);
+		JPanel ricercaPanel = new RicercaJPanel();
 		ricercaPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagConstraints gbc_ricercaPanel = new GridBagConstraints();
 		gbc_ricercaPanel.insets = new Insets(0, 0, 5, 0);

@@ -1,8 +1,10 @@
 package it.unisalento.listeners;
 
 import it.unisalento.business.CarrelloManager;
+import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.ConfirmDialog;
 import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Dialogs.TesseraDialog;
 import it.unisalento.view.Frames.VenditeView;
 import it.unisalento.view.Models.AcquistiTableModel;
 import it.unisalento.view.Models.ButtonColumn;
@@ -11,6 +13,7 @@ import it.unisalento.view.Panels.CarrelloJPanJTab;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +24,7 @@ public class VenditeViewListener implements ActionListener{
 	public final static String VENDIOPT="vendite";
 	public final static String LOGOUTOPT="logout";
 	public final static String SVUOTAOPT="svuota";
+	public final static String OKOPT="ok";
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -30,6 +34,8 @@ public class VenditeViewListener implements ActionListener{
 		case STORICOOPT: storicoOpt();
 		break;
 		case SVUOTAOPT: svuotaOpt();
+		break;
+		case VENDIOPT: vendiOpt();
 		break;
 		default: MessageBoxes.alert("TODO", "");
 		}
@@ -42,6 +48,7 @@ public class VenditeViewListener implements ActionListener{
 	}
 	
 	private void storicoOpt(){
+		Session.currentSession().aggiornaAcquisti();
 		JFrame frame= new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		AcquistiTableModel model= new AcquistiTableModel(AcquistiTableModel.ADDETTOOPT);
@@ -61,5 +68,11 @@ public class VenditeViewListener implements ActionListener{
 		VenditeView.aggiornaLabels();
 		CarrelloJPanJTab.refresh();
 	}
+	
+	private void vendiOpt(){
+		JDialog dialog=new TesseraDialog();
+		dialog.setVisible(true);
+	}
+	
 	
 }

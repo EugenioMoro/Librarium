@@ -33,9 +33,9 @@ public class RicercaJPanel extends JPanel {
 	private static JTextField textField;
 	private ActionListener listener;
 	
-	public RicercaJPanel(LibriJPanJTab tabPanel) {
+	public RicercaJPanel() {
 		
-		listener=new RicercaJPanelListener(tabPanel);
+		listener=new RicercaJPanelListener();
 		
 		setLayout(new MigLayout("", "[85px][176.00px,grow][110px][][][][67.00]", "[20px][][24.00:18.00]"));
 		
@@ -87,5 +87,11 @@ public class RicercaJPanel extends JPanel {
 	public static JTextField getTextField() {
 		return textField;
 	}
-
+	
+	public static void resetFields(){
+		autoriCombo.setSelectedIndex(-1);
+		generiCombo.setSelectedIndex(-1);
+		caseCombo.setSelectedIndex(-1);
+		textField.setText(null);
+	}
 }

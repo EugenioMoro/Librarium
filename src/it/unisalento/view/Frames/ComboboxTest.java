@@ -50,7 +50,7 @@ public class ComboboxTest extends JFrame implements SearchTableInside {
 		
 		LibriJPanJTab tabPanel=new LibriJPanJTab(LibriTableModel.SCAFFALIOPT);
 		
-		JPanel searchPane=new RicercaJPanel(tabPanel);
+		JPanel searchPane=new RicercaJPanel();
 		getContentPane().add(searchPane);
 		getContentPane().add(tabPanel.getPanel());
 		pack();
