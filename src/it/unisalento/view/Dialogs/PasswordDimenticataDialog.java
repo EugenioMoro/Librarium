@@ -8,6 +8,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -60,9 +62,17 @@ public class PasswordDimenticataDialog extends JDialog {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						LogInDAO.getInstance().passDimenticata(textField.getText());
-						if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("SELECT count(*) FROM cliente WHERE email='"+textField.getText()+"' ").get(0)[0])==1)
+					/*	if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("SELECT count(*) FROM cliente WHERE email='"+textField.getText()+"' ").get(0)[0])==1)
+							MessageBoxes.alert("Attenzione!", "L'email non è registrata."); */
+						try {
+							LogInDAO.getInstance().passDimenticata(textField.getText());
+						} catch (AddressException e1) {
 							MessageBoxes.alert("Attenzione!", "L'email non è registrata.");
+							e1.printStackTrace();
+						} catch (MessagingException e1) {
+							MessageBoxes.alert("Attenzione!", "Impossibile inviare messaggio.");
+							e1.printStackTrace();
+						}
 						
 					}
 				});

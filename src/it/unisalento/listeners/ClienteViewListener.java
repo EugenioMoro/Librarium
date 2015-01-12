@@ -41,7 +41,8 @@ public class ClienteViewListener implements ActionListener {
 			break;
 			case "Cancel": confirmDialog.dispose();
 			break;
-			case "OK": MainActivity.backToWelcome();
+			case "OK": confirmDialog.dispose();
+					MainActivity.backToWelcome();
 			break;
 			default: MessageBoxes.errore("Errore", "Errore Sconosciuto");
 			}

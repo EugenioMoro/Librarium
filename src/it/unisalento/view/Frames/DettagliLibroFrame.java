@@ -39,25 +39,25 @@ public class DettagliLibroFrame extends JFrame {
 	public DettagliLibroFrame(Libro l) {
 		setTitle(l.getTitolo());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 209, 248);
+		setBounds(100, 100, 293, 248);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel genere = new JLabel("Genere: '"+l.getGenere().getNome()+"'");
-		genere.setBounds(10, 36, 173, 14);
+		genere.setBounds(10, 36, 244, 14);
 		contentPane.add(genere);
 		
 		JLabel autore = new JLabel();
 		if (l.getAutori().size()==1)
 			autore.setText("Autore: '"+l.autoriToString()+"'");
 		else autore.setText("Autori: '"+l.autoriToString()+"'");
-		autore.setBounds(10, 61, 173, 14);
+		autore.setBounds(10, 61, 244, 14);
 		contentPane.add(autore);
 		
 		JLabel casa = new JLabel("Casa Editrice: '"+l.getCasaEd().getNome()+"'");
-		casa.setBounds(10, 86, 173, 14);
+		casa.setBounds(10, 86, 244, 14);
 		contentPane.add(casa);
 		
 		JLabel pagine = new JLabel("Pagine: '"+l.getPagine()+"'");
