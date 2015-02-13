@@ -78,6 +78,7 @@ public class AcquistiTableModel extends AbstractTableModel{
 	public void elencoLibri(int row){
 		JFrame frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		Session.currentSession().setSearchResults(Session.currentSession().getAcquisti().get(row).getLibri());
 		LibriJPanJTab panel = new LibriJPanJTab(LibriTableModel.NEUTRALOPT);
 		frame.add(panel.getPanel());
 		frame.pack();

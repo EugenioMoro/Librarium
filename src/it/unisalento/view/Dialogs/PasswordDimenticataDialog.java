@@ -1,7 +1,6 @@
 package it.unisalento.view.Dialogs;
 
 import it.unisalento.DataAccessObjects.LogInDAO;
-import it.unisalento.DbConnection.DbConnection;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,8 +12,8 @@ import javax.mail.internet.AddressException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class PasswordDimenticataDialog extends JDialog {
 
