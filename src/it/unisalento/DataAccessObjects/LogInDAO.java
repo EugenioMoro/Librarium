@@ -1,4 +1,5 @@
 package it.unisalento.DataAccessObjects;
+import java.security.GeneralSecurityException;
 import java.util.Vector;
 
 import javax.mail.MessagingException;
@@ -105,7 +106,7 @@ public class LogInDAO extends metodiComuni{
 			newEmail.inviaEmail();
 			
 		}   */
-		public void passDimenticata(String email) throws AddressException, MessagingException {
+		public void passDimenticata(String email) {
 			
 			
 			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
@@ -119,8 +120,8 @@ public class LogInDAO extends metodiComuni{
 		
 		
 
-	public static void main(String[] args){ 
-		EmailSender eMail = new EmailSender("ndrntn@gmail.com", "ApAssfOrGM","smtp.gmail.com", "ndrntn@gmail.com", "ndrntn@gmail.com",
+	public static void main(String[] args) { 
+		EmailSender eMail = new EmailSender("marra.giulia.1994@gmail.com", "siskamia94","smtp.gmail.com", "marra.giulia.1994@gmail.com", "marra.giulia.1994@gmail.com",
 				"OGGETTO: Password Dimenticata",
 				"\ncorpo messaggio");
 		 eMail.inviaEmail();

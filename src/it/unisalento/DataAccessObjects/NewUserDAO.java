@@ -8,6 +8,8 @@ import it.unisalento.Model.Utente;
 
 
 
+
+import java.security.GeneralSecurityException;
 import java.util.Vector;
 
 
@@ -101,7 +103,7 @@ public final class NewUserDAO extends metodiComuni {
 		return flag;
 	}
 
-	public void mailBenvenuto(Cliente c) {
+	public void mailBenvenuto(Cliente c) throws GeneralSecurityException {
 		
 		Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+c.getEmail()+"'");
 		EmailSender newEmail = new EmailSender( 

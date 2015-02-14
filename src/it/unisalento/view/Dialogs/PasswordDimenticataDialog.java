@@ -15,6 +15,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PasswordDimenticataDialog extends JDialog {
 
@@ -42,6 +44,8 @@ public class PasswordDimenticataDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public PasswordDimenticataDialog() {
+		setTitle("Password dimenticata");
+		
 		setBounds(100, 100, 378, 212);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,9 +53,19 @@ public class PasswordDimenticataDialog extends JDialog {
 		contentPanel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(20, 89, 184, 25);
+		textField.setBounds(20, 62, 291, 25);
 		contentPanel.add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblInserireLemailCo = new JLabel("Inserire l'indirizzo email con il quale si \u00E8 registrato:");
+		lblInserireLemailCo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblInserireLemailCo.setBounds(10, 11, 334, 32);
+		contentPanel.add(lblInserireLemailCo);
+		
+		JLabel lblABreveLe = new JLabel("A breve le verr\u00E0 inviata una mail con la sua password.");
+		lblABreveLe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblABreveLe.setBounds(20, 98, 324, 31);
+		contentPanel.add(lblABreveLe);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -62,17 +76,7 @@ public class PasswordDimenticataDialog extends JDialog {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-					/*	if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("SELECT count(*) FROM cliente WHERE email='"+textField.getText()+"' ").get(0)[0])==1)
-							MessageBoxes.alert("Attenzione!", "L'email non è registrata."); */
-						try {
-							LogInDAO.getInstance().passDimenticata(textField.getText());
-						} catch (AddressException e1) {
-							MessageBoxes.alert("Attenzione!", "L'email non è registrata.");
-							e1.printStackTrace();
-						} catch (MessagingException e1) {
-							MessageBoxes.alert("Attenzione!", "Impossibile inviare messaggio.");
-							e1.printStackTrace();
-						}
+					LogInDAO.getInstance().passDimenticata(textField.getText());
 						
 					}
 				});
