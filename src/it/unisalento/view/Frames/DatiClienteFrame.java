@@ -1,5 +1,6 @@
 package it.unisalento.view.Frames;
 
+import it.unisalento.DataAccessObjects.TesseraDAO;
 import it.unisalento.Model.Cliente;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.CambiaEmailDialog;
@@ -80,6 +81,9 @@ public class DatiClienteFrame extends JFrame {
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		Cliente c=Session.currentSession().getC();
+		
+		JLabel lblTessera = new JLabel("Tessera: "+TesseraDAO.getInstance().caricaTessera(Session.currentSession().getC()).getCodice());
+		contentPane.add(lblTessera, "2, 2");
 		
 		JLabel lblNome = new JLabel("Nome: "+c.getNome());
 		contentPane.add(lblNome, "2, 4");

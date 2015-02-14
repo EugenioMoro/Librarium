@@ -57,11 +57,15 @@ public class RicercaJPanelListener implements ActionListener {
 			}
 		}
 		else{
-			Session.currentSession().resetSearchResults();
-			RicercaJPanel.resetFields();
-			LibriJPanJTab.refresh();
+			resetSearch();
 		}
 	
+	}
+	
+	public static void resetSearch(){
+		Session.currentSession().resetSearchResults();
+		RicercaJPanel.resetFields();
+		LibriJPanJTab.refresh();
 	}
 
 }

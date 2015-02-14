@@ -211,9 +211,36 @@ public class LibroDAO extends metodiComuni{
 	}
 	
 	public void modificaTitolo(int id, String titolo) {
-		DbConnection.getInstance().eseguiQuery("UPDATE libro SET titolo = '"+titolo+"' WHERE ID_libro = '"+id+"'");
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET titolo = '"+titolo+"' WHERE ID_libro = '"+id+"'");
 	}
 	
+	public void modificaCasa(int idLibro, int idCasa){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET casa_editrice_ID_casa_editrice = '"+idCasa+"' WHERE ID_libro = '"+idLibro+"'");
+	}
+	
+	public void modificaGenere(int idLibro, int idGenere){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET genere_ID_genere = '"+idGenere+"' WHERE ID_libro = '"+idLibro+"'");
+	}
+	
+	public void modificaCosto(int id, int costo){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET costo = '"+costo+"' WHERE ID_libro = '"+id+"'");
+	}
+	
+	public void modificaDisp(int disp, int id){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET disponibilita = '"+disp+"' WHERE ID_libro = '"+id+"'");
+	}
+	
+	public void FlagOrdineTrue(int id){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET flag_ordine = '1' WHERE ID_libro = '"+id+"'");
+	}
+	
+	public void modificaISBN(String ISBN, int id){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET ISBN = '"+ISBN+"' WHERE ID_libro = '"+id+"'");
+	}
+	
+	public void modificaPagine(int pagine, int id){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET numero_pagine = '"+pagine+"' WHERE ID_libro = '"+id+"'");
+	}
 	
 }
 	

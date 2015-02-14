@@ -1,6 +1,5 @@
 package it.unisalento.listeners;
 
-import it.unisalento.business.MainActivity;
 import it.unisalento.business.RichiesteManager;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.ConfirmDialog;
@@ -38,10 +37,6 @@ public class ClienteViewListener implements ActionListener {
 			case RICHIESTEOPT: richiesteOpt();
 			break;
 			case LOGOUTOPT: logOutOpt();
-			break;
-			case "Cancel": confirmDialog.dispose();
-			break;
-			case "OK": MainActivity.backToWelcome();
 			break;
 			default: MessageBoxes.errore("Errore", "Errore Sconosciuto");
 			}

@@ -48,7 +48,6 @@ public class WelcomeListener implements ActionListener {
 		if(!WelcomeView.getTxtUsername().getText().isEmpty() && !new String(WelcomeView.getPwdPassword().getPassword()).isEmpty()){
 		Session.currentSession().getU().setUsername(WelcomeView.getTxtUsername().getText());
 		Session.currentSession().getU().setPassword(new String(WelcomeView.getPwdPassword().getPassword()));
-		System.out.println(Session.currentSession().getU().getUsername()+" "+Session.currentSession().getU().getPassword());
 		
 		if(UserManager.logIn()){
 			

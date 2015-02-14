@@ -46,6 +46,7 @@ public class RegistraListener implements ActionListener {
 		case "vendite": venditeOption();
 		break;
 		case "OK": OKOption();
+		dialog.dispose();
 		break;
 		case "cancel": dialog.setVisible(false);
 		break;

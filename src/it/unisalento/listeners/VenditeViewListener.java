@@ -66,6 +66,7 @@ public class VenditeViewListener implements ActionListener{
 	private void svuotaOpt(){
 		CarrelloManager.getInstance().svuota();
 		VenditeView.aggiornaLabels();
+		RicercaJPanelListener.resetSearch();
 		CarrelloJPanJTab.refresh();
 	}
 	

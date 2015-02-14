@@ -1,15 +1,17 @@
 package it.unisalento.view.Dialogs;
 
-import it.unisalento.listeners.ClienteViewListener;
+import it.unisalento.business.MainActivity;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 
 public class ConfirmDialog extends JDialog {
 
@@ -51,15 +53,28 @@ public class ConfirmDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				okButton.addActionListener(new ClienteViewListener());
+				okButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MainActivity.backToWelcome();
+						dispose();
+					}
+				});
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				cancelButton.addActionListener(new ClienteViewListener());
+				
+				cancelButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+						
+					}
+				});
 				buttonPane.add(cancelButton);
 			}
 		}

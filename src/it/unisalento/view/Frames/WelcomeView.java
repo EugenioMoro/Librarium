@@ -43,7 +43,7 @@ public class WelcomeView extends JFrame {
 	
 	public WelcomeView() {
 		setTitle("Librarium");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 531, 350);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setForeground(new Color(0, 206, 209));
@@ -116,11 +116,11 @@ public class WelcomeView extends JFrame {
 		lowPanel.setLayout(null);
 		
 		JLabel lblEugenioMoro = new JLabel("Eugenio Moro");
-		lblEugenioMoro.setBounds(10, 0, 65, 25);
+		lblEugenioMoro.setBounds(93, 0, 112, 25);
 		lowPanel.add(lblEugenioMoro);
 		
 		JLabel lblGiuliaMarra = new JLabel("Giulia Marra");
-		lblGiuliaMarra.setBounds(92, 0, 65, 25);
+		lblGiuliaMarra.setBounds(10, 0, 88, 25);
 		lowPanel.add(lblGiuliaMarra);
 		
 		JLabel lblUnisalento = new JLabel("Unisalento, 2014");

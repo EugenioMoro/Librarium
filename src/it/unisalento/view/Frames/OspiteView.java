@@ -52,6 +52,7 @@ public class OspiteView extends JFrame {
 		JScrollPane scrollPane = tabPanel.getPanel();
 		getContentPane().add(scrollPane, "cell 0 2,grow");
 		
+		pack();
 		
 		
 		
