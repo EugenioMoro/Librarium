@@ -1,13 +1,14 @@
 package it.unisalento.view.Frames;
 
-import it.unisalento.view.Models.RichiesteTableModel;
-import it.unisalento.view.Panels.RichiesteScrollPane;
+import it.unisalento.view.Models.LibriTableModel;
+import it.unisalento.view.Panels.LibriJPanJTab;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 public class TableTest extends JFrame {
@@ -42,34 +43,19 @@ public class TableTest extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		LibriJPanJTab lPan=new LibriJPanJTab(LibriTableModel.SCAFFALIOPT);
 		
-//		Action ordina = new AbstractAction() { //definisco l'azione da intraprendere al premere del bottone
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				
-//				//i commenti da ora in poi sono interpretazioni mie
-//				JTable table = (JTable) e.getSource(); //collega la tabella che ha generato l'evento in modo da poterci lavorare in questo metodo
-//				int row = Integer.valueOf(e.getActionCommand()); //getActionCommand dipende dal component della view generante, suppongo che con una jTable restituisca in string la row dove è stato generato l'evento
-//				LibriTableModel model = (LibriTableModel) table.getModel(); //Ok, questo è meno chiaro di tutti, non capisco perchè non usare il costruttore del model anzichè fare il cast dal getModel della tabella, per poter riutilizzare il codice?
-//				model.OrdinaLibro(row, 0); //Qui è chiaro, invoca il metodo definito nella model
-//			}
-//		};
+		JScrollPane scrollPane = lPan.getPanel();
+		contentPane.add(scrollPane);
+		
+		pack();
 		
 		
 		
-		//creo la tabella usando il model
-		//JTable tab=new JTable(new LibriTableModel());
-		
-		//aggiungo al frame uno scollPane con la tabella all'interno
-		//this.add(new JScrollPane(tab))
-		RichiesteScrollPane panel= new RichiesteScrollPane(RichiesteTableModel.ADDETTOOPT);
-		getContentPane().add(panel.getScrollPane());
 		
 		
 	}
-
 }

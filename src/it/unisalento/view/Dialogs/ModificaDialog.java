@@ -5,6 +5,7 @@ import it.unisalento.business.Session;
 import it.unisalento.view.Models.ModelMethods;
 import it.unisalento.view.Models.SearchCaseComboModel;
 import it.unisalento.view.Models.SearchGenereComboModel;
+import it.unisalento.view.Panels.LibriJPanJTab;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -19,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class ModificaDialog extends JDialog {
-	
+
 	public final static String TITOLOOPT="titolo";
 	public final static String GENEREOPT="genere";
 	public final static String CASAOPT="casa";
@@ -27,12 +28,12 @@ public class ModificaDialog extends JDialog {
 	public final static String DISPOPT="disp";
 	public final static String ISBNOPT="isbn";
 	public final static String PAGINEOPT="pagine";
-	
-	
-	
+
+
+
 	private String option;
 	private Libro l;
-	
+
 	private ActionListener 	listener;
 
 	/**
@@ -65,11 +66,11 @@ public class ModificaDialog extends JDialog {
 		this.option=option;
 		l=Session.currentSession().getSearchResults().get(index);
 		setup();
-		
+
 	}
-	
+
 	private void setup(){
-		
+
 		//setup comune a tutte le opzioni
 		setBounds(100, 100, 450, 129);
 		getContentPane().setLayout(new BorderLayout());
@@ -84,11 +85,11 @@ public class ModificaDialog extends JDialog {
 			getRootPane().setDefaultButton(okButton);
 			buttonPane.add(cancelButton);
 			cancelButton.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					
+
 				}
 			});
 		}
@@ -101,16 +102,17 @@ public class ModificaDialog extends JDialog {
 			textField.selectAll();
 			contentPanel.add(textField);
 			textField.setColumns(10);
-			
+
 			okButton.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if (ModelMethods.modificaTitolo(l.getId(), textField.getText())){
+					if (ModelMethods.modificaTitolo(l, textField.getText())){
 						MessageBoxes.alert("", "Titolo modificato");
+						tableRefresh();
 						dispose();
 					}
-					
+
 				}
 			});
 		}
@@ -120,12 +122,24 @@ public class ModificaDialog extends JDialog {
 			setTitle("Cambia Genere");
 			comboBox = new JComboBox<String>(new SearchGenereComboModel());
 			contentPanel.add(comboBox);
+			ModelMethods.modificaGenere(l, Session.currentSession().getGeneri().get(comboBox.getSelectedIndex()));
 		}
 		break;
 		case CASAOPT:{
 			setTitle("Cambia Casa Editrice");
 			comboBox = new JComboBox<String>(new SearchCaseComboModel());
 			contentPanel.add(comboBox);
+			okButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					ModelMethods.modificaCasa(l, Session.currentSession().getCaseEd().get(comboBox.getSelectedIndex()));
+					MessageBoxes.alert("", "Casa editrice aggiornata");
+					dispose();
+				}
+			});
+			
+			
 		}
 		break;
 		case COSTOOPT:{
@@ -139,8 +153,9 @@ public class ModificaDialog extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if (ModelMethods.modificaCosto(l.getId(), textField.getText())){
+					if (ModelMethods.modificaCosto(l, textField.getText())){
 						MessageBoxes.alert("", "Costo modificato");
+						tableRefresh();
 						dispose();
 					}
 
@@ -159,11 +174,12 @@ public class ModificaDialog extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if (ModelMethods.modificaDisp(l.getId(), textField.getText())){
+					if (ModelMethods.modificaDisp(l, textField.getText())){
 						MessageBoxes.alert("", "Disponibilità aggiornata");
+						tableRefresh();
 						dispose();
 					}
-					
+
 				}
 			});
 		}
@@ -179,11 +195,12 @@ public class ModificaDialog extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if (ModelMethods.modificaISBN(l.getId(), textField.getText())){
+					if (ModelMethods.modificaISBN(l, textField.getText())){
 						MessageBoxes.alert("", "ISBN modificato");
+						tableRefresh();
 						dispose();
 					}
-					
+
 				}
 			});
 		}
@@ -194,25 +211,31 @@ public class ModificaDialog extends JDialog {
 			textField.selectAll();
 			contentPanel.add(textField);
 			textField.setColumns(10);
-			
+
 			okButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if (ModelMethods.modificaPagine(l.getId(), textField.getText())){
+					if (ModelMethods.modificaPagine(l, textField.getText())){
 						MessageBoxes.alert("", "Numero pagine aggiornato");
+						tableRefresh();
 						dispose();
 					}
-					
+
 				}
 			});
 		}
-		
-		
+
+
 		okButton.addActionListener(listener);
 		cancelButton.addActionListener(listener);
-	}
-		
+		}
 
-}
+
+	}
+	
+	private void tableRefresh(){
+		LibriJPanJTab.refresh();
+	}
+	
 }
