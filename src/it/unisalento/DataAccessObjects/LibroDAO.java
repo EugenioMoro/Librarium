@@ -222,7 +222,7 @@ public class LibroDAO extends metodiComuni{
 		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET genere_ID_genere = '"+idGenere+"' WHERE ID_libro = '"+idLibro+"'");
 	}
 	
-	public void modificaCosto(int id, int costo){
+	public void modificaCosto(int id, float costo){
 		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET costo = '"+costo+"' WHERE ID_libro = '"+id+"'");
 	}
 	

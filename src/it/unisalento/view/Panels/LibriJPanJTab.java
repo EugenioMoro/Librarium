@@ -12,6 +12,7 @@ public class LibriJPanJTab {
 	private JTable tab;
 	private static LibriTableModel model;
 	
+	@SuppressWarnings("unused")
 	public LibriJPanJTab(String option){
 		model=new LibriTableModel(option);
 		tab=new JTable(model);
@@ -20,17 +21,26 @@ public class LibriJPanJTab {
 		
 		switch (option){ //definisco i bottoni
 		case LibriTableModel.CLIENTEOPT:{
-			@SuppressWarnings("unused")
+			
+			
 			ButtonColumn clienteButton= new ButtonColumn(tab, LibriTableModel.getOrdinaAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
+			
+		
 		}
 		break;
-	/*	case LibriTableModel.SCAFFALIOPT:{
-			@SuppressWarnings("unused")
-			ButtonColumn scaffaliButton= new ButtonColumn(tab, LibriTableModel.getModificaAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
+		case LibriTableModel.SCAFFALIOPT:{
+			ButtonColumn titoloButton= new ButtonColumn(tab, LibriTableModel.getTitoloAction(), 0); //Definisco il bottone, input: tabella, azione, colonna
+			//TODO bottone per autori
+			ButtonColumn casaButton= new ButtonColumn(tab, LibriTableModel.getCasa(), 2); //Definisco il bottone, input: tabella, azione, colonna
+			ButtonColumn genereButton= new ButtonColumn(tab, LibriTableModel.getGenere(), 3); //Definisco il bottone, input: tabella, azione, colonna
+			ButtonColumn costoButton= new ButtonColumn(tab, LibriTableModel.getCosto(), 4); //Definisco il bottone, input: tabella, azione, colonna
+			ButtonColumn pagineButton= new ButtonColumn(tab, LibriTableModel.getPagine(), 5); //Definisco il bottone, input: tabella, azione, colonna
+			ButtonColumn isbnButton= new ButtonColumn(tab, LibriTableModel.getIsbn(), 6); //Definisco il bottone, input: tabella, azione, colonna
+			ButtonColumn dispButton= new ButtonColumn(tab, LibriTableModel.getDisp(), 7); //Definisco il bottone, input: tabella, azione, colonna
+
 		} 
-		break; */
+		break; 
 		case LibriTableModel.VENDITEOPT:{
-			@SuppressWarnings("unused")
 			ButtonColumn venditeButton= new ButtonColumn(tab, LibriTableModel.getCarrelloAction(), 8); //Definisco il bottone, input: tabella, azione, colonna
 		}
 		}

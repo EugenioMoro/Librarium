@@ -37,11 +37,11 @@ public class ControlliCoerenza {
 	public static boolean checkISBN(String i){
 		
 		if (i.length()!=13){
-			MessageBoxes.alert("Attenzione", "ISBN non valido");
+			MessageBoxes.alert("Attenzione", "ISBN: lunghezza non valida");
 			return false;
 		}
 		try{
-			Integer.parseInt(i);
+			Float.parseFloat(i);
 		} catch(Exception e){
 			MessageBoxes.alert("Attenzione", "ISBN non valido");
 			return false;

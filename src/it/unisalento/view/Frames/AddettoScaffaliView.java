@@ -4,18 +4,21 @@ import it.unisalento.view.Models.LibriTableModel;
 import it.unisalento.view.Panels.LibriJPanJTab;
 import it.unisalento.view.Panels.RicercaJPanel;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JScrollPane;
 
 public class AddettoScaffaliView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**

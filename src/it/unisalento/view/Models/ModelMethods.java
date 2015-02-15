@@ -2,6 +2,9 @@ package it.unisalento.view.Models;
 
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
+import it.unisalento.Model.CasaEd;
+import it.unisalento.Model.Genere;
+import it.unisalento.Model.Libro;
 import it.unisalento.business.CarrelloManager;
 import it.unisalento.business.ControlliCoerenza;
 import it.unisalento.business.Session;
@@ -27,7 +30,6 @@ public static void OrdinaLibro(int row, int col){
 		}
 	}
 
-
 public static void aggiungiCarrello(int row){
 	if (Session.currentSession().getSearchResults().get(row).getDisp()>0){
 		CarrelloManager.getInstance().aggiungi(Session.currentSession().getSearchResults().get(row));
@@ -36,49 +38,58 @@ public static void aggiungiCarrello(int row){
 	} else MessageBoxes.alert("Attenzione", "Libro non disponibile");
 }
 
-public static boolean modificaTitolo(int id, String newT){
+//i metodi per modificare i dati di un libro operano a livello database e livello oggetti 
+
+public static boolean modificaTitolo(Libro l, String newT){
 	if (ControlliCoerenza.checkTitolo(newT)) { 
-		LibroDAO.getInstance().modificaTitolo(id, newT);
+		LibroDAO.getInstance().modificaTitolo(l.getId(), newT);
+		l.setTitolo(newT);
 		return true;
 	}
 	return false;
 }
 
-public static void modificaGenere(int idLibro, int idGenere){
-	LibroDAO.getInstance().modificaGenere(idLibro, idGenere);
+public static void modificaGenere(Libro l, Genere g){
+	LibroDAO.getInstance().modificaGenere(l.getId(), g.getId());
+	l.setGenere(g);
 }
 
-public static void modificaCasa(int idLibro, int idCasa){
-	LibroDAO.getInstance().modificaCasa(idLibro, idCasa);
+public static void modificaCasa(Libro l, CasaEd c){
+	LibroDAO.getInstance().modificaCasa(l.getId(), c.getId());
+	l.setCasaEd(c);
 }
 
-public static boolean modificaCosto(int idLibro, String costo){
+public static boolean modificaCosto(Libro l, String costo){
 	if (ControlliCoerenza.checkCosto(costo)){
-		LibroDAO.getInstance().modificaCosto(idLibro, Integer.parseInt(costo));
+		LibroDAO.getInstance().modificaCosto(l.getId(), Float.parseFloat(costo));
+		l.setCosto(Float.parseFloat(costo));
 		return true;
 	}
 	return false;
 }
 
-public static boolean modificaDisp(int id, String disp){
+public static boolean modificaDisp(Libro l, String disp){
 	if (ControlliCoerenza.checkDisp(disp)){
-		LibroDAO.getInstance().modificaDisp(Integer.parseInt(disp), id);
+		LibroDAO.getInstance().modificaDisp(Integer.parseInt(disp), l.getId());
+		l.setDisp(Integer.parseInt(disp));
 		return true;
 	}
 	return false;
 }
 
-public static boolean modificaISBN(int id, String isbn){
+public static boolean modificaISBN(Libro l, String isbn){
 	if (ControlliCoerenza.checkISBN(isbn)){
-		LibroDAO.getInstance().modificaISBN(isbn, id);
+		LibroDAO.getInstance().modificaISBN(isbn, l.getId());
+		l.setIsbn(isbn);;
 		return true;
 	}
 	return false;
 }
 
-public static boolean modificaPagine(int id, String p){
+public static boolean modificaPagine(Libro l, String p){
 	if (ControlliCoerenza.checkPagine(p)){
-		LibroDAO.getInstance().modificaPagine(Integer.parseInt(p), id);
+		LibroDAO.getInstance().modificaPagine(Integer.parseInt(p), l.getId());
+		l.setPagine(Integer.parseInt(p));
 		return true;
 	}
 	return false;
