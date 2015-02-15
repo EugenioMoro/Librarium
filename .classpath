@@ -11,7 +11,6 @@
 	<classpathentry kind="lib" path="lib/jdatepicker-1.3.2.jar"/>
 	<classpathentry kind="lib" path="lib/glazedlists_java15-1.9.0.jar"/>
 	<classpathentry kind="lib" path="lib/javax.mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Giulia/Desktop/Progetto/EMail Sender/mail-1.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

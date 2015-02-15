@@ -1,22 +1,22 @@
 package it.unisalento.view.Dialogs;
 
 import it.unisalento.DataAccessObjects.LogInDAO;
-import it.unisalento.DbConnection.DbConnection;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.border.EmptyBorder;
+
+
 
 public class PasswordDimenticataDialog extends JDialog {
 
@@ -44,8 +44,6 @@ public class PasswordDimenticataDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public PasswordDimenticataDialog() {
-		setTitle("Password dimenticata");
-		
 		setBounds(100, 100, 378, 212);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

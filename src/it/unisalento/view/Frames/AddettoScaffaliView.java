@@ -47,7 +47,7 @@ public class AddettoScaffaliView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[grow]", "[][][][][][]"));
 		
-		JPanel RicercaPanel = new RicercaJPanel(tabPanel);
+		JPanel RicercaPanel = new RicercaJPanel();
 		contentPane.add(RicercaPanel, "cell 0 3,grow");
 		
 		JScrollPane LibriScrollPane = tabPanel.getPanel();

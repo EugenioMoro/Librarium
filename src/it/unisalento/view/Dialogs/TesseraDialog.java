@@ -102,6 +102,7 @@ public class TesseraDialog extends JDialog {
 					}
 				});			}
 		}
+	pack();
 	}
 
 	public static JTextField getTextField() {
