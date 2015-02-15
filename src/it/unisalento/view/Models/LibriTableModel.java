@@ -2,12 +2,15 @@ package it.unisalento.view.Models;
 
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.ModificaDialog;
+import it.unisalento.view.Frames.AutoriInLibroFrame;
 import it.unisalento.view.Frames.VenditeView;
+import it.unisalento.view.Panels.LibriJPanJTab;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JFrame;
 import javax.swing.table.AbstractTableModel;
 
 public class LibriTableModel extends AbstractTableModel {
@@ -25,7 +28,7 @@ public class LibriTableModel extends AbstractTableModel {
 	private String[] columnNamesCLIENTE={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordina"};
 	private String[] columnNamesNEUTRAL={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità"};
 	private String[] columnNamesVENDITE={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Carrello"};
-	private String[] columnNamesSCAFFALI={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Ordine", "Aggiorna"};
+	private String[] columnNamesSCAFFALI={"Titolo", "Autori", "Casa Editrice", "Genere", "Costo", "Pagine", "ISBN", "Disponibilità", "Aggiorna", "Ordine"};
 
 
 
@@ -47,8 +50,8 @@ public class LibriTableModel extends AbstractTableModel {
 	@Override
 	public Class<?> getColumnClass(int col) { 
 		if (option.equals(SCAFFALIOPT)){
-			if(col==8) return Boolean.class;
-			if(col==9) return ButtonColumn.class;
+			if(col==8) return ButtonColumn.class;
+			if(col==9) return Boolean.class;
 			return ButtonColumn.class;
 		}
 		if (col==7 || col==5) return Integer.class; 
@@ -92,6 +95,7 @@ public class LibriTableModel extends AbstractTableModel {
 			switch (option){
 			case LibriTableModel.CLIENTEOPT: return "Ordina";
 			case LibriTableModel.VENDITEOPT: return "Carrello";
+			case LibriTableModel.SCAFFALIOPT: return "Aggiorna";
 			}
 		}
 		case 9: return Session.currentSession().getSearchResults().get(row).isRichiesto();
@@ -142,6 +146,7 @@ public class LibriTableModel extends AbstractTableModel {
 			//LibriTableModel model = (LibriTableModel) table.getModel();
 			ModelMethods.aggiungiCarrello(row);
 			VenditeView.aggiornaLabels();
+			LibriJPanJTab.refresh();
 		}
 	};
 
@@ -249,6 +254,37 @@ public class LibriTableModel extends AbstractTableModel {
 			
 		}
 	};
+	
+	private static Action autori = new AbstractAction() { 
+
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			int row = Integer.valueOf(e.getActionCommand()); 
+			Session.currentSession().setLibroTemp(Session.currentSession().getSearchResults().get(row));
+			AutoriInLibroFrame frame = new AutoriInLibroFrame();
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			frame.setVisible(true);
+		}
+	};
+	
+	private static Action ordine = new AbstractAction() { 
+
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			int row = Integer.valueOf(e.getActionCommand());  
+			ModelMethods.aggiornaOrdine(Session.currentSession().getSearchResults().get(row));
+			LibriJPanJTab.refresh();
+		}
+	};
+
 
 	public static Action getOrdinaAction(){
 		return ordina;
@@ -303,6 +339,18 @@ public class LibriTableModel extends AbstractTableModel {
 
 	public static Action getPagine() {
 		return pagine;
+	}
+
+
+
+	public static Action getAutori() {
+		return autori;
+	}
+
+
+
+	public static Action getOrdine() {
+		return ordine;
 	}
 	
 	

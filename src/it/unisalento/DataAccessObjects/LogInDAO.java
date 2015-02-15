@@ -1,13 +1,9 @@
 package it.unisalento.DataAccessObjects;
-import java.security.GeneralSecurityException;
+import it.unisalento.DbConnection.DbConnection;
+import it.unisalento.Model.Cliente;
+import it.unisalento.Model.Utente;
+
 import java.util.Vector;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-
-import it.unisalento.DbConnection.*;
-import it.unisalento.Model.*;
-import it.unisalento.DataAccessObjects.EmailSender;
 
 public class LogInDAO extends metodiComuni{
 			

@@ -48,8 +48,8 @@ public class ScaffaleDao_test  {
 		
 		Genere_DAO.getInstance().inserisciGenere(g);
 		Genere_DAO.getInstance().inserisciGenere(g2);
-		Autore_DAO.getInstance().inserisciAutore(a1);
-		Autore_DAO.getInstance().inserisciAutore(a2);
+		Autore_DAO.getInstance().nuovoAutore(a1);
+		Autore_DAO.getInstance().nuovoAutore(a2);
 		CasaEd_DAO.getInstance().inserisciCasa(c);
 		
 		generi=Genere_DAO.getInstance().caricaGeneri();

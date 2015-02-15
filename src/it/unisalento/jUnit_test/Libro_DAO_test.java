@@ -43,8 +43,8 @@ public class Libro_DAO_test {
 		l=new Libro(false, "i pilastri della terra", 15, "1048374012593", 1020, 9, g, autori, c);
 		
 		Genere_DAO.getInstance().inserisciGenere(g);
-		Autore_DAO.getInstance().inserisciAutore(a1);
-		Autore_DAO.getInstance().inserisciAutore(a2);
+		Autore_DAO.getInstance().nuovoAutore(a1);
+		Autore_DAO.getInstance().nuovoAutore(a2);
 		CasaEd_DAO.getInstance().inserisciCasa(c);
 		
 		/* Codice non più utile

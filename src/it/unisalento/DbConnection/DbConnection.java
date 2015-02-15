@@ -78,6 +78,7 @@ public class DbConnection {
       } catch (Exception e) {
          e.printStackTrace();
          risultato = false;
+
       }
       return risultato;
    }

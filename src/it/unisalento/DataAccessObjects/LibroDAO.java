@@ -242,5 +242,9 @@ public class LibroDAO extends metodiComuni{
 		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET numero_pagine = '"+pagine+"' WHERE ID_libro = '"+id+"'");
 	}
 	
+	public void setOrdine(int id, boolean set){
+		int i = (set) ? 1 : 0;
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE libro SET flag_ordine='"+i+"' WHERE `ID_libro`='"+id+"'");
+	}
 }
 	

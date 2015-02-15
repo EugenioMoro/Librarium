@@ -13,9 +13,9 @@ import it.unisalento.view.Panels.CarrelloJPanJTab;
 import it.unisalento.view.Panels.LibriJPanJTab;
 
 public class ModelMethods {
-	
-public static void OrdinaLibro(int row, int col){
-		
+
+	public static void OrdinaLibro(int row, int col){
+
 
 		if(Session.currentSession().getC().getUsername()!=null){
 			if (Session.currentSession().getSearchResults().get(row).getDisp()==0){
@@ -30,70 +30,75 @@ public static void OrdinaLibro(int row, int col){
 		}
 	}
 
-public static void aggiungiCarrello(int row){
-	if (Session.currentSession().getSearchResults().get(row).getDisp()>0){
-		CarrelloManager.getInstance().aggiungi(Session.currentSession().getSearchResults().get(row));
-		LibriJPanJTab.refresh();
-		CarrelloJPanJTab.refresh();
-	} else MessageBoxes.alert("Attenzione", "Libro non disponibile");
-}
-
-//i metodi per modificare i dati di un libro operano a livello database e livello oggetti 
-
-public static boolean modificaTitolo(Libro l, String newT){
-	if (ControlliCoerenza.checkTitolo(newT)) { 
-		LibroDAO.getInstance().modificaTitolo(l.getId(), newT);
-		l.setTitolo(newT);
-		return true;
+	public static void aggiungiCarrello(int row){
+		if (Session.currentSession().getSearchResults().get(row).getDisp()>0){
+			CarrelloManager.getInstance().aggiungi(Session.currentSession().getSearchResults().get(row));
+			LibriJPanJTab.refresh();
+			CarrelloJPanJTab.refresh();
+		} else MessageBoxes.alert("Attenzione", "Libro non disponibile");
 	}
-	return false;
-}
 
-public static void modificaGenere(Libro l, Genere g){
-	LibroDAO.getInstance().modificaGenere(l.getId(), g.getId());
-	l.setGenere(g);
-}
+	//i metodi per modificare i dati di un libro operano a livello database e livello oggetti 
 
-public static void modificaCasa(Libro l, CasaEd c){
-	LibroDAO.getInstance().modificaCasa(l.getId(), c.getId());
-	l.setCasaEd(c);
-}
-
-public static boolean modificaCosto(Libro l, String costo){
-	if (ControlliCoerenza.checkCosto(costo)){
-		LibroDAO.getInstance().modificaCosto(l.getId(), Float.parseFloat(costo));
-		l.setCosto(Float.parseFloat(costo));
-		return true;
+	public static boolean modificaTitolo(Libro l, String newT){
+		if (ControlliCoerenza.checkTitolo(newT)) { 
+			LibroDAO.getInstance().modificaTitolo(l.getId(), newT);
+			l.setTitolo(newT);
+			return true;
+		}
+		return false;
 	}
-	return false;
-}
 
-public static boolean modificaDisp(Libro l, String disp){
-	if (ControlliCoerenza.checkDisp(disp)){
-		LibroDAO.getInstance().modificaDisp(Integer.parseInt(disp), l.getId());
-		l.setDisp(Integer.parseInt(disp));
-		return true;
+	public static void modificaGenere(Libro l, Genere g){
+		LibroDAO.getInstance().modificaGenere(l.getId(), g.getId());
+		l.setGenere(g);
 	}
-	return false;
-}
 
-public static boolean modificaISBN(Libro l, String isbn){
-	if (ControlliCoerenza.checkISBN(isbn)){
-		LibroDAO.getInstance().modificaISBN(isbn, l.getId());
-		l.setIsbn(isbn);;
-		return true;
+	public static void modificaCasa(Libro l, CasaEd c){
+		LibroDAO.getInstance().modificaCasa(l.getId(), c.getId());
+		l.setCasaEd(c);
 	}
-	return false;
-}
 
-public static boolean modificaPagine(Libro l, String p){
-	if (ControlliCoerenza.checkPagine(p)){
-		LibroDAO.getInstance().modificaPagine(Integer.parseInt(p), l.getId());
-		l.setPagine(Integer.parseInt(p));
-		return true;
+	public static boolean modificaCosto(Libro l, String costo){
+		if (ControlliCoerenza.checkCosto(costo)){
+			LibroDAO.getInstance().modificaCosto(l.getId(), Float.parseFloat(costo));
+			l.setCosto(Float.parseFloat(costo));
+			return true;
+		}
+		return false;
 	}
-	return false;
-}
+
+	public static boolean modificaDisp(Libro l, String disp){
+		if (ControlliCoerenza.checkDisp(disp)){
+			LibroDAO.getInstance().modificaDisp(Integer.parseInt(disp), l.getId());
+			l.setDisp(Integer.parseInt(disp));
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean modificaISBN(Libro l, String isbn){
+		if (ControlliCoerenza.checkISBN(isbn)){
+			LibroDAO.getInstance().modificaISBN(isbn, l.getId());
+			l.setIsbn(isbn);;
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean modificaPagine(Libro l, String p){
+		if (ControlliCoerenza.checkPagine(p)){
+			LibroDAO.getInstance().modificaPagine(Integer.parseInt(p), l.getId());
+			l.setPagine(Integer.parseInt(p));
+			return true;
+		}
+		return false;
+	}
+
+	public static void aggiornaOrdine(Libro l){
+		LibroDAO.getInstance().setOrdine(l.getId(), !l.isRichiesto());
+		l.setRichiesto(!l.isRichiesto());
+	}
 
 
 }

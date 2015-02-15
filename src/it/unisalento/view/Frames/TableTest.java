@@ -1,6 +1,8 @@
 package it.unisalento.view.Frames;
 
+import it.unisalento.view.Models.AutoriTableModel;
 import it.unisalento.view.Models.LibriTableModel;
+import it.unisalento.view.Panels.AutoriJpan;
 import it.unisalento.view.Panels.LibriJPanJTab;
 
 import java.awt.EventQueue;
@@ -47,6 +49,7 @@ public class TableTest extends JFrame {
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		LibriJPanJTab lPan=new LibriJPanJTab(LibriTableModel.SCAFFALIOPT);
+		AutoriJpan apan=new AutoriJpan(AutoriTableModel.GESTIONEOPT);
 		
 		JScrollPane scrollPane = lPan.getPanel();
 		contentPane.add(scrollPane);

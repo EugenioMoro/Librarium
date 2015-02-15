@@ -15,7 +15,7 @@ public class Autore_DAO {
 		return instance;
 	}
 	
-	public boolean inserisciAutore(Autore a){
+	public boolean nuovoAutore(Autore a){
 		boolean flag=true;
 		
 		//inserisce dati
@@ -43,6 +43,22 @@ public class Autore_DAO {
 			
 		return autori;
 		
+	}
+	
+	public void modificaNome(int id, String n){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE autore SET nome = '"+n+"' WHERE ID_autore = '"+id+"'");
+	}
+	
+	public void modificaCognome(int id, String c){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE autore SET cognome = '"+c+"' WHERE ID_autore = '"+id+"'");
+	}
+	
+	public void aggiungiALibro(int idAutore, int idLibro){
+		DbConnection.getInstance().eseguiAggiornamento("insert into libro_has_autore (libro_ID_libro, autore_ID_autore) values ('"+idLibro+"', '"+idAutore+"')");
+	}
+	
+	public void rimuoviDaLibro(int idLibro, int idAutore){
+		DbConnection.getInstance().eseguiAggiornamento("DELETE FROM libro_has_autore WHERE libro_ID_libro='"+idLibro+"' and autore_ID_autore ='"+idAutore+"';");
 	}
 	
 	}

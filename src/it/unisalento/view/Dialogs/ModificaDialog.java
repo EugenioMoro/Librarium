@@ -122,7 +122,17 @@ public class ModificaDialog extends JDialog {
 			setTitle("Cambia Genere");
 			comboBox = new JComboBox<String>(new SearchGenereComboModel());
 			contentPanel.add(comboBox);
-			ModelMethods.modificaGenere(l, Session.currentSession().getGeneri().get(comboBox.getSelectedIndex()));
+			okButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					ModelMethods.modificaGenere(l, Session.currentSession().getGeneri().get(comboBox.getSelectedIndex()));
+					MessageBoxes.alert("", "Genere Aggiornato");
+					dispose();
+				}
+			});
+			
+			
 		}
 		break;
 		case CASAOPT:{

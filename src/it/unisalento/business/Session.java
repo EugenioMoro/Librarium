@@ -34,6 +34,7 @@ public class Session {
 	private Vector <Libro> searchResults=LibroDAO.getInstance().caricaTutti();
 	private Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
 	private Vector <Acquisto> acquisti;
+	private Libro libroTemp;
 	public final static String AMMINISTRATIVECODE="0000";
 	
 	
@@ -163,6 +164,14 @@ public class Session {
 	
 	public void aggiornaAcquisti(){
 		acquisti=AcquistoDAO.getInstance().caricaStorico();
+	}
+
+	public Libro getLibroTemp() {
+		return libroTemp;
+	}
+
+	public void setLibroTemp(Libro libroTemp) {
+		this.libroTemp = libroTemp;
 	}
 
 

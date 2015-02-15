@@ -36,8 +36,8 @@ public class Autore_DAO_test {
 
 	@Test
 	public void test() {
-		assertEquals(true, Autore_DAO.getInstance().inserisciAutore(a));
-		assertEquals(true, Autore_DAO.getInstance().inserisciAutore(b));
+		assertEquals(true, Autore_DAO.getInstance().nuovoAutore(a));
+		assertEquals(true, Autore_DAO.getInstance().nuovoAutore(b));
 		assertEquals(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").get(0)[0]), a.getId());
 		assertEquals(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").get(1)[0]), b.getId());
 		
