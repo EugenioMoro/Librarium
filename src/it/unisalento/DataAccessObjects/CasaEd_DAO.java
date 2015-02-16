@@ -22,7 +22,7 @@ public class CasaEd_DAO {
 		if(!DbConnection.getInstance().eseguiAggiornamento("insert into casa_editrice (nome_casa_editrice) values ('"+c.getNome()+"')")) flag=false;
 	
 		//recupera id e riempie c
-		c.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_casa_editrice from casa_editrice").lastElement()[0]));
+		c.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select max(ID_casa_editrice) from casa_editrice").lastElement()[0]));
 		
 		return flag;
 	}
@@ -46,5 +46,9 @@ public class CasaEd_DAO {
 		
 		return caseEd;
 		
+	}
+	
+	public void modifica(int id, String nome){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE casa_editrice SET nome_casa_editrice='"+nome+"' WHERE ID_casa_editrice='"+id+"'");
 	}
 }

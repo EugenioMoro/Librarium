@@ -3,6 +3,7 @@ package it.unisalento.view.Models;
 import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Dialogs.NuovoModificaDialog;
 import it.unisalento.view.Frames.AutoriInLibroFrame;
 
 import java.awt.event.ActionEvent;
@@ -30,6 +31,10 @@ public class AutoriTableModel extends AbstractTableModel {
 	public AutoriTableModel(String option, boolean nuovoLibro) {
 		this.option=option;
 		this.nuovoLibro=nuovoLibro;
+	}
+	
+	public AutoriTableModel(String option) {
+		this.option=option;
 	}
 	
 	@Override
@@ -127,6 +132,11 @@ public class AutoriTableModel extends AbstractTableModel {
 		}
 		else MessageBoxes.alert("Attenzione", "Impossibile rimuovere autore");
 	}
+	
+	private void modificaAutore(int row){
+		NuovoModificaDialog dialog=new NuovoModificaDialog(Session.currentSession().getAutori().get(row), NuovoModificaDialog.AUTOREOPT);
+		dialog.setVisible(true);
+	}
 
 private static Action rimuoviAction = new AbstractAction() {
 		
@@ -161,6 +171,22 @@ private static Action aggiungiAction = new AbstractAction() {
 			AutoriInLibroFrame.refreshPanels();
 		}
 	};
+	
+	private static Action modificaAction = new AbstractAction() {
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JTable table = (JTable) e.getSource(); 
+			int row = Integer.valueOf(e.getActionCommand()); 
+			AutoriTableModel model = (AutoriTableModel) table.getModel();
+			model.modificaAutore(row);
+		}
+	};
 
 public static Action getRimuoviAction() {
 	return rimuoviAction;
@@ -168,6 +194,10 @@ public static Action getRimuoviAction() {
 
 public static Action getAggiungiAction() {
 	return aggiungiAction;
+}
+
+public static Action getModificaAction() {
+	return modificaAction;
 }
 
 }

@@ -21,7 +21,7 @@ public class Genere_DAO {
 		if(!DbConnection.getInstance().eseguiAggiornamento("insert into genere (nome_genere) values ('"+g.getNome()+"')")) flag=false;
 		
 		//recupera id
-		g.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_genere from genere").lastElement()[0]));
+		g.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select max(ID_genere) from genere").lastElement()[0]));
 		
 		return flag;
 	}
@@ -39,5 +39,9 @@ public class Genere_DAO {
 			generi.set(i, new Genere(Integer.parseInt(res.get(i)[0]), res.get(i)[1]));
 		
 		return generi;
+	}
+	
+	public void modifica(int id, String nome){
+		DbConnection.getInstance().eseguiAggiornamento("UPDATE genere SET nome_genere='"+nome+"' WHERE ID_genere='"+id+"';");
 	}
 }

@@ -23,6 +23,8 @@ public class AutoriJpan {
 		break;
 		case AutoriTableModel.INLIBROOPT: ButtonColumn rimuoviButton= new ButtonColumn(tab, AutoriTableModel.getRimuoviAction(), 2); //Definisco il bottone, input: tabella, azione, colonna
 		break;
+		case AutoriTableModel.GESTIONEOPT: ButtonColumn modificaButton= new ButtonColumn(tab, AutoriTableModel.getModificaAction(), 2); //Definisco il bottone, input: tabella, azione, colonna
+		break;
 		}
 	}
 

@@ -22,7 +22,7 @@ public class Autore_DAO {
 		if(!DbConnection.getInstance().eseguiAggiornamento("insert into autore (nome, cognome) values ('"+a.getNome()+"', '"+a.getCognome()+"')")) flag=false;
 		
 		//recupera id e completa a
-		a.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID_autore from autore").lastElement()[0]));
+		a.setId(Integer.parseInt(DbConnection.getInstance().eseguiQuery("select max(ID_autore) from autore").lastElement()[0]));
 		
 		return flag;
 	}
