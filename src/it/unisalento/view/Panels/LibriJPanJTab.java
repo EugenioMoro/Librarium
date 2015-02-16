@@ -37,7 +37,8 @@ public class LibriJPanJTab {
 			ButtonColumn pagineButton= new ButtonColumn(tab, LibriTableModel.getPagine(), 5); //Definisco il bottone, input: tabella, azione, colonna
 			ButtonColumn isbnButton= new ButtonColumn(tab, LibriTableModel.getIsbn(), 6); //Definisco il bottone, input: tabella, azione, colonna
 			ButtonColumn dispButton= new ButtonColumn(tab, LibriTableModel.getDisp(), 7); //Definisco il bottone, input: tabella, azione, colonna
-			ButtonColumn ordineButton= new ButtonColumn(tab, LibriTableModel.getOrdine(), 8); //Definisco il bottone, input: tabella, azione, colonna
+			//Questo bottone non serve più, lo lascio commentato per delle eventuali versioni successive che possono implementare ordine libro
+			//ButtonColumn ordineButton= new ButtonColumn(tab, LibriTableModel.getOrdine(), 8); //Definisco il bottone, input: tabella, azione, colonna
 
 		
 		} 

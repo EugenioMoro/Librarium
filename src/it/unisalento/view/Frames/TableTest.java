@@ -49,7 +49,8 @@ public class TableTest extends JFrame {
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		LibriJPanJTab lPan=new LibriJPanJTab(LibriTableModel.SCAFFALIOPT);
-		AutoriJpan apan=new AutoriJpan(AutoriTableModel.GESTIONEOPT);
+		@SuppressWarnings("unused")
+		AutoriJpan apan=new AutoriJpan(AutoriTableModel.GESTIONEOPT, true);
 		
 		JScrollPane scrollPane = lPan.getPanel();
 		contentPane.add(scrollPane);

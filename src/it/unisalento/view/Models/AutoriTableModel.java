@@ -19,6 +19,7 @@ public class AutoriTableModel extends AbstractTableModel {
 	public final static String AGGIUNGIOPT= "aggiungi";
 	
 	private String option;
+	private boolean nuovoLibro;
 	private String columnNames[]={"Nome", "Cognome"};
 
 	/**
@@ -26,8 +27,9 @@ public class AutoriTableModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AutoriTableModel(String option) {
+	public AutoriTableModel(String option, boolean nuovoLibro) {
 		this.option=option;
+		this.nuovoLibro=nuovoLibro;
 	}
 	
 	@Override
@@ -38,7 +40,11 @@ public class AutoriTableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		if (option.equals(INLIBROOPT)) return Session.currentSession().getLibroTemp().getAutori().size();
+		try{
+			if (option.equals(INLIBROOPT)) return Session.currentSession().getLibroTemp().getAutori().size();
+		} catch (Exception e) {
+			return 0;
+		}
 		return Session.currentSession().getAutori().size();
 	}
 
@@ -96,28 +102,32 @@ public class AutoriTableModel extends AbstractTableModel {
 
 		boolean exists=false;
 
-		for (int i=0; i<Session.currentSession().getLibroTemp().getAutori().size(); i++){
-			if (Session.currentSession().getAutori().get(index).getId()==Session.currentSession().getLibroTemp().getAutori().get(i).getId()) {
-				exists=true;
-				break;
+		
+			for (int i=0; i<Session.currentSession().getLibroTemp().getAutori().size(); i++){
+				if (Session.currentSession().getAutori().get(index).getId()==Session.currentSession().getLibroTemp().getAutori().get(i).getId()) {
+					exists=true;
+					break;
+				}
 			}
-		}
 
 		if (!exists){
 			Session.currentSession().getLibroTemp().getAutori().add(Session.currentSession().getAutori().get(index));
-			Autore_DAO.getInstance().aggiungiALibro(Session.currentSession().getAutori().get(index).getId(), Session.currentSession().getLibroTemp().getId());
+			if (!nuovoLibro)
+				Autore_DAO.getInstance().aggiungiALibro(Session.currentSession().getAutori().get(index).getId(), Session.currentSession().getLibroTemp().getId());
 		}
 		else MessageBoxes.alert("Attenzione", "Autore già in elenco");
 	}
 
 	private void rimuoviAutore(int index){
 		if(Session.currentSession().getLibroTemp().getAutori().size()>1){
-			Autore_DAO.getInstance().rimuoviDaLibro(Session.currentSession().getLibroTemp().getId(), Session.currentSession().getLibroTemp().getAutori().get(index).getId());
 			Session.currentSession().getLibroTemp().getAutori().remove(index);
+			if (!nuovoLibro){
+				Autore_DAO.getInstance().rimuoviDaLibro(Session.currentSession().getLibroTemp().getId(), Session.currentSession().getLibroTemp().getAutori().get(index).getId());
+			}
 		}
 		else MessageBoxes.alert("Attenzione", "Impossibile rimuovere autore");
 	}
-	
+
 private static Action rimuoviAction = new AbstractAction() {
 		
 		/**

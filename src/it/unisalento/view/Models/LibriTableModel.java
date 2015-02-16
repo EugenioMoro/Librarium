@@ -70,7 +70,7 @@ public class LibriTableModel extends AbstractTableModel {
 
 		/*
 		 * Colonne in ordine: [0]Titolo-[1]Autori-[2]Casa Editrice-[3]Genere-[4]Costo-[5]Pagine-[6]ISBN-[7]Disponibilità-[8]SpecificButton*/
-		if (option.equals(SCAFFALIOPT)) return 10;
+		if (option.equals(SCAFFALIOPT)) return 8;
 		if (option.equals(NEUTRALOPT)) return 8;
 		return 9;
 	}
@@ -265,7 +265,7 @@ public class LibriTableModel extends AbstractTableModel {
 
 			int row = Integer.valueOf(e.getActionCommand()); 
 			Session.currentSession().setLibroTemp(Session.currentSession().getSearchResults().get(row));
-			AutoriInLibroFrame frame = new AutoriInLibroFrame();
+			AutoriInLibroFrame frame = new AutoriInLibroFrame(false);
 			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			frame.setVisible(true);
 		}

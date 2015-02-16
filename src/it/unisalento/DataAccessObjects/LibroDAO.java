@@ -21,8 +21,9 @@ public class LibroDAO extends metodiComuni{
 	}
 	
 	   private int lastID_libro(){
-		   Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select ID_libro from libro");
-		   return Integer.parseInt(res.lastElement()[0]);
+		   Vector<String[]> res=DbConnection.getInstance().eseguiQuery("select max(ID_libro) from libro");
+		   return Integer.parseInt(res.get(0)[0]);
+		   
 	   }
 	
 	public boolean inserisciLibro(Libro l){

@@ -13,8 +13,8 @@ public class AutoriJpan {
 	private JScrollPane pane;
 	
 	@SuppressWarnings("unused")
-	public AutoriJpan(String option){
-		model= new AutoriTableModel(option);
+	public AutoriJpan(String option, boolean nuovoLibro){
+		model= new AutoriTableModel(option, nuovoLibro);
 		tab=new JTable(model);
 		pane= new JScrollPane(tab);
 		

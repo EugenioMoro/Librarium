@@ -75,6 +75,7 @@ public class WelcomeView extends JFrame {
 		txtUsername = new JTextField();
 		txtUsername.setText("Username");
 		txtUsername.setToolTipText("Username");
+		txtUsername.selectAll();
 		leftPanel.add(txtUsername, "cell 0 0,growx");
 		txtUsername.setColumns(10);
 		

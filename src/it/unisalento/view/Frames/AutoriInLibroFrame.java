@@ -16,14 +16,20 @@ import net.miginfocom.swing.MigLayout;
 
 public class AutoriInLibroFrame extends JFrame {
 
+	public final static String NUOVOLIBROOPT="nuovolibro";
+	public final static String MODIFICALIBROOPT="modificalibro";
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private static AutoriJpan upperPane=new AutoriJpan(AutoriTableModel.INLIBROOPT);
-	private static AutoriJpan lowerPane=new AutoriJpan(AutoriTableModel.AGGIUNGIOPT);
-
+	private static AutoriJpan upperPane;
+	private static AutoriJpan lowerPane;
+	
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -31,8 +37,8 @@ public class AutoriInLibroFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AutoriInLibroFrame frame = new AutoriInLibroFrame();
-					frame.setVisible(true);
+					//AutoriInLibroFrame frame = new AutoriInLibroFrame();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,7 +49,9 @@ public class AutoriInLibroFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AutoriInLibroFrame() {
+	public AutoriInLibroFrame(boolean nuovoLibro) {
+		upperPane=new AutoriJpan(AutoriTableModel.INLIBROOPT, nuovoLibro);
+		lowerPane=new AutoriJpan(AutoriTableModel.AGGIUNGIOPT, nuovoLibro);
 		setTitle("Modifica autori");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

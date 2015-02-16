@@ -4,6 +4,7 @@ package it.unisalento.business;
 
 import it.unisalento.view.Frames.ClienteView;
 import it.unisalento.view.Frames.RegistraView;
+import it.unisalento.view.Frames.ScaffaliView;
 import it.unisalento.view.Frames.VenditeView;
 import it.unisalento.view.Frames.WelcomeView;
 
@@ -39,7 +40,9 @@ public class MainActivity {
 	
 
 	public static void openScaffaliView(){
-		//TODO implementare
+		MainActivity.mainframe.dispose();
+		MainActivity.mainframe=new ScaffaliView();
+		mainframe.setVisible(true);
 	}
 	
 	public static void backToWelcome(){

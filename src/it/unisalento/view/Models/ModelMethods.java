@@ -41,7 +41,7 @@ public class ModelMethods {
 	//i metodi per modificare i dati di un libro operano a livello database e livello oggetti 
 
 	public static boolean modificaTitolo(Libro l, String newT){
-		if (ControlliCoerenza.checkTitolo(newT)) { 
+		if (ControlliCoerenza.checkTitolo(newT, true)) { 
 			LibroDAO.getInstance().modificaTitolo(l.getId(), newT);
 			l.setTitolo(newT);
 			return true;
@@ -60,7 +60,7 @@ public class ModelMethods {
 	}
 
 	public static boolean modificaCosto(Libro l, String costo){
-		if (ControlliCoerenza.checkCosto(costo)){
+		if (ControlliCoerenza.checkCosto(costo, true)){
 			LibroDAO.getInstance().modificaCosto(l.getId(), Float.parseFloat(costo));
 			l.setCosto(Float.parseFloat(costo));
 			return true;
@@ -69,7 +69,7 @@ public class ModelMethods {
 	}
 
 	public static boolean modificaDisp(Libro l, String disp){
-		if (ControlliCoerenza.checkDisp(disp)){
+		if (ControlliCoerenza.checkDisp(disp, true)){
 			LibroDAO.getInstance().modificaDisp(Integer.parseInt(disp), l.getId());
 			l.setDisp(Integer.parseInt(disp));
 			return true;
@@ -78,7 +78,7 @@ public class ModelMethods {
 	}
 
 	public static boolean modificaISBN(Libro l, String isbn){
-		if (ControlliCoerenza.checkISBN(isbn)){
+		if (ControlliCoerenza.checkISBN(isbn, true)){
 			LibroDAO.getInstance().modificaISBN(isbn, l.getId());
 			l.setIsbn(isbn);;
 			return true;
@@ -87,7 +87,7 @@ public class ModelMethods {
 	}
 
 	public static boolean modificaPagine(Libro l, String p){
-		if (ControlliCoerenza.checkPagine(p)){
+		if (ControlliCoerenza.checkPagine(p, true)){
 			LibroDAO.getInstance().modificaPagine(Integer.parseInt(p), l.getId());
 			l.setPagine(Integer.parseInt(p));
 			return true;

@@ -56,7 +56,7 @@ public class WelcomeListener implements ActionListener {
 			break;
 			case "Vendite": MainActivity.openVenditeView();
 			break;
-			default: MessageBoxes.alert("TODO", "Implementare");
+			case "Scaffali": MainActivity.openScaffaliView();
 			}
 			
 			
