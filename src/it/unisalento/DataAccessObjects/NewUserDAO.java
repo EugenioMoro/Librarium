@@ -9,6 +9,8 @@ import it.unisalento.Model.Utente;
 
 
 
+import it.unisalento.business.EmailSender;
+
 import java.security.GeneralSecurityException;
 import java.util.Vector;
 
@@ -105,19 +107,16 @@ public final class NewUserDAO extends metodiComuni {
 
 	public void mailBenvenuto(Cliente c) throws GeneralSecurityException {
 		
+		
 		Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+c.getEmail()+"'");
-		EmailSender newEmail = new EmailSender( 
-				"marra.giulia.1994@gmail.com", 
-				"siskamia94",
-				"stmp.gmail.it",
-				"marra.giulia.1994@gmail.com",
-				c.getEmail(),
-				"OGGETTO: Benvenuto",
-				"\nBenvenuto in Librarium "+c.getNome()+" "+c.getCognome()+"!\n\nGrazie per aver scelto la nostra libreria!"
-				+ "\n\nEcco i Suoi dati:\nUsername:"
+		String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM cliente WHERE email = '"+c.getEmail()+"'").toString();
+		EmailSender.getInstance().InviaEmail("OGGETTO: Password Dimenticata", destinatario, c.getEmail(),
+				"\nQuesta eMail e' stata inviata da "+DbConnection.getInstance().eseguiQuery("SELECT nomeLibreria FROM dati_libreria")+" per darle il benvenuto nella nostra libreria."
+				+ "\nLe sue credeziali sono:\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
 				+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
-		newEmail.inviaEmail();
-	}
+		 
+		}
+	
 	
 }
 
