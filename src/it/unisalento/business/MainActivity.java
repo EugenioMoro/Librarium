@@ -2,6 +2,9 @@ package it.unisalento.business;
 
 
 
+import it.unisalento.DbConnection.DbConnection;
+import it.unisalento.view.Dialogs.InizializzazioneDialog;
+import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Frames.ClienteView;
 import it.unisalento.view.Frames.RegistraView;
 import it.unisalento.view.Frames.ScaffaliView;
@@ -21,10 +24,8 @@ public class MainActivity {
 		
 		
 		
-		Session.currentSession(); //Inizializza la sessione 
-		mainframe=new WelcomeView();
-		mainframe.pack();
-		mainframe.setVisible(true);
+		
+		initialize();
 		
 		
 		
@@ -45,9 +46,11 @@ public class MainActivity {
 		mainframe.setVisible(true);
 	}
 	
-	public static void backToWelcome(){
-		Session.currentSession().destroy();
-		MainActivity.mainframe.dispose();
+	public static void openWelcomeView(){
+		Session.destroy();
+		if (MainActivity.mainframe!=null){
+			MainActivity.mainframe.dispose();
+		}
 		MainActivity.mainframe=new WelcomeView();
 		MainActivity.mainframe.setVisible(true);
 	}
@@ -62,5 +65,22 @@ public class MainActivity {
 		MainActivity.mainframe.dispose();
 		MainActivity.mainframe=new VenditeView();
 		MainActivity.mainframe.setVisible(true);
+	}
+	
+	public static void initialize(){
+		Session.destroy();
+		Session.currentSession();
+		if (!DbConnection.connetti("librarium", "root", "root")){
+			MessageBoxes.errore("Errore", "Impossibile connettersi al database");
+		}
+		if(Session.currentSession().getNomeLibreria().isEmpty()){
+			InizializzazioneDialog dialog = new InizializzazioneDialog();
+			dialog.setVisible(true);
+		} else 
+			openWelcomeView();
+	}
+	
+	public static void abort(){
+		System.exit(0);
 	}
 }

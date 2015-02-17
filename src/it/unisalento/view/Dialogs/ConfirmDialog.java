@@ -57,7 +57,7 @@ public class ConfirmDialog extends JDialog {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						MainActivity.backToWelcome();
+						MainActivity.openWelcomeView();
 						dispose();
 					}
 				});

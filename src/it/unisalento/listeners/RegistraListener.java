@@ -128,10 +128,10 @@ public class RegistraListener implements ActionListener {
 	private void OKOption(){
 
 		
-		if(Session.AMMINISTRATIVECODE.equals(AddettoRegDialog.getTextField().getText())){
+		if(Session.ADMINISTRATIVECODE.equals(AddettoRegDialog.getTextField().getText())){
 			if(UserManager.registraUtente()){
 				MessageBoxes.alert("Successo", "Utente registrato come "+Session.currentSession().getTipo()+'\n'+"Effettua il login per accedere al sistema");
-				MainActivity.backToWelcome();
+				MainActivity.openWelcomeView();
 			}
 		
 		}
@@ -151,7 +151,7 @@ public class RegistraListener implements ActionListener {
 		if(UserManager.registraCliente()){
 			MessageBoxes.alert("Successo", "Registrazione cliente avvenuta\nEffettua il login per accedere al sistema");
 			regCliente.dispose();
-			MainActivity.backToWelcome();
+			MainActivity.openWelcomeView();
 		}
 
 		}

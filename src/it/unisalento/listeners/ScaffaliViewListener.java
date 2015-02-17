@@ -2,7 +2,7 @@ package it.unisalento.listeners;
 
 import it.unisalento.business.RichiesteManager;
 import it.unisalento.view.Dialogs.ConfirmDialog;
-import it.unisalento.view.Dialogs.MessageBoxes;
+import it.unisalento.view.Frames.GestioneGCAFrame;
 import it.unisalento.view.Frames.NuovoLibroFrame;
 import it.unisalento.view.Frames.ScaffaliView;
 import it.unisalento.view.Models.RichiesteTableModel;
@@ -25,7 +25,7 @@ public class ScaffaliViewListener implements ActionListener {
 		switch (e.getActionCommand()){
 		case RICHIESTEOPT: richiesteOpt();
 		break;
-		case AUTORICASEOPT: TODO();
+		case AUTORICASEOPT: gestioneOpt();
 		break;
 		case NUOVOLIBROOPT: nuovoLibroOpt();
 		break;
@@ -35,9 +35,6 @@ public class ScaffaliViewListener implements ActionListener {
 		
 	}
 	
-	private void TODO(){
-		MessageBoxes.alert("", "TODO");
-	}
 	
 	private void richiesteOpt(){
 		//Deprecato, il set dello storico avviene al conteggio delle nuove richieste all'interno della view RichiesteManager.getInstance().setStorico();
@@ -59,6 +56,12 @@ public class ScaffaliViewListener implements ActionListener {
 	
 	private void nuovoLibroOpt(){
 		NuovoLibroFrame frame=new NuovoLibroFrame();
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setVisible(true);
+	}
+	
+	private void gestioneOpt(){
+		GestioneGCAFrame frame = new GestioneGCAFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 	}

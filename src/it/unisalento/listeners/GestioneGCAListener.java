@@ -1,5 +1,6 @@
 package it.unisalento.listeners;
 
+import it.unisalento.business.ModelMethods;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Dialogs.NuovoModificaDialog;
@@ -47,6 +48,14 @@ public class GestioneGCAListener implements ActionListener {
 		frame.refresh();
 		break;
 		
+		case ELIMINAGENEREOPT: eliminaGenereOpt();
+		frame.refresh();
+		break;
+		
+		case ELIMINACASAOPT: eliminaCasaOpt();
+		frame.refresh();
+		break;
+		
 		default: MessageBoxes.errore("", "Errore option");
 		}
 		
@@ -63,7 +72,7 @@ public class GestioneGCAListener implements ActionListener {
 	
 	private void modificaCasaOpt(){
 		if(frame.getCasaComboBox().getSelectedIndex()==-1)
-			MessageBoxes.alert("Attenzione", "Scegli un genere");
+			MessageBoxes.alert("Attenzione", "Scegli una casa editrice");
 		else{
 			NuovoModificaDialog dialog=new NuovoModificaDialog(Session.currentSession().getCaseEd().get(frame.getCasaComboBox().getSelectedIndex()), NuovoModificaDialog.CASAOPT);
 			dialog.setVisible(true);
@@ -83,6 +92,30 @@ public class GestioneGCAListener implements ActionListener {
 	private void nuovoAutoreOpt(){
 		NuovoModificaDialog dialog = new NuovoModificaDialog(NuovoModificaDialog.AUTOREOPT);
 		dialog.setVisible(true);
+	}
+	
+	private void eliminaGenereOpt(){
+		if (frame.getGenereComboBox().getSelectedIndex()==-1){
+			MessageBoxes.alert("Attenzione", "Scegli un genere");
+		} else {
+			if (ModelMethods.eliminaGenere(Session.currentSession().getGeneri().get(frame.getGenereComboBox().getSelectedIndex())))
+				MessageBoxes.alert("", "Genere eliminato");
+			else {
+				MessageBoxes.errore("Errore", "Impossibile eliminare genere\nProbabilmente il genere è collegato ad uno o più libri");
+			}
+			
+		}
+	}
+	
+	private void eliminaCasaOpt(){
+		if (frame.getCasaComboBox().getSelectedIndex()==-1){
+			MessageBoxes.alert("Attenzione", "Scegli una casa editrice");
+		} else {
+			if (ModelMethods.eliminaCasa(Session.currentSession().getCaseEd().get(frame.getCasaComboBox().getSelectedIndex())))
+				MessageBoxes.alert("", "Casa editrice eliminata");
+			else
+				MessageBoxes.errore("Errore", "Impossibile eliminare casa editrice\nProbabilmente la casa editrice è collegata ad uno o più libri");
+		}
 	}
 
 }

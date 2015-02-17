@@ -1,6 +1,8 @@
 package it.unisalento.business;
 
 import it.unisalento.DataAccessObjects.Autore_DAO;
+import it.unisalento.DataAccessObjects.CasaEd_DAO;
+import it.unisalento.DataAccessObjects.Genere_DAO;
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
 import it.unisalento.Model.Autore;
@@ -105,6 +107,30 @@ public class ModelMethods {
 				if (Session.currentSession().getAutori().get(i).getId()==a.getId()){
 					Session.currentSession().getAutori().remove(i);
 					break;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean eliminaGenere(Genere g){
+		if (Genere_DAO.getInstance().elimina(g)){
+			for (int i=0; i<Session.currentSession().getGeneri().size(); i++){
+				if(Session.currentSession().getGeneri().get(i).getId()==g.getId()){
+					Session.currentSession().getGeneri().remove(i);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean eliminaCasa(CasaEd c){
+		if (CasaEd_DAO.getInstance().elimina(c)){
+			for (int i=0; i<Session.currentSession().getCaseEd().size(); i++){
+				if(Session.currentSession().getCaseEd().get(i).getId()==c.getId()){
+					Session.currentSession().getCaseEd().remove(i);
 				}
 			}
 			return true;

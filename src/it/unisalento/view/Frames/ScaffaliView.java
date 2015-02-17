@@ -84,7 +84,7 @@ public class ScaffaliView extends JFrame {
 		btnLogout.setActionCommand(ScaffaliViewListener.LOGOUTOPT);
 		btnLogout.addActionListener(l);
 		
-		JButton btnGestisciAutoricase = new JButton("Gestisci Autori/Case");
+		JButton btnGestisciAutoricase = new JButton("Gestisci Autori/Case/Generi");
 		buttonPane.add(btnGestisciAutoricase, "cell 3 0");
 		btnGestisciAutoricase.setActionCommand(ScaffaliViewListener.AUTORICASEOPT);
 		

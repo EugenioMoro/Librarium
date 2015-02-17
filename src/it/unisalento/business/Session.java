@@ -3,6 +3,7 @@ package it.unisalento.business;
 import it.unisalento.DataAccessObjects.AcquistoDAO;
 import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.CasaEd_DAO;
+import it.unisalento.DataAccessObjects.DatiLibreriaDao;
 import it.unisalento.DataAccessObjects.Genere_DAO;
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
@@ -35,7 +36,9 @@ public class Session {
 	private Vector <Richiesta> richieste=RichiestaDAO.getInstance().RichiesteStorico();
 	private Vector <Acquisto> acquisti;
 	private Libro libroTemp;
-	public final static String AMMINISTRATIVECODE="0000";
+	
+	public static String ADMINISTRATIVECODE;
+	private String nomeLibreria;
 	
 	
 	public static Session currentSession(){
@@ -54,6 +57,8 @@ public class Session {
 		caseEd=CasaEd_DAO.getInstance().caricaCase();
 		generi=Genere_DAO.getInstance().caricaGeneri();
 		tuttiLibri=LibroDAO.getInstance().caricaTutti();
+		ADMINISTRATIVECODE=DatiLibreriaDao.getInstance().caricaDati()[0];
+		nomeLibreria=DatiLibreriaDao.getInstance().caricaDati()[1];
 		searchResults=tuttiLibri;
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -61,7 +66,7 @@ public class Session {
 		}
 	}
 	
-	public void destroy(){
+	public static void destroy(){
 		currentSession=null;
 	}
 
@@ -172,6 +177,14 @@ public class Session {
 
 	public void setLibroTemp(Libro libroTemp) {
 		this.libroTemp = libroTemp;
+	}
+
+	public String getNomeLibreria() {
+		return nomeLibreria;
+	}
+
+	public void setNomeLibreria(String nomeLibreria) {
+		this.nomeLibreria = nomeLibreria;
 	}
 
 

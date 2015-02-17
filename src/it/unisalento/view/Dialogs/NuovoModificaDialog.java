@@ -23,11 +23,11 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
 public class NuovoModificaDialog extends JDialog {
-	
+
 	public static final String GENEREOPT="genere";
 	public static final String CASAOPT="casa";
 	public static final String AUTOREOPT="autore";
-	
+
 	private String option;
 
 	/**
@@ -62,34 +62,34 @@ public class NuovoModificaDialog extends JDialog {
 	 * @wbp.parser.constructor
 	 */
 	public NuovoModificaDialog(Object ob, String option) {
-		
+
 		this.option=option;
 		setup(ob);
-	
 
 
-		
+
+
 	}
-	
+
 	public NuovoModificaDialog(String option){
 		this.option=option;
 		setup(null);
 	}
-	
+
 	private void setup(Object ob){
-		
-		
+
+
 		switch(option){
 		case GENEREOPT:{
-			
-				setupSingleTextLayout();
-			
-			
+
+			setupSingleTextLayout();
+
+
 			if(ob==null){
 				setTitle("Nuovo Genere");
-				
+
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField.getText().isEmpty()){
@@ -108,7 +108,7 @@ public class NuovoModificaDialog extends JDialog {
 				textField.setText(((Genere)ob).getNome());
 				textField.selectAll();
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField.getText().isEmpty()){
@@ -124,16 +124,16 @@ public class NuovoModificaDialog extends JDialog {
 			}
 		}
 		break;
-		
+
 		case CASAOPT:{
 
 			setupSingleTextLayout();
-			
+
 			if (ob==null){
 				setTitle("Nuova Casa Editrice");
-				
+
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField.getText().isEmpty()) MessageBoxes.alert("Attenzione", "Inserisci nome");
@@ -151,7 +151,7 @@ public class NuovoModificaDialog extends JDialog {
 				textField.setText(((CasaEd)ob).getNome());
 				textField.selectAll();
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField.getText().isEmpty()) MessageBoxes.alert("Attenzione", "Inserisci nome");
@@ -166,18 +166,18 @@ public class NuovoModificaDialog extends JDialog {
 			}
 		}
 		break;
-		
+
 		case AUTOREOPT:{
-			
+
 
 			setupDoubleTextLayout();
-			
-			
+
+
 			if (ob==null){
 				setTitle("Nuovo Autore");
-				
+
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField_1.getText().isEmpty() || textField_2.getText().isEmpty())
@@ -189,7 +189,7 @@ public class NuovoModificaDialog extends JDialog {
 							MessageBoxes.alert("", "Autore aggiunto");
 							dispose();
 						}
-						
+
 					}
 				});
 			} else{
@@ -198,9 +198,9 @@ public class NuovoModificaDialog extends JDialog {
 				textField_2.setText(((Autore)ob).getCognome());
 				textField_1.selectAll();
 				textField_2.selectAll();
-				
+
 				okButton.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (textField_1.getText().isEmpty() || textField_2.getText().isEmpty())
@@ -213,16 +213,16 @@ public class NuovoModificaDialog extends JDialog {
 							MessageBoxes.alert("", "Autore modificato");
 							dispose();
 						}
-						
+
 					}
 				});
 			}
 		}
 		break;
 		}
-	
-	
-		
+
+
+
 	}
 	private void setupSingleTextLayout(){
 		setBounds(100, 100, 450, 161);
@@ -230,19 +230,19 @@ public class NuovoModificaDialog extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new MigLayout("", "[grow]", "[][]"));
-		
+
 		lblNome = new JLabel("Nuovo nome:");
 		contentPanel.add(lblNome, "cell 0 0");
-		
+
 		textField = new JTextField();
 		contentPanel.add(textField, "cell 0 1,growx");
 		textField.setColumns(10);
-		
+
 		setupBottoni();
 	}
-	
+
 	private void setupDoubleTextLayout(){
-		
+
 		setBounds(100, 100, 299, 144);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -266,12 +266,12 @@ public class NuovoModificaDialog extends JDialog {
 			contentPanel.add(textField_2, "cell 2 1,growx");
 			textField_2.setColumns(10);
 		}
-		
+
 		setupBottoni();
 	}
-	
-		private void setupBottoni(){
-			
+
+	private void setupBottoni(){
+
 		buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		okButton = new JButton("OK");
@@ -279,13 +279,13 @@ public class NuovoModificaDialog extends JDialog {
 		buttonPane.add(okButton);
 		buttonPane.add(cancelButton);
 		cancelButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0){
 				dispose();
 			}
 		});
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
-		
+
 	}
 }
