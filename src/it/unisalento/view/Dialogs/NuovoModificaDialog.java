@@ -7,8 +7,6 @@ import it.unisalento.Model.Autore;
 import it.unisalento.Model.CasaEd;
 import it.unisalento.Model.Genere;
 import it.unisalento.business.Session;
-import it.unisalento.view.Frames.GestioneGCAFrame;
-import it.unisalento.view.Panels.AutoriJpan;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -44,6 +42,7 @@ public class NuovoModificaDialog extends JDialog {
 	private JTextField textField_1;
 	private JLabel lblCognome;
 	private JTextField textField_2;
+	JPanel buttonPane;
 
 	/**
 	 * Launch the application.
@@ -66,6 +65,9 @@ public class NuovoModificaDialog extends JDialog {
 		
 		this.option=option;
 		setup(ob);
+	
+
+
 		
 	}
 	
@@ -77,41 +79,11 @@ public class NuovoModificaDialog extends JDialog {
 	private void setup(Object ob){
 		
 		
-		
-		
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			
-				okButton = new JButton("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			
-			
-				cancelButton = new JButton("Cancel");
-				buttonPane.add(cancelButton);
-				cancelButton.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-			
-		
-		
 		switch(option){
 		case GENEREOPT:{
 			
-			{
-				JLabel lblNuovoNome = new JLabel("Nuovo nome:");
-				contentPanel.add(lblNuovoNome, "cell 0 0");
-			}
-			{
-				textField = new JTextField();
-				contentPanel.add(textField, "cell 0 1,growx");
-				textField.setColumns(10);
-			}
+				setupSingleTextLayout();
+			
 			
 			if(ob==null){
 				setTitle("Nuovo Genere");
@@ -155,15 +127,7 @@ public class NuovoModificaDialog extends JDialog {
 		
 		case CASAOPT:{
 
-			{
-				JLabel lblNuovoNome = new JLabel("Nuovo nome:");
-				contentPanel.add(lblNuovoNome, "cell 0 0");
-			}
-			{
-				textField = new JTextField();
-				contentPanel.add(textField, "cell 0 1,growx");
-				textField.setColumns(10);
-			}
+			setupSingleTextLayout();
 			
 			if (ob==null){
 				setTitle("Nuova Casa Editrice");
@@ -206,32 +170,8 @@ public class NuovoModificaDialog extends JDialog {
 		case AUTOREOPT:{
 			
 
+			setupDoubleTextLayout();
 			
-			setBounds(100, 100, 299, 144);
-			getContentPane().setLayout(new BorderLayout());
-			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-			getContentPane().add(contentPanel, BorderLayout.CENTER);
-			contentPanel.setLayout(new MigLayout("", "[][][grow]", "[][]"));
-			{
-				lblNome = new JLabel("Nome:");
-				contentPanel.add(lblNome, "cell 0 0");
-			}
-			{
-				textField_1 = new JTextField();
-				contentPanel.add(textField_1, "cell 2 0,growx");
-				textField_1.setColumns(10);
-			}
-			{
-				lblCognome = new JLabel("Cognome:");
-				contentPanel.add(lblCognome, "cell 0 1");
-			}
-			{
-				textField_2 = new JTextField();
-				contentPanel.add(textField_2, "cell 2 1,growx");
-				textField_2.setColumns(10);
-			}
-			
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			
 			if (ob==null){
 				setTitle("Nuovo Autore");
@@ -277,12 +217,75 @@ public class NuovoModificaDialog extends JDialog {
 					}
 				});
 			}
-			GestioneGCAFrame.refresh();
 		}
 		break;
 		}
 	
+	
 		
 	}
-
+	private void setupSingleTextLayout(){
+		setBounds(100, 100, 450, 161);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new MigLayout("", "[grow]", "[][]"));
+		
+		lblNome = new JLabel("Nuovo nome:");
+		contentPanel.add(lblNome, "cell 0 0");
+		
+		textField = new JTextField();
+		contentPanel.add(textField, "cell 0 1,growx");
+		textField.setColumns(10);
+		
+		setupBottoni();
+	}
+	
+	private void setupDoubleTextLayout(){
+		
+		setBounds(100, 100, 299, 144);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new MigLayout("", "[][][grow]", "[][]"));
+		{
+			lblNome = new JLabel("Nome:");
+			contentPanel.add(lblNome, "cell 0 0");
+		}
+		{
+			textField_1 = new JTextField();
+			contentPanel.add(textField_1, "cell 2 0,growx");
+			textField_1.setColumns(10);
+		}
+		{
+			lblCognome = new JLabel("Cognome:");
+			contentPanel.add(lblCognome, "cell 0 1");
+		}
+		{
+			textField_2 = new JTextField();
+			contentPanel.add(textField_2, "cell 2 1,growx");
+			textField_2.setColumns(10);
+		}
+		
+		setupBottoni();
+	}
+	
+		private void setupBottoni(){
+			
+		buttonPane = new JPanel();
+		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		okButton = new JButton("OK");
+		cancelButton = new JButton("Cancel");
+		buttonPane.add(okButton);
+		buttonPane.add(cancelButton);
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0){
+				dispose();
+			}
+		});
+		getContentPane().add(buttonPane, BorderLayout.SOUTH);
+		
+	}
 }

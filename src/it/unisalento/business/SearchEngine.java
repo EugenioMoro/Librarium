@@ -33,7 +33,7 @@ public class SearchEngine {
 		return true;
 	}
 
-	public boolean perAutore(Autore a){ //Mi sto rincoglionendo spero che funzioni
+	public boolean perAutore(Autore a){ 
 		
 		Vector<Libro> results=Session.currentSession().getSearchResults();
 		

@@ -1,5 +1,6 @@
 package it.unisalento.view.Models;
 
+import it.unisalento.business.ModelMethods;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.ModificaDialog;
 import it.unisalento.view.Frames.AutoriInLibroFrame;

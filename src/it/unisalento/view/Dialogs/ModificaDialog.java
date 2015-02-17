@@ -1,8 +1,8 @@
 package it.unisalento.view.Dialogs;
 
 import it.unisalento.Model.Libro;
+import it.unisalento.business.ModelMethods;
 import it.unisalento.business.Session;
-import it.unisalento.view.Models.ModelMethods;
 import it.unisalento.view.Models.SearchCaseComboModel;
 import it.unisalento.view.Models.SearchGenereComboModel;
 import it.unisalento.view.Panels.LibriJPanJTab;

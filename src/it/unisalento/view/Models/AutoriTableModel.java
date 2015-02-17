@@ -1,6 +1,7 @@
 package it.unisalento.view.Models;
 
 import it.unisalento.DataAccessObjects.Autore_DAO;
+import it.unisalento.business.ModelMethods;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Dialogs.NuovoModificaDialog;
@@ -83,6 +84,7 @@ public class AutoriTableModel extends AbstractTableModel {
 	@Override
 	public String getColumnName(int col) {
 		if (col<2) return columnNames[col];
+		if (col==3) return "Elimina";
 		switch (option){
 		case GESTIONEOPT: return "Modifica";
 		case INLIBROOPT: return "Rimuovi";
@@ -187,6 +189,27 @@ private static Action aggiungiAction = new AbstractAction() {
 			model.modificaAutore(row);
 		}
 	};
+	
+private static Action eliminaAction = new AbstractAction() {
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent e) { 
+			JTable table = (JTable) e.getSource(); 
+			AutoriTableModel model = (AutoriTableModel) table.getModel();
+			int row = Integer.valueOf(e.getActionCommand()); 
+			if(ModelMethods.eliminaAutore(Session.currentSession().getAutori().get(row))){
+				MessageBoxes.alert("","Autore Eliminato");
+				model.fireTableDataChanged();
+			}
+			else MessageBoxes.errore("Errore", "Impossibile eliminare autore.\nProbabilmente l'autore è collegato ad uno o più libri");
+		}
+	};
+
 
 public static Action getRimuoviAction() {
 	return rimuoviAction;
@@ -198,6 +221,10 @@ public static Action getAggiungiAction() {
 
 public static Action getModificaAction() {
 	return modificaAction;
+}
+
+public static Action getEliminaAction() {
+	return eliminaAction;
 }
 
 }

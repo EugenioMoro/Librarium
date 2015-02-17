@@ -1,13 +1,12 @@
-package it.unisalento.view.Models;
+package it.unisalento.business;
 
+import it.unisalento.DataAccessObjects.Autore_DAO;
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
+import it.unisalento.Model.Autore;
 import it.unisalento.Model.CasaEd;
 import it.unisalento.Model.Genere;
 import it.unisalento.Model.Libro;
-import it.unisalento.business.CarrelloManager;
-import it.unisalento.business.ControlliCoerenza;
-import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Panels.CarrelloJPanJTab;
 import it.unisalento.view.Panels.LibriJPanJTab;
@@ -98,6 +97,19 @@ public class ModelMethods {
 	public static void aggiornaOrdine(Libro l){
 		LibroDAO.getInstance().setOrdine(l.getId(), !l.isRichiesto());
 		l.setRichiesto(!l.isRichiesto());
+	}
+	
+	public static boolean eliminaAutore(Autore a){
+		if (Autore_DAO.getInstance().elemina(a)){
+			for(int i=0; i<Session.currentSession().getAutori().size(); i++){
+				if (Session.currentSession().getAutori().get(i).getId()==a.getId()){
+					Session.currentSession().getAutori().remove(i);
+					break;
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 
 
