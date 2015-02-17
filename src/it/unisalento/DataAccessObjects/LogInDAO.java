@@ -90,9 +90,8 @@ public class LogInDAO extends metodiComuni{
 
 		public void passDimenticata(String email) {
 			
-			
 			Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+email+"'");
-			String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM cliente WHERE email = '"+email+"'").toString();
+			String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'").toString();
 		EmailSender.getInstance().InviaEmail("OGGETTO: Password Dimenticata", destinatario, email,
 					"\nQuesta eMail e' stata inviata da "+DbConnection.getInstance().eseguiQuery("SELECT nomeLibreria FROM dati_libreria")+" per una richiesta di password dimenticata. Se non e' stato Lei a fare tale "
 					+ "richiesta La preghiamo di ignorare questo messaggio.\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"

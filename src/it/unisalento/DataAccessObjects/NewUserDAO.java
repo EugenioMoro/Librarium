@@ -107,9 +107,8 @@ public final class NewUserDAO extends metodiComuni {
 
 	public void mailBenvenuto(Cliente c) throws GeneralSecurityException {
 		
-		
 		Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+c.getEmail()+"'");
-		String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM cliente WHERE email = '"+c.getEmail()+"'").toString();
+		String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'").toString();
 		EmailSender.getInstance().InviaEmail("OGGETTO: Password Dimenticata", destinatario, c.getEmail(),
 				"\nQuesta eMail e' stata inviata da "+DbConnection.getInstance().eseguiQuery("SELECT nomeLibreria FROM dati_libreria")+" per darle il benvenuto nella nostra libreria."
 				+ "\nLe sue credeziali sono:\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
