@@ -15,10 +15,7 @@ import java.util.Vector;
 
 
 public final class NewUserDAO extends metodiComuni {
-	
-	/*private SimpleDateFormat sdf;
-	private String data;
-	private Date dt=new Date();*/
+
 	private int sesso;
 
 	private static NewUserDAO instance;

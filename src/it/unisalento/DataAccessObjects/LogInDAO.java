@@ -17,36 +17,36 @@ public class LogInDAO extends metodiComuni{
 			return instance;
 		}
 	
-		public boolean checkCredenziali(Utente u){
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from utente where username='"+u.getUsername()+"' and password='"+u.getPassword()+"'").get(0)[0])!=0)
+		public boolean checkCredenziali(String u, String p){
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from utente where username='"+u+"' and password='"+p+"'").get(0)[0])!=0)
 				return true;
 			return false;
 		}
 		
-		public String checkTipo(Utente u){ //scelgo di ritornare una stringa in modo di rendere il codice di livello superiore più leggibile
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where utente_ID='"+getUsernameId(u)+"'").get(0)[0])==1)
+		public String checkTipo(String u){
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where utente_ID='"+u+"'").get(0)[0])==1)
 				return "Cliente";
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from addetto_vendite where utente_ID='"+getUsernameId(u)+"'").get(0)[0])==1)
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from addetto_vendite where utente_ID='"+u+"'").get(0)[0])==1)
 				return "Vendite";
 			return "Scaffali";
 		}
 		
-		public Utente caricaUtente(Utente u){
-			Utente newU=new Utente(u.getUsername(), u.getPassword());
+		public Utente caricaUtente(String u, String p){
+			Utente newU=new Utente(u, p);
 		
-			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select nome, cognome, data_ultimo_accesso, ID from utente where username='"+u.getUsername()+"'");
+			Vector<String[]> results=DbConnection.getInstance().eseguiQuery("select nome, cognome, data_ultimo_accesso, ID from utente where username='"+u+"'");
 			newU.setNome(results.get(0)[0]);
 			newU.setCognome(results.get(0)[1]);
 			newU.setData_ultimo_accesso(stringToDate(results.get(0)[2]));
 			newU.setId(Integer.parseInt(results.get(0)[3]));
-			newU.setUsername(u.getUsername());
+			newU.setUsername(u);
 			DbConnection.getInstance().eseguiAggiornamento("update utente set data_ultimo_accesso=NOW() where ID='"+newU.getId()+"'");
 
 			return newU;
 		}
 			
-		public Cliente caricaCliente(Utente u){  //1)carica utente generico 2) costruisce cliente e carica dati rimanenti 
-			Utente newU=caricaUtente(u);
+		public Cliente caricaCliente(String u, String p){  //1)carica utente generico 2) costruisce cliente e carica dati rimanenti 
+			Utente newU=caricaUtente(u, p);
 			boolean sesso=true;
 			
 			

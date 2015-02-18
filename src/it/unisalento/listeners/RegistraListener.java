@@ -68,7 +68,8 @@ public class RegistraListener implements ActionListener {
 				
 				Session.currentSession().getU().setNome(RegistraView.getTxtNome().getText());
 				Session.currentSession().getU().setCognome(RegistraView.getTxtCognome().getText());
-
+				
+				//apri il frame per gli altri dati cliente
 				regCliente=new RegCliente();
 				regCliente.setVisible(true);
 

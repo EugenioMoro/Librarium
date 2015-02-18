@@ -12,11 +12,10 @@ import it.unisalento.view.Dialogs.MessageBoxes;
 public class UserManager {
 	
 
-	public static boolean logIn(){ //una volta che questo metodo ritrona true la view può essere caricata con utente o cliente
+	public static boolean logIn(String u, String p){ //una volta che questo metodo ritrona true la view può essere caricata con utente o cliente
 		
-		Utente u=Session.currentSession().getU();
-		if(!LogInDAO.getInstance().checkCredenziali(u)) {
-			MessageBoxes.alert("Attenzione", "Username o password errate");
+		//Utente u=Session.currentSession().getU();
+		if(!LogInDAO.getInstance().checkCredenziali(u, p)) {
 			return false;
 		}
 		
@@ -25,11 +24,11 @@ public class UserManager {
 		
 		switch (tipo){
 		case "Cliente":
-			Session.currentSession().setC(LogInDAO.getInstance().caricaCliente(u));
+			Session.currentSession().setC(LogInDAO.getInstance().caricaCliente(u, p));
 			Session.currentSession().setAcquisti(AcquistoDAO.getInstance().storicoCliente(Session.currentSession().getC()));
 			break;
 		default:{
-			Session.currentSession().setU(LogInDAO.getInstance().caricaUtente(u));
+			Session.currentSession().setU(LogInDAO.getInstance().caricaUtente(u, p));
 			Session.currentSession().setAcquisti(AcquistoDAO.getInstance().caricaStorico());
 		}
 		}
@@ -182,11 +181,11 @@ public class UserManager {
 			return false;
 		}
 		
-		if (!NewUserDAO.getInstance().isNewUsername(c.getUsername())){
-			MessageBoxes.alert("Attenzione", "Username già esistente");
-			Session.currentSession().DestroyU();
-			return false;
-		}
+//		if (!NewUserDAO.getInstance().isNewUsername(c.getUsername())){
+//			MessageBoxes.alert("Attenzione", "Username già esistente");
+//			Session.currentSession().DestroyU();
+//			return false;
+//		}
 		
 		NewUserDAO.getInstance().registraCliente(c);
 		TesseraDAO.getInstance().nuovaTessera(new Tessera(), c);

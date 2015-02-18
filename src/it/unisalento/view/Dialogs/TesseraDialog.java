@@ -1,6 +1,5 @@
 package it.unisalento.view.Dialogs;
 
-import it.unisalento.DataAccessObjects.AcquistoDAO;
 import it.unisalento.DataAccessObjects.TesseraDAO;
 import it.unisalento.business.CarrelloManager;
 import it.unisalento.view.Frames.VenditeView;
@@ -75,9 +74,7 @@ public class TesseraDialog extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						int id = TesseraDAO.getInstance().idClienteTessera(TesseraDialog.getTextField().getText());
 						if (id>=0){
-							CarrelloManager.getInstance().getAcquisto().setCliente_id(id);
-							AcquistoDAO.getInstance().inserisci(CarrelloManager.getInstance().getAcquisto());
-							CarrelloManager.getInstance().svuota();
+							CarrelloManager.getInstance().vendi(id);
 							CarrelloJPanJTab.refresh();
 							VenditeView.aggiornaLabels();
 							dispose();

@@ -63,14 +63,14 @@ public class LogInDAO_test {
 	@Test
 	public void test() {
 		
-		assertEquals(true,LogInDAO.getInstance().checkCredenziali(MarcoU));
-		assertEquals(false,LogInDAO.getInstance().checkCredenziali(dumb));
+		assertEquals(true,LogInDAO.getInstance().checkCredenziali(MarcoU.getUsername(), MarcoU.getPassword()));
+		assertEquals(false,LogInDAO.getInstance().checkCredenziali(dumb.getUsername(), dumb.getPassword()));
 		
-		assertEquals("Cliente", LogInDAO.getInstance().checkTipo(MarioU));
-		assertEquals("Vendite", LogInDAO.getInstance().checkTipo(MarcoU));
-		assertEquals("Scaffali", LogInDAO.getInstance().checkTipo(StefanoU));
+		assertEquals("Cliente", LogInDAO.getInstance().checkTipo(MarioU.getUsername()));
+		assertEquals("Vendite", LogInDAO.getInstance().checkTipo(MarcoU.getUsername()));
+		assertEquals("Scaffali", LogInDAO.getInstance().checkTipo(StefanoU.getUsername()));
 		
-		assertEquals(MarcoU.getUsername(), LogInDAO.getInstance().caricaUtente(MarcoU).getUsername());
+		assertEquals(MarcoU.getUsername(), LogInDAO.getInstance().caricaUtente(MarcoU.getUsername(), MarcoU.getPassword()));
 		//assertEquals(MarcoU, LogInDAO.getInstance().caricaUtente(MarcoU));
 		
 		

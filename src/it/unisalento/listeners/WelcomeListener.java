@@ -46,10 +46,8 @@ public class WelcomeListener implements ActionListener {
 	private void loginOption(){
 
 		if(!WelcomeView.getTxtUsername().getText().isEmpty() && !new String(WelcomeView.getPwdPassword().getPassword()).isEmpty()){
-		Session.currentSession().getU().setUsername(WelcomeView.getTxtUsername().getText());
-		Session.currentSession().getU().setPassword(new String(WelcomeView.getPwdPassword().getPassword()));
 		
-		if(UserManager.logIn()){
+		if(UserManager.logIn(WelcomeView.getTxtUsername().getText(),new String(WelcomeView.getPwdPassword().getPassword()) )){
 			
 			switch (Session.currentSession().getTipo()){
 			case "Cliente":MainActivity.openClienteView();
@@ -61,7 +59,7 @@ public class WelcomeListener implements ActionListener {
 			
 			
 		}
-		else MessageBoxes.alert("Login Fallito", "Login fallito");
+		else MessageBoxes.alert("Attenzione", "Username o password errati");
 		} else MessageBoxes.alert("Attenzione", "Inserisci Username e Password");
 		
 		//TODO metodo da terminare
