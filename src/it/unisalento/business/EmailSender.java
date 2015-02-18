@@ -20,12 +20,12 @@ public class EmailSender {
 	public void InviaEmail(String oggetto, String destinatario, String mailDestinatario,String testo){
 		try{
 			final Email email = new Email();
-			email.setFromAddress("Librarium", "librariumSoftware@gmail.com");
+			email.setFromAddress("Librarium", "librariumsoftware@gmail.com");
 			email.setSubject(oggetto);
 			email.addRecipient(destinatario, mailDestinatario, RecipientType.TO);
 			email.setText(testo);
 
-			new Mailer("smtp.gmail.com", 465, "librariumSoftware@gmail.com", "marramoro", TransportStrategy.SMTP_SSL).sendMail(email);
+			new Mailer("smtp.gmail.com", 465, "librariumsoftware@gmail.com", "marramoro", TransportStrategy.SMTP_SSL).sendMail(email);
 		} catch (Exception e){
 			MessageBoxes.errore("Errore", "Impossibile inviare email");
 		}

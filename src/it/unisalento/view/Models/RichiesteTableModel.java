@@ -3,7 +3,9 @@ package it.unisalento.view.Models;
 import it.unisalento.DataAccessObjects.LibroDAO;
 import it.unisalento.DataAccessObjects.LogInDAO;
 import it.unisalento.DataAccessObjects.RichiestaDAO;
+import it.unisalento.Model.Cliente;
 import it.unisalento.Model.Richiesta;
+import it.unisalento.business.EmailSender;
 import it.unisalento.business.Session;
 import it.unisalento.view.Dialogs.MessageBoxes;
 import it.unisalento.view.Frames.DettagliClienteFrame;
@@ -169,12 +171,15 @@ public class RichiesteTableModel extends AbstractTableModel {
 		 */
 		private static final long serialVersionUID = 1L;
 
+		
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//i commenti da ora in poi sono interpretazioni mie
 			JTable table = (JTable) e.getSource(); //collega la tabella che ha generato l'evento in modo da poterci lavorare in questo metodo
 			int row = Integer.valueOf(e.getActionCommand()); //getActionCommand dipende dal component della view generante, suppongo che con una jTable restituisca in string la row dove è stato generato l'evento
 			RichiesteTableModel model = (RichiesteTableModel) table.getModel(); //Ok, questo è meno chiaro di tutti, non capisco perchè non usare il costruttore del model anzichè fare il cast dal getModel della tabella, per poter riutilizzare il codice?
+		
 			model.aggiornaRichiesta(row);
 			Session.currentSession().aggiornaRichieste();
 			model.fireTableDataChanged();
@@ -215,12 +220,16 @@ public class RichiesteTableModel extends AbstractTableModel {
 	public void aggiornaRichiesta(int row){
 		Richiesta r=Session.currentSession().getRichieste().get(row);
 		
+		Cliente c= LogInDAO.getInstance().dettagliClientePerID(Session.currentSession().getRichieste().get(row).getID_cliente());
+		
+		
+		
 		if (!r.isFlag_arrivo()){
 			if (r.isFlag_inoltro()){
 				RichiestaDAO.getInstance().SetArrivo(r);
 				MessageBoxes.alert("Arrivo", "Richiesta modificata");
-				
-				//email
+			EmailSender.getInstance().InviaEmail("Libro arrivato", c.getNome(), c.getEmail(), "Il libro da lei richiesto, è arrivato in negozio, e può recarsi ad acquistarlo."); 
+			
 			} else{
 				RichiestaDAO.getInstance().SetInoltro(r);
 				MessageBoxes.alert("Inoltro", "Richiesta modificata");

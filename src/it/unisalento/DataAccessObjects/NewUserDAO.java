@@ -109,7 +109,7 @@ public final class NewUserDAO extends metodiComuni {
 		
 		Vector<String[]> id = DbConnection.getInstance().eseguiQuery("SELECT utente_ID FROM cliente WHERE email = '"+c.getEmail()+"'");
 		String destinatario = DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'").toString();
-		EmailSender.getInstance().InviaEmail("OGGETTO: Password Dimenticata", destinatario, c.getEmail(),
+		EmailSender.getInstance().InviaEmail("OGGETTO: Benvenuto in Librarium", destinatario, c.getEmail(),
 				"\nQuesta eMail e' stata inviata da "+DbConnection.getInstance().eseguiQuery("SELECT nomeLibreria FROM dati_libreria")+" per darle il benvenuto nella nostra libreria."
 				+ "\nLe sue credeziali sono:\n\nNome: "+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nCognome:"+DbConnection.getInstance().eseguiQuery("SELECT nome FROM utente WHERE ID = '"+id+"'")+"\nUsername:"
 				+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
