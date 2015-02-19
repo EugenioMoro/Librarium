@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="lib/javax.mail.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="lib/simple-java-mail-v2.1.jar"/>
+	<classpathentry kind="lib" path="doc/AcquistoDiagram.atxa"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
