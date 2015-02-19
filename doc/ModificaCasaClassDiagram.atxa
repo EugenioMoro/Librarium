@@ -1,0 +1,326 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slModificaCasaClassDiagram.atxa> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node19egj1fv9x7630 .
+
+_:node19egj1fv9x7630 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners> ;
+	atxa-core:posX "-249" ;
+	atxa-core:posY "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$ScaffaliViewListener> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener> .
+
+_:node19egj1fv9x7630 atxa-core:contains _:node19egj1fv9x7631 .
+
+_:node19egj1fv9x7631 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$ScaffaliViewListener> ;
+	atxa-core:posX "-243" ;
+	atxa-core:posY "50" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$ScaffaliViewListener> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$ScaffaliViewListener.gestioneOpt()> .
+
+_:node19egj1fv9x7631 atxa-core:contains _:node19egj1fv9x7632 .
+
+_:node19egj1fv9x7632 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$ScaffaliViewListener.gestioneOpt()> ;
+	atxa-core:posX "-242" ;
+	atxa-core:posY "67" .
+
+_:node19egj1fv9x7564 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7632 ;
+	rdf:object _:node19egj1fv9x7633 .
+
+_:node19egj1fv9x7630 atxa-core:contains _:node19egj1fv9x7634 .
+
+_:node19egj1fv9x7634 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener> ;
+	atxa-core:posX "80" ;
+	atxa-core:posY "25" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.GestioneGCAListener(GestioneGCAFrame,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.actionPerformed(ActionEvent,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.modificaCasaOpt()> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.eliminaCasaOpt()> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.nuovaCasaOpt()> .
+
+_:node19egj1fv9x7634 atxa-core:contains _:node19egj1fv9x7635 .
+
+_:node19egj1fv9x7635 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.GestioneGCAListener(GestioneGCAFrame,)> ;
+	atxa-core:posX "81" ;
+	atxa-core:posY "42" .
+
+_:node19egj1fv9x7634 atxa-core:contains _:node19egj1fv9x7636 .
+
+_:node19egj1fv9x7636 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.actionPerformed(ActionEvent,)> ;
+	atxa-core:posX "81" ;
+	atxa-core:posY "57" .
+
+_:node19egj1fv9x7565 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7636 ;
+	rdf:object _:node19egj1fv9x7637 .
+
+_:node19egj1fv9x7590 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7636 ;
+	rdf:object _:node19egj1fv9x7638 .
+
+_:node19egj1fv9x7591 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7636 ;
+	rdf:object _:node19egj1fv9x7639 .
+
+_:node19egj1fv9x7634 atxa-core:contains _:node19egj1fv9x7637 .
+
+_:node19egj1fv9x7637 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.modificaCasaOpt()> ;
+	atxa-core:posX "81" ;
+	atxa-core:posY "72" .
+
+_:node19egj1fv9x7600 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7637 ;
+	rdf:object _:node19egj1fv9x7640 .
+
+_:node19egj1fv9x7625 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7637 ;
+	rdf:object _:node19egj1fv9x7641 .
+
+_:node19egj1fv9x7634 atxa-core:contains _:node19egj1fv9x7638 .
+
+_:node19egj1fv9x7638 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.eliminaCasaOpt()> ;
+	atxa-core:posX "81" ;
+	atxa-core:posY "87" .
+
+_:node19egj1fv9x7619 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7638 ;
+	rdf:object _:node19egj1fv9x7642 .
+
+_:node19egj1fv9x7626 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7638 ;
+	rdf:object _:node19egj1fv9x7641 .
+
+_:node19egj1fv9x7634 atxa-core:contains _:node19egj1fv9x7639 .
+
+_:node19egj1fv9x7639 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners$GestioneGCAListener.nuovaCasaOpt()> ;
+	atxa-core:posX "81" ;
+	atxa-core:posY "102" .
+
+_:node19egj1fv9x7601 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7639 ;
+	rdf:object _:node19egj1fv9x7643 .
+
+atxa-core:docRoot atxa-core:contains _:node19egj1fv9x7644 .
+
+_:node19egj1fv9x7644 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames> ;
+	atxa-core:posX "-107" ;
+	atxa-core:posY "28" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames$GestioneGCAFrame> .
+
+_:node19egj1fv9x7644 atxa-core:contains _:node19egj1fv9x7645 .
+
+_:node19egj1fv9x7645 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames$GestioneGCAFrame> ;
+	atxa-core:posX "-101" ;
+	atxa-core:posY "52" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames$GestioneGCAFrame> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames$GestioneGCAFrame.GestioneGCAFrame()> .
+
+_:node19egj1fv9x7645 atxa-core:contains _:node19egj1fv9x7633 .
+
+_:node19egj1fv9x7633 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames$GestioneGCAFrame.GestioneGCAFrame()> ;
+	atxa-core:posX "-100" ;
+	atxa-core:posY "69" .
+
+_:node19egj1fv9x7560 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7633 ;
+	rdf:object _:node19egj1fv9x7635 .
+
+atxa-core:docRoot atxa-core:contains _:node19egj1fv9x7646 .
+
+_:node19egj1fv9x7646 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs> ;
+	atxa-core:posX "-234" ;
+	atxa-core:posY "215" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog> .
+
+_:node19egj1fv9x7646 atxa-core:contains _:node19egj1fv9x7647 .
+
+_:node19egj1fv9x7647 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog> ;
+	atxa-core:posX "-228" ;
+	atxa-core:posY "239" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.NuovoModificaDialog(Object,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.NuovoModificaDialog(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.setup(Object,)> .
+
+_:node19egj1fv9x7647 atxa-core:contains _:node19egj1fv9x7640 .
+
+_:node19egj1fv9x7640 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.NuovoModificaDialog(Object,String,)> ;
+	atxa-core:posX "-227" ;
+	atxa-core:posY "256" .
+
+_:node19egj1fv9x7602 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7640 ;
+	rdf:object _:node19egj1fv9x7648 .
+
+_:node19egj1fv9x7647 atxa-core:contains _:node19egj1fv9x7643 .
+
+_:node19egj1fv9x7643 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.NuovoModificaDialog(String,)> ;
+	atxa-core:posX "-227" ;
+	atxa-core:posY "271" .
+
+_:node19egj1fv9x7603 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7643 ;
+	rdf:object _:node19egj1fv9x7648 .
+
+_:node19egj1fv9x7647 atxa-core:contains _:node19egj1fv9x7648 .
+
+_:node19egj1fv9x7648 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog.setup(Object,)> ;
+	atxa-core:posX "-227" ;
+	atxa-core:posY "286" .
+
+_:node19egj1fv9x7609 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7648 ;
+	rdf:object _:node19egj1fv9x7649 ;
+	atxa-core:commentTxt "  " ;
+	atxa-core:userCreated "true" .
+
+_:node19egj1fv9x7612 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7648 ;
+	rdf:object _:node19egj1fv9x7650 ;
+	atxa-core:commentTxt "  " ;
+	atxa-core:userCreated "true" .
+
+_:node19egj1fv9x7629 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7648 ;
+	rdf:object _:node19egj1fv9x7641 ;
+	atxa-core:commentTxt "  " ;
+	atxa-core:userCreated "true" .
+
+atxa-core:docRoot atxa-core:contains _:node19egj1fv9x7651 .
+
+_:node19egj1fv9x7651 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects> ;
+	atxa-core:posX "96" ;
+	atxa-core:posY "217" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO> .
+
+_:node19egj1fv9x7651 atxa-core:contains _:node19egj1fv9x7652 .
+
+_:node19egj1fv9x7652 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO> ;
+	atxa-core:posX "102" ;
+	atxa-core:posY "241" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.modifica(int,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.elimina(CasaEd,)> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.inserisciCasa(CasaEd,)> .
+
+_:node19egj1fv9x7652 atxa-core:contains _:node19egj1fv9x7649 .
+
+_:node19egj1fv9x7649 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.modifica(int,String,)> ;
+	atxa-core:posX "103" ;
+	atxa-core:posY "258" .
+
+_:node19egj1fv9x7652 atxa-core:contains _:node19egj1fv9x7653 .
+
+_:node19egj1fv9x7653 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.elimina(CasaEd,)> ;
+	atxa-core:posX "103" ;
+	atxa-core:posY "273" .
+
+_:node19egj1fv9x7652 atxa-core:contains _:node19egj1fv9x7650 .
+
+_:node19egj1fv9x7650 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects$CasaEd_DAO.inserisciCasa(CasaEd,)> ;
+	atxa-core:posX "103" ;
+	atxa-core:posY "288" .
+
+atxa-core:docRoot atxa-core:contains _:node19egj1fv9x7654 .
+
+_:node19egj1fv9x7654 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business> ;
+	atxa-core:posX "-241" ;
+	atxa-core:posY "132" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session> .
+
+_:node19egj1fv9x7654 atxa-core:contains _:node19egj1fv9x7655 .
+
+_:node19egj1fv9x7655 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods> ;
+	atxa-core:posX "-235" ;
+	atxa-core:posY "156" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods.eliminaCasa(CasaEd,)> .
+
+_:node19egj1fv9x7655 atxa-core:contains _:node19egj1fv9x7642 .
+
+_:node19egj1fv9x7642 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods.eliminaCasa(CasaEd,)> ;
+	atxa-core:posX "-234" ;
+	atxa-core:posY "173" .
+
+_:node19egj1fv9x7623 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7642 ;
+	rdf:object _:node19egj1fv9x7641 .
+
+_:node19egj1fv9x7624 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19egj1fv9x7642 ;
+	rdf:object _:node19egj1fv9x7653 .
+
+_:node19egj1fv9x7654 atxa-core:contains _:node19egj1fv9x7656 .
+
+_:node19egj1fv9x7656 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session> ;
+	atxa-core:posX "177" ;
+	atxa-core:posY "166" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session.getCaseEd()> .
+
+_:node19egj1fv9x7656 atxa-core:contains _:node19egj1fv9x7641 .
+
+_:node19egj1fv9x7641 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session.getCaseEd()> ;
+	atxa-core:posX "178" ;
+	atxa-core:posY "183" .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slModificaCasaClassDiagram.atxa> a atxa-core:reloFile ;
+	atxa-core:contains _:node19egj1fv9x7632 , _:node19egj1fv9x7631 , _:node19egj1fv9x7635 , _:node19egj1fv9x7636 , _:node19egj1fv9x7637 , _:node19egj1fv9x7638 , _:node19egj1fv9x7639 , _:node19egj1fv9x7634 , _:node19egj1fv9x7630 , _:node19egj1fv9x7633 , _:node19egj1fv9x7645 , _:node19egj1fv9x7644 , _:node19egj1fv9x7640 , _:node19egj1fv9x7643 , _:node19egj1fv9x7648 , _:node19egj1fv9x7647 , _:node19egj1fv9x7646 , _:node19egj1fv9x7649 , _:node19egj1fv9x7653 , _:node19egj1fv9x7650 , _:node19egj1fv9x7652 , _:node19egj1fv9x7651 , _:node19egj1fv9x7642 , _:node19egj1fv9x7655 , _:node19egj1fv9x7641 , _:node19egj1fv9x7656 , _:node19egj1fv9x7654 , atxa-core:docRoot , _:node19egj1fv9x7632 , _:node19egj1fv9x7631 , _:node19egj1fv9x7635 , _:node19egj1fv9x7636 , _:node19egj1fv9x7637 , _:node19egj1fv9x7638 , _:node19egj1fv9x7639 , _:node19egj1fv9x7634 , _:node19egj1fv9x7630 , _:node19egj1fv9x7633 , _:node19egj1fv9x7645 , _:node19egj1fv9x7644 , _:node19egj1fv9x7640 , _:node19egj1fv9x7643 , _:node19egj1fv9x7648 , _:node19egj1fv9x7647 , _:node19egj1fv9x7646 , _:node19egj1fv9x7649 , _:node19egj1fv9x7653 , _:node19egj1fv9x7650 , _:node19egj1fv9x7652 , _:node19egj1fv9x7651 , _:node19egj1fv9x7642 , _:node19egj1fv9x7655 , _:node19egj1fv9x7641 , _:node19egj1fv9x7656 , _:node19egj1fv9x7654 , atxa-core:docRoot , _:node19egj1fv9x7564 , _:node19egj1fv9x7565 , _:node19egj1fv9x7590 , _:node19egj1fv9x7591 , _:node19egj1fv9x7600 , _:node19egj1fv9x7625 , _:node19egj1fv9x7619 , _:node19egj1fv9x7626 , _:node19egj1fv9x7601 , _:node19egj1fv9x7560 , _:node19egj1fv9x7602 , _:node19egj1fv9x7603 , _:node19egj1fv9x7609 , _:node19egj1fv9x7612 , _:node19egj1fv9x7629 , _:node19egj1fv9x7623 , _:node19egj1fv9x7624 , _:node19egj1fv9x7564 , _:node19egj1fv9x7565 , _:node19egj1fv9x7590 , _:node19egj1fv9x7591 , _:node19egj1fv9x7600 , _:node19egj1fv9x7625 , _:node19egj1fv9x7619 , _:node19egj1fv9x7626 , _:node19egj1fv9x7601 , _:node19egj1fv9x7560 , _:node19egj1fv9x7602 , _:node19egj1fv9x7603 , _:node19egj1fv9x7609 , _:node19egj1fv9x7612 , _:node19egj1fv9x7629 , _:node19egj1fv9x7623 , _:node19egj1fv9x7624 .
+

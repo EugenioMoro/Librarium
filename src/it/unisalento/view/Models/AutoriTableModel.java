@@ -127,10 +127,10 @@ public class AutoriTableModel extends AbstractTableModel {
 
 	private void rimuoviAutore(int index){
 		if(Session.currentSession().getLibroTemp().getAutori().size()>1){
-			Session.currentSession().getLibroTemp().getAutori().remove(index);
 			if (!nuovoLibro){
 				Autore_DAO.getInstance().rimuoviDaLibro(Session.currentSession().getLibroTemp().getId(), Session.currentSession().getLibroTemp().getAutori().get(index).getId());
 			}
+			Session.currentSession().getLibroTemp().getAutori().remove(index);
 		}
 		else MessageBoxes.alert("Attenzione", "Impossibile rimuovere autore");
 	}
