@@ -1,0 +1,307 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-strata: <http://www.architexa.com/rdf/strata#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Diagramma package.atxa> a atxa-core:strataFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node19ehc51pgx968 .
+
+_:node19ehc51pgx968 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.*> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "true" , "true" , "false" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.*> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Models> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Panels> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs> .
+
+_:node19ehc51pgx968 atxa-core:contains _:node19ehc51pgx969 .
+
+_:node19ehc51pgx969 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Models> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx968 atxa-core:contains _:node19ehc51pgx970 .
+
+_:node19ehc51pgx970 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Panels> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx968 atxa-core:contains _:node19ehc51pgx971 .
+
+_:node19ehc51pgx971 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Frames> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx968 atxa-core:contains _:node19ehc51pgx972 .
+
+_:node19ehc51pgx972 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "true" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$MessageBoxes> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$ConfirmDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$AddettoRegDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$ModificaDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$TesseraDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$PasswordDimenticataDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaTelefonoDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaEmailDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$InizializzazioneDialog> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaPasswordDialog> .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx973 .
+
+_:node19ehc51pgx973 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$MessageBoxes> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx974 .
+
+_:node19ehc51pgx974 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$ConfirmDialog> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx975 .
+
+_:node19ehc51pgx975 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$AddettoRegDialog> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "2" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx976 .
+
+_:node19ehc51pgx976 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$ModificaDialog> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx977 .
+
+_:node19ehc51pgx977 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$TesseraDialog> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx978 .
+
+_:node19ehc51pgx978 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$PasswordDimenticataDialog> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx979 .
+
+_:node19ehc51pgx979 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaTelefonoDialog> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx980 .
+
+_:node19ehc51pgx980 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$NuovoModificaDialog> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx981 .
+
+_:node19ehc51pgx981 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaEmailDialog> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx982 .
+
+_:node19ehc51pgx982 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$InizializzazioneDialog> ;
+	atxa-strata:nestedLayerIndexes ":3,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx972 atxa-core:contains _:node19ehc51pgx983 .
+
+_:node19ehc51pgx983 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.view.Dialogs$CambiaPasswordDialog> ;
+	atxa-strata:nestedLayerIndexes ":3,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node19ehc51pgx984 .
+
+_:node19ehc51pgx984 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DbConnection> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:4,false,false,true" ;
+	atxa-strata:layerIndex "4" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node19ehc51pgx985 .
+
+_:node19ehc51pgx985 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.DataAccessObjects> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:3,false,false,true" ;
+	atxa-strata:layerIndex "3" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node19ehc51pgx986 .
+
+_:node19ehc51pgx986 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.listeners> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node19ehc51pgx987 .
+
+_:node19ehc51pgx987 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "true" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$RichiesteManager> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$UserManager> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$MainActivity> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$SearchEngine> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$CarrelloManager> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$NuovoLibroManager> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ControlliCoerenza> , <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$EmailSender> .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx988 .
+
+_:node19ehc51pgx988 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$RichiesteManager> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx989 .
+
+_:node19ehc51pgx989 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$Session> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx990 .
+
+_:node19ehc51pgx990 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$UserManager> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx991 .
+
+_:node19ehc51pgx991 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$MainActivity> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx992 .
+
+_:node19ehc51pgx992 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ModelMethods> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx993 .
+
+_:node19ehc51pgx993 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$SearchEngine> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:1,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx994 .
+
+_:node19ehc51pgx994 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$CarrelloManager> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx995 .
+
+_:node19ehc51pgx995 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$NuovoLibroManager> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:0,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx996 .
+
+_:node19ehc51pgx996 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$ControlliCoerenza> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+_:node19ehc51pgx987 atxa-core:contains _:node19ehc51pgx997 .
+
+_:node19ehc51pgx997 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.business$EmailSender> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "2" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node19ehc51pgx998 .
+
+_:node19ehc51pgx998 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#it.unisalento.Model> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "0" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-strata: <http://www.architexa.com/rdf/strata#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Diagramma package.atxa> a atxa-core:strataFile ;
+	atxa-core:contains _:node19ehc51pgx969 , _:node19ehc51pgx970 , _:node19ehc51pgx971 , _:node19ehc51pgx973 , _:node19ehc51pgx974 , _:node19ehc51pgx975 , _:node19ehc51pgx976 , _:node19ehc51pgx977 , _:node19ehc51pgx978 , _:node19ehc51pgx979 , _:node19ehc51pgx980 , _:node19ehc51pgx981 , _:node19ehc51pgx982 , _:node19ehc51pgx983 , _:node19ehc51pgx972 , _:node19ehc51pgx968 , _:node19ehc51pgx984 , _:node19ehc51pgx985 , _:node19ehc51pgx986 , _:node19ehc51pgx988 , _:node19ehc51pgx989 , _:node19ehc51pgx990 , _:node19ehc51pgx991 , _:node19ehc51pgx992 , _:node19ehc51pgx993 , _:node19ehc51pgx994 , _:node19ehc51pgx995 , _:node19ehc51pgx996 , _:node19ehc51pgx997 , _:node19ehc51pgx987 , _:node19ehc51pgx998 , atxa-core:docRoot , _:node19ehc51pgx969 , _:node19ehc51pgx970 , _:node19ehc51pgx971 , _:node19ehc51pgx973 , _:node19ehc51pgx974 , _:node19ehc51pgx975 , _:node19ehc51pgx976 , _:node19ehc51pgx977 , _:node19ehc51pgx978 , _:node19ehc51pgx979 , _:node19ehc51pgx980 , _:node19ehc51pgx981 , _:node19ehc51pgx982 , _:node19ehc51pgx983 , _:node19ehc51pgx972 , _:node19ehc51pgx968 , _:node19ehc51pgx984 , _:node19ehc51pgx985 , _:node19ehc51pgx986 , _:node19ehc51pgx988 , _:node19ehc51pgx989 , _:node19ehc51pgx990 , _:node19ehc51pgx991 , _:node19ehc51pgx992 , _:node19ehc51pgx993 , _:node19ehc51pgx994 , _:node19ehc51pgx995 , _:node19ehc51pgx996 , _:node19ehc51pgx997 , _:node19ehc51pgx987 , _:node19ehc51pgx998 , atxa-core:docRoot .
+

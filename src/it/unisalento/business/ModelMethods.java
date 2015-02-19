@@ -15,7 +15,7 @@ import it.unisalento.view.Panels.LibriJPanJTab;
 
 public class ModelMethods {
 
-	public static void OrdinaLibro(int row, int col){
+	public static void OrdinaLibro(int row){
 
 
 		if(Session.currentSession().getC().getUsername()!=null){
