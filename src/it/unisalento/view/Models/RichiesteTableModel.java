@@ -228,7 +228,7 @@ public class RichiesteTableModel extends AbstractTableModel {
 			if (r.isFlag_inoltro()){
 				RichiestaDAO.getInstance().SetArrivo(r);
 				MessageBoxes.alert("Arrivo", "Richiesta modificata");
-			EmailSender.getInstance().InviaEmail("Libro arrivato", c.getNome(), c.getEmail(), "Il libro da lei richiesto, è arrivato in negozio, e può recarsi ad acquistarlo."); 
+			EmailSender.getInstance().InviaEmail("Libro arrivato", c.getNome(), c.getEmail(), "Il libro da lei richiesto, è arrivato in negozio, e può recarsi ad acquistarlo.\n Libreria "+Session.currentSession().getNomeLibreria()); 
 			
 			} else{
 				RichiestaDAO.getInstance().SetInoltro(r);
