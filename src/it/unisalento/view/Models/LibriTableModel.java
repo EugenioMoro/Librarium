@@ -127,7 +127,7 @@ public class LibriTableModel extends AbstractTableModel {
 		public void actionPerformed(ActionEvent e) {
 
 			int row = Integer.valueOf(e.getActionCommand());
-			ModelMethods.OrdinaLibro(row);
+			ModelMethods.OrdinaLibro(row, 0);
 		}
 	};
 

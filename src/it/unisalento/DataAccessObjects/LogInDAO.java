@@ -25,9 +25,10 @@ public class LogInDAO extends metodiComuni{
 		}
 		
 		public String checkTipo(String u){
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where utente_ID='"+u+"'").get(0)[0])==1)
+			int id=Integer.parseInt(DbConnection.getInstance().eseguiQuery("select ID from utente where username='"+u+"'").get(0)[0]);
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where utente_ID='"+id+"'").get(0)[0])==1)
 				return "Cliente";
-			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from addetto_vendite where utente_ID='"+u+"'").get(0)[0])==1)
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from addetto_vendite where utente_ID='"+id+"'").get(0)[0])==1)
 				return "Vendite";
 			return "Scaffali";
 		}
@@ -98,6 +99,12 @@ public class LogInDAO extends metodiComuni{
 					+DbConnection.getInstance().eseguiQuery("SELECT username FROM utente WHERE ID = '"+id+"'")+"\nPassword:"+DbConnection.getInstance().eseguiQuery("SELECT password FROM utente WHERE ID = '"+id+"'")+"\n\n\nGrazie di aver scelto Librarium!\n\n\n\n\t\t\t\tDeveloped by E. Moro, G. Marra");
 			 
 			}
+		
+		public boolean CheckEmail(String email) {
+			if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where email ='"+email+"'").get(0)[0])!=1)
+				return false;
+			else return true;
+		}
 		
 		
 	

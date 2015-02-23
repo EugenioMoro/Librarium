@@ -16,6 +16,7 @@ public class AutoriJpan {
 	public AutoriJpan(String option, boolean nuovoLibro){
 		model= new AutoriTableModel(option, nuovoLibro);
 		tab=new JTable(model);
+		tab.setAutoCreateRowSorter(true);
 		pane= new JScrollPane(tab);
 		
 		switch (option){

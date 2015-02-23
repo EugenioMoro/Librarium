@@ -61,7 +61,7 @@ public class RegCliente extends JFrame {
 	public RegCliente() {
 		setTitle("Registrazione");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 281, 242);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -151,6 +151,8 @@ public class RegCliente extends JFrame {
 		southPanel.add(btnRegistrami);
 		btnRegistrami.addActionListener(listener);
 		btnRegistrami.setActionCommand(RegistraListener.REGCLIENTEOPT);
+	
+		pack();
 	}
 
 	public static JTextField getTxtEmail() {

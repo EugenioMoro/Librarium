@@ -1,8 +1,6 @@
 package it.unisalento.view.Dialogs;
 
 import it.unisalento.DataAccessObjects.LogInDAO;
-import it.unisalento.DbConnection.DbConnection;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -82,7 +80,8 @@ public class PasswordDimenticataDialog extends JDialog {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (Integer.parseInt(DbConnection.getInstance().eseguiQuery("select count(*) from cliente where email ='"+textField.getText()+"'").get(0)[0])!=1)
+						if (!LogInDAO.getInstance().CheckEmail(textField.getText()))
+							
 						{ 
 						MessageBoxes.errore("Attenzione!", "La mail inserita non è registrata.\nRiprova oppure registrati.");
 						}

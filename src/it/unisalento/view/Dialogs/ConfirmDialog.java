@@ -78,6 +78,8 @@ public class ConfirmDialog extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+		pack();
 	}
 
 }
